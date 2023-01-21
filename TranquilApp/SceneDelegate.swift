@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  TranquilApp
 //
-//  Created by Heather Dinh on 1/20/23.
+//  Created by Heather Dinh on 1/18/23.
 //
 
 import UIKit

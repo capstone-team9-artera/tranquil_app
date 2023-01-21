@@ -16,6 +16,9 @@
 		9F4423BB297BB28300E87DF2 /* TranquilAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423BA297BB28300E87DF2 /* TranquilAppTests.swift */; };
 		9F4423C5297BB28300E87DF2 /* TranquilAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423C4297BB28300E87DF2 /* TranquilAppUITests.swift */; };
 		9F4423C7297BB28300E87DF2 /* TranquilAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423C6297BB28300E87DF2 /* TranquilAppUITestsLaunchTests.swift */; };
+		9F4423D5297BB3B200E87DF2 /* BreathingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423D4297BB3B200E87DF2 /* BreathingViewController.swift */; };
+		9F4423D7297BB3F400E87DF2 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423D6297BB3F400E87DF2 /* NotificationViewController.swift */; };
+		9F4423DA297BB43200E87DF2 /* BreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423D9297BB43200E87DF2 /* BreathingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		9F4423C0297BB28300E87DF2 /* TranquilAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TranquilAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4423C4297BB28300E87DF2 /* TranquilAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranquilAppUITests.swift; sourceTree = "<group>"; };
 		9F4423C6297BB28300E87DF2 /* TranquilAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranquilAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9F4423D4297BB3B200E87DF2 /* BreathingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingViewController.swift; sourceTree = "<group>"; };
+		9F4423D6297BB3F400E87DF2 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		9F4423D9297BB43200E87DF2 /* BreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +107,8 @@
 			children = (
 				9F4423A3297BB28200E87DF2 /* AppDelegate.swift */,
 				9F4423A5297BB28200E87DF2 /* SceneDelegate.swift */,
-				9F4423A7297BB28200E87DF2 /* ViewController.swift */,
+				9F4423D3297BB38D00E87DF2 /* ViewControllers */,
+				9F4423D8297BB40E00E87DF2 /* Views */,
 				9F4423A9297BB28200E87DF2 /* Main.storyboard */,
 				9F4423AC297BB28300E87DF2 /* Assets.xcassets */,
 				9F4423AE297BB28300E87DF2 /* LaunchScreen.storyboard */,
@@ -125,6 +132,24 @@
 				9F4423C6297BB28300E87DF2 /* TranquilAppUITestsLaunchTests.swift */,
 			);
 			path = TranquilAppUITests;
+			sourceTree = "<group>";
+		};
+		9F4423D3297BB38D00E87DF2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9F4423A7297BB28200E87DF2 /* ViewController.swift */,
+				9F4423D4297BB3B200E87DF2 /* BreathingViewController.swift */,
+				9F4423D6297BB3F400E87DF2 /* NotificationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9F4423D8297BB40E00E87DF2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9F4423D9297BB43200E87DF2 /* BreathingView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +283,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F4423D7297BB3F400E87DF2 /* NotificationViewController.swift in Sources */,
 				9F4423A8297BB28200E87DF2 /* ViewController.swift in Sources */,
 				9F4423A4297BB28200E87DF2 /* AppDelegate.swift in Sources */,
 				9F4423A6297BB28200E87DF2 /* SceneDelegate.swift in Sources */,
+				9F4423D5297BB3B200E87DF2 /* BreathingViewController.swift in Sources */,
+				9F4423DA297BB43200E87DF2 /* BreathingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
