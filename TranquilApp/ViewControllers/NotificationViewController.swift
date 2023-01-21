@@ -37,6 +37,6 @@ class NotificationViewController: UIViewController {
     }
     
     @objc private func dismissSelf() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
 }

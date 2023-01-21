@@ -10,12 +10,14 @@ import SwiftUI
 
 struct BreathingView: View {
 //    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @Environment(\.dismiss) var dismiss
-    
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
         VStack (spacing: 15){
-            Button("Dismiss me") {
-                dismiss()
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                Text("Dismiss")
             }
                 Text("Breathing Exercises")
                     .font(.system(size: 35, weight: .heavy))

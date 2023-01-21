@@ -9,9 +9,10 @@ import SwiftUI
 class BreathingViewController: UIViewController {
     private let button = UIButton()
     private let myView = UIView(frame: CGRect())
+    private let label = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        myView.backgroundColor = .systemCyan
+        myView.backgroundColor = .white
         view = myView
         title = "Breathing Exercises"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .done, target: self, action: #selector(dismissSelf))
@@ -20,6 +21,9 @@ class BreathingViewController: UIViewController {
         button.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         button.titleLabel?.textAlignment = .center
         view.addSubview(button)
+        label.text = "hi"
+        label.textColor = .blue
+        view.addSubview(label)
         button.backgroundColor = .lightGray
         button.setTitleColor(.black, for: .normal)
         button.frame = CGRect(x: 35, y:160, width: 330, height: 600)
@@ -33,14 +37,6 @@ class BreathingViewController: UIViewController {
 //        navigationController?.pushViewController(vc, animated: true)
 //        navigationController?.popViewController(animated: true)
 //        present(vc, animated: true)
-        let parent = UIViewController()
-        let controller = UIHostingController(rootView: BreathingView())
-//        parent.addChild(controller)
-        parent.view.addSubview(controller.view)
-        controller.didMove(toParent: self)
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: false)
-
     }
     
     @objc private func dismissSelf() {
