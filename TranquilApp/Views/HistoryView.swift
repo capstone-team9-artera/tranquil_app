@@ -5,6 +5,7 @@
 //  Created by John Rollinson.
 //
 import SwiftUI
+import SwiftPieChart
 import Charts
 import UIKit
 import HealthKit
@@ -15,37 +16,43 @@ import HealthKitUI
 struct HistoryView: View {
     @Environment(\.presentationMode) var presentationMode
 
-    var body: some View {
+    var body: some View
+    {
         VStack (spacing: 15)
         {
             Text("TRANQUIL")
                 .font(.system(size: 60, weight: .heavy))
                 .bold()
                 .foregroundColor(Color.teal)
+            
             Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Dismiss")
             }
-            Spacer()
-            BarChart()
-                .previewLayout(.sizeThatFits)
             
-            Spacer()
-            Text("Journals Written:")
-                .font(.system(size: 20, weight: .heavy))
-                .bold()
-                .foregroundColor(Color.teal)
-            Spacer()
-            Text("Breathing Exercises Completed:")
-                .font(.system(size: 20, weight: .heavy))
-                .bold()
-                .foregroundColor(Color.teal)
-            Spacer()
-            Text("Average Stress Level:")
-                .font(.system(size: 20, weight: .heavy))
-                .bold()
-                .foregroundColor(Color.teal)
+            ScrollView
+            {
+                Text("Weekly Stress Averages:")
+                    .font(.system(size: 18, weight: .heavy))
+                    .bold()
+                    .foregroundColor(Color.teal)
+                
+                BarChart()
+                    .previewLayout(.sizeThatFits)
+                
+                Text("Application Usage:")
+                    .font(.system(size: 18, weight: .heavy))
+                    .bold()
+                    .foregroundColor(Color.teal)
+                
+                PieChartView(
+                    values: [10, 20, 30],
+                    names: ["Journals", "Chats", "Breathing"],
+                    formatter: {value in String(format: "%.0f", value)},
+                    colors: [Color.red, Color.purple, Color.orange],
+                    backgroundColor: Color.white)
+            }
         }
         .padding()
     }
@@ -68,13 +75,13 @@ struct stressLevel: Identifiable
 
 //Day of the week, Daily HRV average, Weekly HRV average.
 var week: [stressLevel] = [
-    .init(day: "Sunday", dailyAvg: 83, weeklyAvg: 75),
-    .init(day: "Monday", dailyAvg: 109, weeklyAvg: 75),
-    .init(day: "Tuesday", dailyAvg: 78, weeklyAvg: 75),
-    .init(day: "Wednesday", dailyAvg: 95, weeklyAvg: 75),
-    .init(day: "Thursday", dailyAvg: 82, weeklyAvg: 75),
-    .init(day: "Friday", dailyAvg: 60, weeklyAvg: 75),
-    .init(day: "Saturday", dailyAvg: 65, weeklyAvg: 75)
+    .init(day: "Sun.", dailyAvg: 83, weeklyAvg: 75),
+    .init(day: "Mon.", dailyAvg: 109, weeklyAvg: 75),
+    .init(day: "Tue.", dailyAvg: 78, weeklyAvg: 75),
+    .init(day: "Wed.", dailyAvg: 95, weeklyAvg: 75),
+    .init(day: "Thu.", dailyAvg: 82, weeklyAvg: 75),
+    .init(day: "Fri.", dailyAvg: 60, weeklyAvg: 75),
+    .init(day: "Sat.", dailyAvg: 65, weeklyAvg: 75)
 ]
 
 struct BarChart: View
@@ -113,5 +120,183 @@ struct BarChart: View
                 y: .value("Average HRV", week[6].weeklyAvg)
             )
         }
+    }
+}
+
+public struct PieChartView: View {
+    public let values: [Double]
+    public let names: [String]
+    public let formatter: (Double) -> String
+    
+    public var colors: [Color]
+    public var backgroundColor: Color
+    
+    public var widthFraction: CGFloat
+    public var innerRadiusFraction: CGFloat
+    
+    @State private var activeIndex: Int = -1
+    
+    var slices: [PieSliceData] {
+        let sum = values.reduce(0, +)
+        var endDeg: Double = 0
+        var tempSlices: [PieSliceData] = []
+        
+        for (i, value) in values.enumerated() {
+            let degrees: Double = value * 360 / sum
+            tempSlices.append(PieSliceData(startAngle: Angle(degrees: endDeg), endAngle: Angle(degrees: endDeg + degrees), text: String(format: "%.0f%%", value * 100 / sum), color: self.colors[i]))
+            endDeg += degrees
+        }
+        return tempSlices
+    }
+    
+    public init(values:[Double], names: [String], formatter: @escaping (Double) -> String, colors: [Color] = [Color.blue, Color.green, Color.orange], backgroundColor: Color = Color(red: 21 / 255, green: 24 / 255, blue: 30 / 255, opacity: 1.0), widthFraction: CGFloat = 0.75, innerRadiusFraction: CGFloat = 0.60){
+        self.values = values
+        self.names = names
+        self.formatter = formatter
+        
+        self.colors = colors
+        self.backgroundColor = backgroundColor
+        self.widthFraction = widthFraction
+        self.innerRadiusFraction = innerRadiusFraction
+    }
+    
+    public var body: some View {
+        GeometryReader { geometry in
+            VStack{
+                ZStack{
+                    ForEach(0..<self.values.count){ i in
+                        PieSlice(pieSliceData: self.slices[i])
+                            .scaleEffect(self.activeIndex == i ? 1.03 : 1)
+                            .animation(Animation.spring())
+                    }
+                    .frame(width: widthFraction * geometry.size.width, height: widthFraction * geometry.size.width)
+                    .gesture(
+                        DragGesture(minimumDistance: 0)
+                            .onChanged { value in
+                                let radius = 0.5 * widthFraction * geometry.size.width
+                                let diff = CGPoint(x: value.location.x - radius, y: radius - value.location.y)
+                                let dist = pow(pow(diff.x, 2.0) + pow(diff.y, 2.0), 0.5)
+                                if (dist > radius || dist < radius * innerRadiusFraction) {
+                                    self.activeIndex = -1
+                                    return
+                                }
+                                var radians = Double(atan2(diff.x, diff.y))
+                                if (radians < 0) {
+                                    radians = 2 * Double.pi + radians
+                                }
+                                
+                                for (i, slice) in slices.enumerated() {
+                                    if (radians < slice.endAngle.radians) {
+                                        self.activeIndex = i
+                                        break
+                                    }
+                                }
+                            }
+                            .onEnded { value in
+                                self.activeIndex = -1
+                            }
+                    )
+                    Circle()
+                        .fill(self.backgroundColor)
+                        .frame(width: widthFraction * geometry.size.width * innerRadiusFraction, height: widthFraction * geometry.size.width * innerRadiusFraction)
+                    
+                    VStack {
+                        Text(self.activeIndex == -1 ? "Total:" : names[self.activeIndex])
+                            .font(.title)
+                            .foregroundColor(Color.teal)
+                        Text(self.formatter(self.activeIndex == -1 ? values.reduce(0, +) : values[self.activeIndex]))
+                            .font(.title)
+                    }
+                    
+                }
+                PieChartRows(colors: self.colors, names: self.names, values: self.values.map { self.formatter($0) }, percents: self.values.map { String(format: "%.0f%%", $0 * 100 / self.values.reduce(0, +)) })
+            }
+            .background(self.backgroundColor)
+            .foregroundColor(Color.accentColor)
+        }
+    }
+}
+
+struct PieChartRows: View {
+    var colors: [Color]
+    var names: [String]
+    var values: [String]
+    var percents: [String]
+    
+    var body: some View {
+        VStack{
+            ForEach(0..<self.values.count){ i in
+                HStack {
+                    RoundedRectangle(cornerRadius: 5.0)
+                        .fill(self.colors[i])
+                        .frame(width: 20, height: 20)
+                    Text(self.names[i])
+                    Spacer()
+                    VStack(alignment: .trailing) {
+                        Text(self.values[i])
+                        Text(self.percents[i])
+                        //Color for text that is in the PieChartRows
+                            .foregroundColor(Color.gray)
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct PieChartView_Previews: PreviewProvider {
+    static var previews: some View {
+        PieChartView(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], formatter: {value in String(format: "$%.2f", value)})
+    }
+}
+
+struct PieSlice: View {
+    var pieSliceData: PieSliceData
+    
+    var midRadians: Double {
+        return Double.pi / 2.0 - (pieSliceData.startAngle + pieSliceData.endAngle).radians / 2.0
+    }
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                Path { path in
+                    let width: CGFloat = min(geometry.size.width, geometry.size.height)
+                    let height = width
+                    path.move(
+                        to: CGPoint(
+                            x: width * 0.5,
+                            y: height * 0.5
+                        )
+                    )
+                    
+                    path.addArc(center: CGPoint(x: width * 0.5, y: height * 0.5), radius: width * 0.5, startAngle: Angle(degrees: -90.0) + pieSliceData.startAngle, endAngle: Angle(degrees: -90.0) + pieSliceData.endAngle, clockwise: false)
+                    
+                }
+                .fill(pieSliceData.color)
+                
+                Text(pieSliceData.text)
+                    .position(
+                        x: geometry.size.width * 0.5 * CGFloat(1.0 + 0.78 * cos(self.midRadians)),
+                        y: geometry.size.height * 0.5 * CGFloat(1.0 - 0.78 * sin(self.midRadians))
+                    )
+                    //PieSlice Number Colors:
+                    .foregroundColor(Color.white)
+            }
+        }
+        .aspectRatio(1, contentMode: .fit)
+    }
+}
+
+struct PieSliceData {
+    var startAngle: Angle
+    var endAngle: Angle
+    var text: String
+    var color: Color
+}
+
+struct PieSlice_Previews: PreviewProvider {
+    static var previews: some View {
+        PieSlice(pieSliceData: PieSliceData(startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 120.0), text: "30%", color: Color.black))
     }
 }

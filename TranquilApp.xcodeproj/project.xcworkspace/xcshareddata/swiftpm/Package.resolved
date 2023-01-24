@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftpiechart",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ilamanov/SwiftPieChart.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "2b748448a6ddf7e225e4a40939f2bfa1d604940d"
+      }
+    }
+  ],
+  "version" : 2
+}

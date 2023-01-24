@@ -24,6 +24,7 @@
 		9F4423E6297BC41B00E87DF2 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423E5297BC41B00E87DF2 /* HistoryView.swift */; };
 		9F4423E8297BC63400E87DF2 /* AIChatbotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423E7297BC63400E87DF2 /* AIChatbotView.swift */; };
 		9F4423EA297BC67900E87DF2 /* BotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423E9297BC67900E87DF2 /* BotResponse.swift */; };
+		F30BC473297F6D0200E340C1 /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = F30BC472297F6D0200E340C1 /* SwiftPieChart */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F30BC473297F6D0200E340C1 /* SwiftPieChart in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +185,9 @@
 			dependencies = (
 			);
 			name = TranquilApp;
+			packageProductDependencies = (
+				F30BC472297F6D0200E340C1 /* SwiftPieChart */,
+			);
 			productName = TranquilApp;
 			productReference = 9F4423A0297BB28200E87DF2 /* TranquilApp.app */;
 			productType = "com.apple.product-type.application";
@@ -255,6 +260,9 @@
 				Base,
 			);
 			mainGroup = 9F442397297BB28200E87DF2;
+			packageReferences = (
+				F30BC471297F6D0200E340C1 /* XCRemoteSwiftPackageReference "SwiftPieChart" */,
+			);
 			productRefGroup = 9F4423A1297BB28200E87DF2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -644,6 +652,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F30BC471297F6D0200E340C1 /* XCRemoteSwiftPackageReference "SwiftPieChart" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ilamanov/SwiftPieChart.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F30BC472297F6D0200E340C1 /* SwiftPieChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F30BC471297F6D0200E340C1 /* XCRemoteSwiftPackageReference "SwiftPieChart" */;
+			productName = SwiftPieChart;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9F442398297BB28200E87DF2 /* Project object */;
 }
