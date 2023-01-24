@@ -30,7 +30,14 @@ class ViewController: UIViewController {
         name.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
         name.font = .systemFont(ofSize: 55, weight: UIFont.Weight(rawValue: 10))
         view.addSubview(name)
-        
+       
+        addBreathingButton()
+        addJournalButton()
+        addHistoryButton()
+        addAiChatbotButton()
+    }
+    
+    @objc private func addBreathingButton() {
         breathingButton.setTitle("Breathing Exercises", for: .normal)
         view.addSubview(breathingButton)
         breathingButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
@@ -41,8 +48,10 @@ class ViewController: UIViewController {
         breathingButton.layer.cornerRadius = 8
         breathingButton.frame = CGRect(x: 25, y:300, width: 165, height: 165)
         breathingButton.addTarget(self, action: #selector(didTapBreathingButton), for: .touchUpInside)
-        
-        
+
+    }
+
+    @objc private func addJournalButton() {
         journalButton.setTitle("Journal", for: .normal)
         view.addSubview(journalButton)
         journalButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
@@ -53,7 +62,9 @@ class ViewController: UIViewController {
         journalButton.layer.cornerRadius = 8
         journalButton.frame = CGRect(x: 200, y:300, width: 165, height: 165)
         journalButton.addTarget(self, action: #selector(didTapJournalButton), for: .touchUpInside)
-        
+    }
+    
+    @objc private func addHistoryButton() {
         historyButton.setTitle("History", for: .normal)
         view.addSubview(historyButton)
         historyButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
@@ -64,7 +75,9 @@ class ViewController: UIViewController {
         historyButton.layer.cornerRadius = 8
         historyButton.frame = CGRect(x: 25, y: 500, width: 165, height: 165)
         historyButton.addTarget(self, action: #selector(didTapHistoryButton), for: .touchUpInside)
-        
+    }
+    
+    @objc private func addAiChatbotButton() {
         aiChatbotButton.setTitle("AI Chatbot", for: .normal)
         view.addSubview(aiChatbotButton)
         aiChatbotButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
@@ -75,7 +88,9 @@ class ViewController: UIViewController {
         aiChatbotButton.layer.cornerRadius = 8
         aiChatbotButton.frame = CGRect(x: 200, y: 500, width: 165, height: 165)
         aiChatbotButton.addTarget(self, action: #selector(didTapAIChatbotButton), for: .touchUpInside)
-
+    }
+    
+    @objc private func addNotifButton() {
         notifButton.setTitle("Go to Notification Controller", for: .normal)
         view.addSubview(notifButton)
         notifButton.backgroundColor = .systemGray2
@@ -83,7 +98,7 @@ class ViewController: UIViewController {
         notifButton.frame = CGRect(x: 50, y: 750, width: 300, height: 52)
         notifButton.addTarget(self, action: #selector(didTapNotifButton), for: .touchUpInside)
     }
-
+    
     @objc private func didTapBreathingButton() {
         let rootVC = BreathingViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
