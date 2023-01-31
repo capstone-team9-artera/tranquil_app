@@ -300,3 +300,9 @@ struct PieSlice_Previews: PreviewProvider {
         PieSlice(pieSliceData: PieSliceData(startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 120.0), text: "30%", color: Color.black))
     }
 }
+
+func stress(HRV: Float) -> Float {
+    let stress = HRV / 2;
+    return stress
+}
+
