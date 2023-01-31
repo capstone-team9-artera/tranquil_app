@@ -90,6 +90,21 @@ struct BarChart: View
     {
         Chart
         {
+            //Defining data in the bar chart view:
+            ForEach(week) { stressLevel in
+                BarMark(
+                    x: .value("Day of Week", stressLevel.day),
+                    y: .value("Average HRV", stressLevel.dailyAvg)
+                )
+                .foregroundStyle(Color.accentColor)
+                .annotation(position: .overlay, alignment: .center, spacing: 3) {
+                    Text("\(stressLevel.dailyAvg, specifier: "%.F")")
+                        .font(.footnote)
+                        .foregroundColor(.white)
+                }
+            }
+            
+            /*
             //Defining data in the chart.
             BarMark(
                 x: .value("Day of Week", week[0].day),
@@ -119,6 +134,7 @@ struct BarChart: View
                 x: .value("Day of Week", week[6].day),
                 y: .value("Average HRV", week[6].weeklyAvg)
             )
+             */
         }
     }
 }
