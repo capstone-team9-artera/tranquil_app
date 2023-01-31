@@ -41,6 +41,8 @@ struct HistoryView: View {
                 BarChart()
                     .previewLayout(.sizeThatFits)
                 
+                Spacer()
+                
                 Text("Application Usage:")
                     .font(.system(size: 18, weight: .heavy))
                     .bold()
