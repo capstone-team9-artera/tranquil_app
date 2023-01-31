@@ -16,9 +16,9 @@ class BreathingViewController: UIViewController {
         myView.backgroundColor = .white
         view = myView
         title = "Breathing Exercises"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .done, target: self, action: #selector(dismissSelf))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
         let controller = UIHostingController(rootView: pageView)
-        controller.view.frame = CGRect(x: 15, y:100, width: 370, height: 700)
+        controller.view.frame = CGRect(x: 0, y:100, width: 400, height: 700)
         controller.didMove(toParent: self)
         controller.modalPresentationStyle = .fullScreen
         view.addSubview(controller.view)

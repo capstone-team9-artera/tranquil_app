@@ -114,30 +114,17 @@ class ViewController: UIViewController {
     }
 
     @objc private func didTapHistoryButton() {
-//        let rootVC = HistoryViewController()
-//        let navVC = UINavigationController(rootViewController: rootVC)
-//        navVC.modalPresentationStyle = .fullScreen
-//        present(navVC, animated: false)
-        let parent = UIViewController()
-        let controller = UIHostingController(rootView: HistoryView())
-        parent.view.addSubview(controller.view)
-        controller.didMove(toParent: self)
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: false)
-
+        let rootVC = HistoryViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: false)
     }
 
     @objc private func didTapAIChatbotButton() {
-//        let rootVC = AIChatbotViewController()
-//        let navVC = UINavigationController(rootViewController: rootVC)
-//        navVC.modalPresentationStyle = .fullScreen
-//        present(navVC, animated: false)
-        let parent = UIViewController()
-        let controller = UIHostingController(rootView: AIChatbotView())
-        parent.view.addSubview(controller.view)
-        controller.didMove(toParent: self)
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: false)
+        let rootVC = AIChatbotViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: false)
     }
 
     

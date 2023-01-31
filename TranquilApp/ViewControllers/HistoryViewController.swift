@@ -9,15 +9,22 @@ import SwiftUI
 
 class HistoryViewController: UIViewController {
 
+    private let myView = UIView(frame: CGRect())
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let parent = UIViewController()
-//        let controller = UIHostingController(rootView: HistoryView())
-////        parent.addChild(controller)
-//        parent.view.addSubview(controller.view)
-//        controller.didMove(toParent: self)
-//        controller.modalPresentationStyle = .fullScreen
-//        present(controller, animated: false)
-
+        myView.backgroundColor = .white
+        view = myView
+        title = "Statistics"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
+        let controller = UIHostingController(rootView: HistoryView())
+        controller.view.frame = CGRect(x: 0, y:100, width: 400, height: 700)
+        controller.didMove(toParent: self)
+        controller.modalPresentationStyle = .fullScreen
+        view.addSubview(controller.view)
     }
+
+    @objc private func dismissSelf() {
+        dismiss(animated: false, completion: nil)
+    }
+
 }

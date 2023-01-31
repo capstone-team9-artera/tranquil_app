@@ -17,7 +17,7 @@ class JournalViewController: UIViewController {
         myView.backgroundColor = .systemCyan
         view = myView
         title = "Journal Entries"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .done, target: self, action: #selector(dismissSelf))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
 
 
         view.backgroundColor = .white

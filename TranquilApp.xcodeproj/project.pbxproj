@@ -31,6 +31,7 @@
 		9FD70A5729820EAB0078AA30 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5629820EAB0078AA30 /* Landmark.swift */; };
 		9FD70A5A29820EF10078AA30 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5929820EF10078AA30 /* Session.swift */; };
 		9FD70A5C29820F0A0078AA30 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5B29820F0A0078AA30 /* ModelData.swift */; };
+		9FD70A5F2988948D0078AA30 /* ExerciseModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5E2988948D0078AA30 /* ExerciseModelData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		9FD70A5829820EDB0078AA30 /* landmarkData.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = landmarkData.geojson; sourceTree = "<group>"; };
 		9FD70A5929820EF10078AA30 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		9FD70A5B29820F0A0078AA30 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		9FD70A5D298894360078AA30 /* exercisesData.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = exercisesData.geojson; sourceTree = "<group>"; };
+		9FD70A5E2988948D0078AA30 /* ExerciseModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,8 +195,10 @@
 				9FD70A5429820E9C0078AA30 /* FeatureCard.swift */,
 				9FD70A5629820EAB0078AA30 /* Landmark.swift */,
 				9FD70A5829820EDB0078AA30 /* landmarkData.geojson */,
+				9FD70A5D298894360078AA30 /* exercisesData.geojson */,
 				9FD70A5929820EF10078AA30 /* Session.swift */,
 				9FD70A5B29820F0A0078AA30 /* ModelData.swift */,
+				9FD70A5E2988948D0078AA30 /* ExerciseModelData.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -342,6 +347,7 @@
 				9F4423E6297BC41B00E87DF2 /* HistoryView.swift in Sources */,
 				9FD70A5C29820F0A0078AA30 /* ModelData.swift in Sources */,
 				9FD70A5229820E6B0078AA30 /* PageControl.swift in Sources */,
+				9FD70A5F2988948D0078AA30 /* ExerciseModelData.swift in Sources */,
 				9F4423D5297BB3B200E87DF2 /* BreathingViewController.swift in Sources */,
 				9F4423EA297BC67900E87DF2 /* BotResponse.swift in Sources */,
 				9FD70A5029820E510078AA30 /* PageViewController.swift in Sources */,
