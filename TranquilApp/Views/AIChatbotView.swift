@@ -15,11 +15,6 @@ struct AIChatbotView: View {
     @State var messages: [String] = ["Hi it's Jasmine!☕️ How are you doing today?😌🍃"]
     var body: some View {
         VStack {
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
-                Text("Dismiss")
-            }
             HStack{
                 Text("ChatBot")
                     .font(.largeTitle)
