@@ -7,7 +7,7 @@ A view for bridging a UIPageViewController.
 
 import SwiftUI
 
-struct PageView<Page: View>: View {
+struct PageView<Page: UIViewController>: View {
     var pages: [Page]
     @State private var currentPage = 0
 

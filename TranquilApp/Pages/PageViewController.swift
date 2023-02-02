@@ -8,7 +8,7 @@ A view that wraps a UIPageViewController.
 import SwiftUI
 import UIKit
 
-struct PageViewController<Page: View>: UIViewControllerRepresentable {
+struct PageViewController<Page: UIViewController>: UIViewControllerRepresentable {
     var pages: [Page]
     @Binding var currentPage: Int
 
@@ -36,7 +36,8 @@ struct PageViewController<Page: View>: UIViewControllerRepresentable {
 
         init(_ pageViewController: PageViewController) {
             parent = pageViewController
-            controllers = parent.pages.map { UIHostingController(rootView: $0) }
+//            controllers = parent.pages.map { UIHostingController(rootView: $0) }
+            controllers = parent.pages.map { $0 }
         }
 
         func pageViewController(
