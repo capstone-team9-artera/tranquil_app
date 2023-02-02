@@ -25,7 +25,6 @@
 		9F4423EA297BC67900E87DF2 /* BotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423E9297BC67900E87DF2 /* BotResponse.swift */; };
 		9F508FEA298C49570068E0C5 /* GIF-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FE9298C49570068E0C5 /* GIF-Swift.swift */; };
 		9F508FEC298C4F3B0068E0C5 /* ocean.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F508FEB298C4F3B0068E0C5 /* ocean.gif */; };
-		9F508FEE298C50C90068E0C5 /* AnotherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FED298C50C90068E0C5 /* AnotherController.swift */; };
 		9F508FF0298C53700068E0C5 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FEF298C53700068E0C5 /* SessionViewController.swift */; };
 		9FD70A4E29820E3D0078AA30 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4D29820E3D0078AA30 /* PageView.swift */; };
 		9FD70A5029820E510078AA30 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4F29820E510078AA30 /* PageViewController.swift */; };
@@ -93,7 +92,6 @@
 		9F4423E9297BC67900E87DF2 /* BotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotResponse.swift; sourceTree = "<group>"; };
 		9F508FE9298C49570068E0C5 /* GIF-Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIF-Swift.swift"; sourceTree = "<group>"; };
 		9F508FEB298C4F3B0068E0C5 /* ocean.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = ocean.gif; path = TranquilApp/Assets.xcassets/ocean.gif; sourceTree = SOURCE_ROOT; };
-		9F508FED298C50C90068E0C5 /* AnotherController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherController.swift; sourceTree = "<group>"; };
 		9F508FEF298C53700068E0C5 /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		9FD70A4D29820E3D0078AA30 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		9FD70A4F29820E510078AA30 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -251,7 +249,6 @@
 				9FD70A5929820EF10078AA30 /* Session.swift */,
 				9F508FEF298C53700068E0C5 /* SessionViewController.swift */,
 				9FD70A5E2988948D0078AA30 /* ExerciseModelData.swift */,
-				9F508FED298C50C90068E0C5 /* AnotherController.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -427,7 +424,6 @@
 				B3CF271C2980C767002EF9F9 /* Colors.swift in Sources */,
 				B3CF27122980C6C8002EF9F9 /* GridStack.swift in Sources */,
 				B3CF27182980C710002EF9F9 /* EntryRowView.swift in Sources */,
-				9F508FEE298C50C90068E0C5 /* AnotherController.swift in Sources */,
 				9F508FF0298C53700068E0C5 /* SessionViewController.swift in Sources */,
 				9F4423E6297BC41B00E87DF2 /* HistoryView.swift in Sources */,
 				B3CF270A2980C653002EF9F9 /* AddEntryView.swift in Sources */,
