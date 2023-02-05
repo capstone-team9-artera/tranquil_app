@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55DFFC2D29906DDB00729B3D /* TranquilWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */; };
+		55DFFC2F29906DDB00729B3D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2E29906DDB00729B3D /* ContentView.swift */; };
+		55DFFC3129906DDE00729B3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55DFFC3029906DDE00729B3D /* Assets.xcassets */; };
+		55DFFC3429906DDE00729B3D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55DFFC3329906DDE00729B3D /* Preview Assets.xcassets */; };
+		55DFFC3E29906DDF00729B3D /* TranquilWatch_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC3D29906DDF00729B3D /* TranquilWatch_Watch_AppTests.swift */; };
+		55DFFC4829906DDF00729B3D /* TranquilWatch_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC4729906DDF00729B3D /* TranquilWatch_Watch_AppUITests.swift */; };
+		55DFFC4A29906DDF00729B3D /* TranquilWatch_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC4929906DDF00729B3D /* TranquilWatch_Watch_AppUITestsLaunchTests.swift */; };
 		9F4423A4297BB28200E87DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423A3297BB28200E87DF2 /* AppDelegate.swift */; };
 		9F4423A8297BB28200E87DF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423A7297BB28200E87DF2 /* ViewController.swift */; };
 		9F4423AB297BB28200E87DF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F4423A9297BB28200E87DF2 /* Main.storyboard */; };
@@ -50,6 +57,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		55DFFC3A29906DDE00729B3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F442398297BB28200E87DF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55DFFC2929906DDB00729B3D;
+			remoteInfo = "TranquilWatch Watch App";
+		};
+		55DFFC4429906DDF00729B3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F442398297BB28200E87DF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55DFFC2929906DDB00729B3D;
+			remoteInfo = "TranquilWatch Watch App";
+		};
 		9F4423B7297BB28300E87DF2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9F442398297BB28200E87DF2 /* Project object */;
@@ -67,6 +88,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TranquilWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranquilWatchApp.swift; sourceTree = "<group>"; };
+		55DFFC2E29906DDB00729B3D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		55DFFC3029906DDE00729B3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		55DFFC3329906DDE00729B3D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		55DFFC3929906DDE00729B3D /* TranquilWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TranquilWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55DFFC3D29906DDF00729B3D /* TranquilWatch_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranquilWatch_Watch_AppTests.swift; sourceTree = "<group>"; };
+		55DFFC4329906DDF00729B3D /* TranquilWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TranquilWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55DFFC4729906DDF00729B3D /* TranquilWatch_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranquilWatch_Watch_AppUITests.swift; sourceTree = "<group>"; };
+		55DFFC4929906DDF00729B3D /* TranquilWatch_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranquilWatch_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		55DFFC5429906E4800729B3D /* TranquilWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TranquilWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		9F4423A0297BB28200E87DF2 /* TranquilApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TranquilApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4423A3297BB28200E87DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F4423A7297BB28200E87DF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +147,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		55DFFC2729906DDB00729B3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55DFFC3629906DDE00729B3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55DFFC4029906DDF00729B3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9F44239D297BB28200E87DF2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -140,12 +193,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55DFFC2B29906DDB00729B3D /* TranquilWatch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				55DFFC5429906E4800729B3D /* TranquilWatch Watch App.entitlements */,
+				55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */,
+				55DFFC2E29906DDB00729B3D /* ContentView.swift */,
+				55DFFC3029906DDE00729B3D /* Assets.xcassets */,
+				55DFFC3229906DDE00729B3D /* Preview Content */,
+			);
+			path = "TranquilWatch Watch App";
+			sourceTree = "<group>";
+		};
+		55DFFC3229906DDE00729B3D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				55DFFC3329906DDE00729B3D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		55DFFC3C29906DDF00729B3D /* TranquilWatch Watch AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				55DFFC3D29906DDF00729B3D /* TranquilWatch_Watch_AppTests.swift */,
+			);
+			path = "TranquilWatch Watch AppTests";
+			sourceTree = "<group>";
+		};
+		55DFFC4629906DDF00729B3D /* TranquilWatch Watch AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				55DFFC4729906DDF00729B3D /* TranquilWatch_Watch_AppUITests.swift */,
+				55DFFC4929906DDF00729B3D /* TranquilWatch_Watch_AppUITestsLaunchTests.swift */,
+			);
+			path = "TranquilWatch Watch AppUITests";
+			sourceTree = "<group>";
+		};
 		9F442397297BB28200E87DF2 = {
 			isa = PBXGroup;
 			children = (
 				9F4423A2297BB28200E87DF2 /* TranquilApp */,
 				9F4423B9297BB28300E87DF2 /* TranquilAppTests */,
 				9F4423C3297BB28300E87DF2 /* TranquilAppUITests */,
+				55DFFC2B29906DDB00729B3D /* TranquilWatch Watch App */,
+				55DFFC3C29906DDF00729B3D /* TranquilWatch Watch AppTests */,
+				55DFFC4629906DDF00729B3D /* TranquilWatch Watch AppUITests */,
 				9F4423A1297BB28200E87DF2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,6 +249,9 @@
 				9F4423A0297BB28200E87DF2 /* TranquilApp.app */,
 				9F4423B6297BB28300E87DF2 /* TranquilAppTests.xctest */,
 				9F4423C0297BB28300E87DF2 /* TranquilAppUITests.xctest */,
+				55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */,
+				55DFFC3929906DDE00729B3D /* TranquilWatch Watch AppTests.xctest */,
+				55DFFC4329906DDF00729B3D /* TranquilWatch Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,6 +354,59 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		55DFFC2929906DDB00729B3D /* TranquilWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55DFFC5129906DDF00729B3D /* Build configuration list for PBXNativeTarget "TranquilWatch Watch App" */;
+			buildPhases = (
+				55DFFC2629906DDB00729B3D /* Sources */,
+				55DFFC2729906DDB00729B3D /* Frameworks */,
+				55DFFC2829906DDB00729B3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TranquilWatch Watch App";
+			productName = "TranquilWatch Watch App";
+			productReference = 55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		55DFFC3829906DDE00729B3D /* TranquilWatch Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55DFFC5229906DDF00729B3D /* Build configuration list for PBXNativeTarget "TranquilWatch Watch AppTests" */;
+			buildPhases = (
+				55DFFC3529906DDE00729B3D /* Sources */,
+				55DFFC3629906DDE00729B3D /* Frameworks */,
+				55DFFC3729906DDE00729B3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55DFFC3B29906DDE00729B3D /* PBXTargetDependency */,
+			);
+			name = "TranquilWatch Watch AppTests";
+			productName = "TranquilWatch Watch AppTests";
+			productReference = 55DFFC3929906DDE00729B3D /* TranquilWatch Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		55DFFC4229906DDF00729B3D /* TranquilWatch Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55DFFC5329906DDF00729B3D /* Build configuration list for PBXNativeTarget "TranquilWatch Watch AppUITests" */;
+			buildPhases = (
+				55DFFC3F29906DDF00729B3D /* Sources */,
+				55DFFC4029906DDF00729B3D /* Frameworks */,
+				55DFFC4129906DDF00729B3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55DFFC4529906DDF00729B3D /* PBXTargetDependency */,
+			);
+			name = "TranquilWatch Watch AppUITests";
+			productName = "TranquilWatch Watch AppUITests";
+			productReference = 55DFFC4329906DDF00729B3D /* TranquilWatch Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		9F44239F297BB28200E87DF2 /* TranquilApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F4423CA297BB28300E87DF2 /* Build configuration list for PBXNativeTarget "TranquilApp" */;
@@ -321,9 +470,20 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					55DFFC2929906DDB00729B3D = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					55DFFC3829906DDE00729B3D = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 55DFFC2929906DDB00729B3D;
+					};
+					55DFFC4229906DDF00729B3D = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 55DFFC2929906DDB00729B3D;
+					};
 					9F44239F297BB28200E87DF2 = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -356,11 +516,37 @@
 				9F44239F297BB28200E87DF2 /* TranquilApp */,
 				9F4423B5297BB28300E87DF2 /* TranquilAppTests */,
 				9F4423BF297BB28300E87DF2 /* TranquilAppUITests */,
+				55DFFC2929906DDB00729B3D /* TranquilWatch Watch App */,
+				55DFFC3829906DDE00729B3D /* TranquilWatch Watch AppTests */,
+				55DFFC4229906DDF00729B3D /* TranquilWatch Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		55DFFC2829906DDB00729B3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55DFFC3429906DDE00729B3D /* Preview Assets.xcassets in Resources */,
+				55DFFC3129906DDE00729B3D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55DFFC3729906DDE00729B3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55DFFC4129906DDF00729B3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9F44239E297BB28200E87DF2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -388,6 +574,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		55DFFC2629906DDB00729B3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55DFFC2F29906DDB00729B3D /* ContentView.swift in Sources */,
+				55DFFC2D29906DDB00729B3D /* TranquilWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55DFFC3529906DDE00729B3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55DFFC3E29906DDF00729B3D /* TranquilWatch_Watch_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55DFFC3F29906DDF00729B3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55DFFC4A29906DDF00729B3D /* TranquilWatch_Watch_AppUITestsLaunchTests.swift in Sources */,
+				55DFFC4829906DDF00729B3D /* TranquilWatch_Watch_AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9F44239C297BB28200E87DF2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,6 +660,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		55DFFC3B29906DDE00729B3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55DFFC2929906DDB00729B3D /* TranquilWatch Watch App */;
+			targetProxy = 55DFFC3A29906DDE00729B3D /* PBXContainerItemProxy */;
+		};
+		55DFFC4529906DDF00729B3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55DFFC2929906DDB00729B3D /* TranquilWatch Watch App */;
+			targetProxy = 55DFFC4429906DDF00729B3D /* PBXContainerItemProxy */;
+		};
 		9F4423B8297BB28300E87DF2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9F44239F297BB28200E87DF2 /* TranquilApp */;
@@ -480,6 +702,156 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		55DFFC4B29906DDF00729B3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "TranquilWatch Watch App/TranquilWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TranquilWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = H8ZD339FFM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TranquilWatch;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "using to measure anxiety";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "using to measure anxiety";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "using to measure anxiety";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ucsb.Tranquil;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		55DFFC4C29906DDF00729B3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "TranquilWatch Watch App/TranquilWatch Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TranquilWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = H8ZD339FFM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = TranquilWatch;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "using to measure anxiety";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "using to measure anxiety";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "using to measure anxiety";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ucsb.Tranquil;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		55DFFC4D29906DDF00729B3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H8ZD339FFM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ucsb.TranquilWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TranquilWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TranquilWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		55DFFC4E29906DDF00729B3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H8ZD339FFM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ucsb.TranquilWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TranquilWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TranquilWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		55DFFC4F29906DDF00729B3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H8ZD339FFM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ucsb.TranquilWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "TranquilWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		55DFFC5029906DDF00729B3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H8ZD339FFM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ucsb.TranquilWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "TranquilWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
 		9F4423C8297BB28300E87DF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -601,6 +973,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H8ZD339FFM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TranquilApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -613,7 +986,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ucsb.tranquilW.watchkitapp.TranquilApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -628,6 +1001,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H8ZD339FFM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TranquilApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -640,7 +1014,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ucsb.tranquilW.watchkitapp.TranquilApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -723,6 +1097,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		55DFFC5129906DDF00729B3D /* Build configuration list for PBXNativeTarget "TranquilWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55DFFC4B29906DDF00729B3D /* Debug */,
+				55DFFC4C29906DDF00729B3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55DFFC5229906DDF00729B3D /* Build configuration list for PBXNativeTarget "TranquilWatch Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55DFFC4D29906DDF00729B3D /* Debug */,
+				55DFFC4E29906DDF00729B3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55DFFC5329906DDF00729B3D /* Build configuration list for PBXNativeTarget "TranquilWatch Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55DFFC4F29906DDF00729B3D /* Debug */,
+				55DFFC5029906DDF00729B3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9F44239B297BB28200E87DF2 /* Build configuration list for PBXProject "TranquilApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
