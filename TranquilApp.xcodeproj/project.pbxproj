@@ -30,7 +30,6 @@
 		9FD70A5029820E510078AA30 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4F29820E510078AA30 /* PageViewController.swift */; };
 		9FD70A5229820E6B0078AA30 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5129820E6B0078AA30 /* PageControl.swift */; };
 		9FD70A5729820EAB0078AA30 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5629820EAB0078AA30 /* Landmark.swift */; };
-		9FD70A5A29820EF10078AA30 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5929820EF10078AA30 /* Session.swift */; };
 		9FD70A5F2988948D0078AA30 /* ExerciseModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5E2988948D0078AA30 /* ExerciseModelData.swift */; };
 		B38186C52980C4300083A4ED /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38186C42980C4300083A4ED /* Helper.swift */; };
 		B38186CB2980C4FC0083A4ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38186CA2980C4FC0083A4ED /* SceneDelegate.swift */; };
@@ -98,7 +97,6 @@
 		9FD70A5129820E6B0078AA30 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		9FD70A5629820EAB0078AA30 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
 		9FD70A5829820EDB0078AA30 /* landmarkData.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = landmarkData.geojson; sourceTree = "<group>"; };
-		9FD70A5929820EF10078AA30 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		9FD70A5D298894360078AA30 /* exercisesData.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = exercisesData.geojson; sourceTree = "<group>"; };
 		9FD70A5E2988948D0078AA30 /* ExerciseModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModelData.swift; sourceTree = "<group>"; };
 		B38186C42980C4300083A4ED /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -246,7 +244,6 @@
 				9FD70A5629820EAB0078AA30 /* Landmark.swift */,
 				9FD70A5829820EDB0078AA30 /* landmarkData.geojson */,
 				9FD70A5D298894360078AA30 /* exercisesData.geojson */,
-				9FD70A5929820EF10078AA30 /* Session.swift */,
 				9F508FEF298C53700068E0C5 /* SessionViewController.swift */,
 				9FD70A5E2988948D0078AA30 /* ExerciseModelData.swift */,
 			);
@@ -407,7 +404,6 @@
 				B3CF27102980C6AE002EF9F9 /* DayCellView.swift in Sources */,
 				9F4423D7297BB3F400E87DF2 /* NotificationViewController.swift in Sources */,
 				B3CF270E2980C697002EF9F9 /* ContentView.swift in Sources */,
-				9FD70A5A29820EF10078AA30 /* Session.swift in Sources */,
 				9FD70A4E29820E3D0078AA30 /* PageView.swift in Sources */,
 				9F4423E2297BB89B00E87DF2 /* JournalViewController.swift in Sources */,
 				B38186CD2980C5200083A4ED /* MultiLineTextField.swift in Sources */,

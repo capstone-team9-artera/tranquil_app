@@ -20,12 +20,16 @@ class BreathingViewController: UIViewController {
         title = "Breathing Exercises"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
         
-        var view1 = SessionViewController()
-        view1.name = "QuickSession"
-        var view2 = SessionViewController()
-        view2.name = "Homeostasis"
+        let quickSession = SessionViewController()
+        quickSession.name = "QuickSession"
+        let homeostasisSession = SessionViewController()
+        homeostasisSession.name = "Homeostasis"
+        let decompressionSession = SessionViewController()
+        decompressionSession.name = "Decompression"
+        let customSession = SessionViewController()
+        customSession.name = "Custom"
         
-        let pageView = PageView(pages: [view1, view2])
+        let pageView = PageView(pages: [quickSession, homeostasisSession, decompressionSession, customSession])
         
         let controller = UIHostingController(rootView: pageView)
         controller.view.frame = CGRect(x: 0, y:100, width: 400, height: 700)

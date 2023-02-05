@@ -28,7 +28,7 @@ class SessionViewController: UIViewController {
 
         let myGif = UIImage.gifImageWithName(gifName)
         let imageView = UIImageView(image: myGif)
-        imageView.frame = CGRect(x: 20, y: 20, width: 360, height: 700)
+        imageView.frame = CGRect(x: 20, y: 20, width: 350, height: 700)
         imageView.layer.cornerRadius = 10
         view.addSubview(imageView)
         view.addSubview(label)
