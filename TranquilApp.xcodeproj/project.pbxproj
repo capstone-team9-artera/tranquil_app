@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		55DFFC2D29906DDB00729B3D /* TranquilWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */; };
-		55DFFC2F29906DDB00729B3D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2E29906DDB00729B3D /* ContentView.swift */; };
+		55DFFC2F29906DDB00729B3D /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2E29906DDB00729B3D /* WatchView.swift */; };
 		55DFFC3129906DDE00729B3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55DFFC3029906DDE00729B3D /* Assets.xcassets */; };
 		55DFFC3429906DDE00729B3D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55DFFC3329906DDE00729B3D /* Preview Assets.xcassets */; };
 		55DFFC3E29906DDF00729B3D /* TranquilWatch_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC3D29906DDF00729B3D /* TranquilWatch_Watch_AppTests.swift */; };
@@ -94,7 +94,7 @@
 /* Begin PBXFileReference section */
 		55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TranquilWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranquilWatchApp.swift; sourceTree = "<group>"; };
-		55DFFC2E29906DDB00729B3D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		55DFFC2E29906DDB00729B3D /* WatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
 		55DFFC3029906DDE00729B3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55DFFC3329906DDE00729B3D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		55DFFC3929906DDE00729B3D /* TranquilWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TranquilWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,7 +204,7 @@
 			children = (
 				55DFFC5429906E4800729B3D /* TranquilWatch Watch App.entitlements */,
 				55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */,
-				55DFFC2E29906DDB00729B3D /* ContentView.swift */,
+				55DFFC2E29906DDB00729B3D /* WatchView.swift */,
 				55DFFC3029906DDE00729B3D /* Assets.xcassets */,
 				55DFFC3229906DDE00729B3D /* Preview Content */,
 			);
@@ -586,7 +586,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55DFFC2F29906DDB00729B3D /* ContentView.swift in Sources */,
+				55DFFC2F29906DDB00729B3D /* WatchView.swift in Sources */,
 				55DFFC5B2990719500729B3D /* Persistence.swift in Sources */,
 				55DFFC582990712100729B3D /* DataModels.xcdatamodeld in Sources */,
 				55DFFC2D29906DDB00729B3D /* TranquilWatchApp.swift in Sources */,

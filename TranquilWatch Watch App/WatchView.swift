@@ -9,7 +9,7 @@ import SwiftUI
 //import CoreData
 import HealthKit
 
-struct ContentView: View {
+struct WatchView: View {
     @State var value = 0
     
     @State var count = 0
@@ -116,9 +116,9 @@ struct ContentView: View {
     
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct WatchView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        WatchView()
 //        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
