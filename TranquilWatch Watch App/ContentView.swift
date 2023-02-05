@@ -36,7 +36,6 @@ struct ContentView: View {
     }
      func start() {
         if HKHealthStore.isHealthDataAvailable() {
-            // Add code to use HealthKit here.
             authorizeKit()
             startHeartRateQuery(quantityTypeIdentifier: .heartRate)
         }
