@@ -24,10 +24,12 @@ class BreathingViewController: UIViewController {
         quickSession.name = "QuickSession"
         let homeostasisSession = SessionViewController()
         homeostasisSession.name = "Homeostasis"
+        homeostasisSession.gifName = "waterfall"
         let decompressionSession = SessionViewController()
         decompressionSession.name = "Decompression"
         let customSession = SessionViewController()
         customSession.name = "Custom"
+        customSession.gifName = "waterfall"
         
         let pageView = PageView(pages: [quickSession, homeostasisSession, decompressionSession, customSession])
         

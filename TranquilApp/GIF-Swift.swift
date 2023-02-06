@@ -63,7 +63,8 @@ extension UIImage {
     }
     
     class func delayForImageAtIndex(_ index: Int, source: CGImageSource!) -> Double {
-        var delay = 0.1
+//        var delay = 0.1
+        var delay = 0.03
         
         let cfProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil)
         let gifProperties: CFDictionary = unsafeBitCast(
@@ -82,8 +83,12 @@ extension UIImage {
         
         delay = delayObject as! Double
         
-        if delay < 0.1 {
-            delay = 0.1
+//        if delay < 0.1 {
+//            delay = 0.1
+//        }
+        
+        if delay < 0.03 {
+            delay = 0.03
         }
         
         return delay

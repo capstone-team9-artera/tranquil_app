@@ -9,7 +9,7 @@ import SwiftUI
 class SessionViewController: UIViewController {
     var name: String = "Default"
 //    let description: String = "Default description"
-    var gifName: String = "ocean"
+    var gifName: String = "sunsetocean2"
     
     private let label = UILabel()
     private let myView = UIView(frame: CGRect())
