@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import CoreData
+import CoreData
 import HealthKit
 
 struct WatchView: View {
@@ -20,7 +20,7 @@ struct WatchView: View {
     let healthStore = HKHealthStore()
     
     let heartRateQuantity = HKUnit(from: "count/min")
-    //@State var items:[HeartRate]?
+    @State var items:[HeartRate]?
 
     var body: some View {
         VStack {
@@ -80,37 +80,26 @@ struct WatchView: View {
     private func process(_ samples: [HKQuantitySample], type: HKQuantityTypeIdentifier) {
         // variable initialization
         var lastHeartRate = 0.0
-        
+        if samples.count == 1 {
         // cycle and value assignment
-        for sample in samples {
-            if type == .heartRate {
-                lastHeartRate = sample.quantity.doubleValue(for: heartRateQuantity)
+            for sample in samples {
+                if type == .heartRate {
+                    lastHeartRate = sample.quantity.doubleValue(for: heartRateQuantity)
+                }
+                
+                self.value = Int(lastHeartRate)
+                let newValue = HeartRate(context: viewContext)
+                newValue.timestamp = Date()
+                newValue.value = Int64(self.value)
+                
+                do {
+                    try viewContext.save()
+                    count += 1
+                } catch {
+                    let nsError = error as NSError
+                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                }
             }
-            
-            self.value = Int(lastHeartRate)
-//            let newValue = HeartRate(context: viewContext)
-//            newValue.timestamp = Date()
-//            newValue.value = Int64(self.value)
-//
-////            do {
-////                try viewContext.save()
-////                count += 1
-////            } catch {
-////                let nsError = error as NSError
-////                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-////            }
-//            let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
-//            let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
-//            fetchRequest.sortDescriptors = [sort]
-//            do {
-//                items = try viewContext.fetch(HeartRate.fetchRequest())
-//            } catch {
-//                print("Cannot fetch Expenses")
-//            }
-//            //if lastHeartRate == 0
-//
-//            let length = items!.count
-//            print("Length ", length)
         }
     }
     
@@ -118,7 +107,7 @@ struct WatchView: View {
 
 struct WatchView_Previews: PreviewProvider {
     static var previews: some View {
-        WatchView()
-//        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        //WatchView()
+        WatchView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
