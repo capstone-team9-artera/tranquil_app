@@ -736,7 +736,7 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "using to measure anxieties";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "using to measure anxieties";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ucsb.Tranquil2;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ucsb.Tranquil;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -771,7 +771,7 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "using to measure anxieties";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "using to measure anxieties";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ucsb.Tranquil2;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ucsb.Tranquil;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
