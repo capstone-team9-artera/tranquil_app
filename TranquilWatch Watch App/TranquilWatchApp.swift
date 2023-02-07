@@ -11,7 +11,7 @@ import SwiftUI
 struct TranquilWatch_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            WatchView()
+            WatchView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import CoreData
 
 class ViewController: UIViewController {
 
@@ -18,8 +19,15 @@ class ViewController: UIViewController {
     private let notifButton = UIButton()
     private let name = UILabel()
     
+    private var timer: Timer?
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var items:[HeartRate]?
+    private var lastHeartRate = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
        
         view.backgroundColor = .white
         self.title = "Home Page"
@@ -36,6 +44,21 @@ class ViewController: UIViewController {
         addHistoryButton()
         addAiChatbotButton()
     }
+    
+    @objc private func getHeartRate(){
+        
+        let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
+        let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        do {
+            items = try context.fetch(HeartRate.fetchRequest())
+        } catch {
+            print("Cannot fetch Expenses")
+        }
+        if lastHeartRate != 0{
+            //algorithm
+        }
+   }
     
     @objc private func addBreathingButton() {
         breathingButton.setTitle("Breathing Exercises", for: .normal)
