@@ -9,7 +9,7 @@ import SwiftUI
 class SessionViewController: UIViewController {
     var name: String = "Default"
 //    let description: String = "Default description"
-    var gifName: String = "sunsetocean2"
+    var gifName: String = "sunsetocean"
     
     private let label = UILabel()
     private let myView = UIView(frame: CGRect())
@@ -30,6 +30,7 @@ class SessionViewController: UIViewController {
         let imageView = UIImageView(image: myGif)
         imageView.frame = CGRect(x: 20, y: 20, width: 350, height: 700)
         imageView.layer.cornerRadius = 10
+        imageView.inputViewController?.modalPresentationStyle = .fullScreen
         view.addSubview(imageView)
         view.addSubview(label)
         view.layer.cornerRadius = 10

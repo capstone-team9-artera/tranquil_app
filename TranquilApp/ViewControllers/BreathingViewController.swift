@@ -11,8 +11,6 @@ class BreathingViewController: UIViewController {
     private let myView = UIView(frame: CGRect())
     private let label = UILabel()
 
-//    private let pageView = PageView(pages: [Session(title: "QuickSession", description: "a quick session", color: Color.blue), Session(title: "Homeostasis", description: "a homeostasis session", color: Color.green), Session(title: "Decompression", description: "decompress", color: Color.purple), Session(title: "Custom", description: "a custom setting", color: Color.pink)])
-
     override func viewDidLoad() {
         super.viewDidLoad()
         myView.backgroundColor = .white
@@ -20,16 +18,19 @@ class BreathingViewController: UIViewController {
         title = "Breathing Exercises"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
         
+        
         let quickSession = SessionViewController()
         quickSession.name = "QuickSession"
+        quickSession.gifName = "sunsetocean"
         let homeostasisSession = SessionViewController()
         homeostasisSession.name = "Homeostasis"
         homeostasisSession.gifName = "waterfall"
         let decompressionSession = SessionViewController()
         decompressionSession.name = "Decompression"
+        decompressionSession.gifName = "nightsky"
         let customSession = SessionViewController()
         customSession.name = "Custom"
-        customSession.gifName = "waterfall"
+        customSession.gifName = "sand"
         
         let pageView = PageView(pages: [quickSession, homeostasisSession, decompressionSession, customSession])
         

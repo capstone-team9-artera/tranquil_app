@@ -25,8 +25,10 @@
 		9F4423EA297BC67900E87DF2 /* BotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423E9297BC67900E87DF2 /* BotResponse.swift */; };
 		9F508FEA298C49570068E0C5 /* GIF-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FE9298C49570068E0C5 /* GIF-Swift.swift */; };
 		9F508FF0298C53700068E0C5 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FEF298C53700068E0C5 /* SessionViewController.swift */; };
-		9F508FF4299080760068E0C5 /* sunsetocean2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F508FF3299080750068E0C5 /* sunsetocean2.gif */; };
+		9F508FF4299080760068E0C5 /* sunsetocean.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F508FF3299080750068E0C5 /* sunsetocean.gif */; };
 		9F508FF6299082F60068E0C5 /* waterfall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F508FF5299082F60068E0C5 /* waterfall.gif */; };
+		9F5C985C2991D0B60075E227 /* nightsky.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985B2991D0B60075E227 /* nightsky.gif */; };
+		9F5C985E2991D2470075E227 /* sand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985D2991D2470075E227 /* sand.gif */; };
 		9FD70A4E29820E3D0078AA30 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4D29820E3D0078AA30 /* PageView.swift */; };
 		9FD70A5029820E510078AA30 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4F29820E510078AA30 /* PageViewController.swift */; };
 		9FD70A5229820E6B0078AA30 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5129820E6B0078AA30 /* PageControl.swift */; };
@@ -92,8 +94,10 @@
 		9F4423E9297BC67900E87DF2 /* BotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotResponse.swift; sourceTree = "<group>"; };
 		9F508FE9298C49570068E0C5 /* GIF-Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIF-Swift.swift"; sourceTree = "<group>"; };
 		9F508FEF298C53700068E0C5 /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
-		9F508FF3299080750068E0C5 /* sunsetocean2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sunsetocean2.gif; sourceTree = "<group>"; };
+		9F508FF3299080750068E0C5 /* sunsetocean.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sunsetocean.gif; sourceTree = "<group>"; };
 		9F508FF5299082F60068E0C5 /* waterfall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = waterfall.gif; sourceTree = "<group>"; };
+		9F5C985B2991D0B60075E227 /* nightsky.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nightsky.gif; sourceTree = "<group>"; };
+		9F5C985D2991D2470075E227 /* sand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sand.gif; sourceTree = "<group>"; };
 		9FD70A4D29820E3D0078AA30 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		9FD70A4F29820E510078AA30 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9FD70A5129820E6B0078AA30 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
@@ -178,9 +182,9 @@
 				9F4423D8297BB40E00E87DF2 /* Views */,
 				9FD70A5329820E780078AA30 /* Pages */,
 				9F4423E9297BC67900E87DF2 /* BotResponse.swift */,
+				9F5C98602991D2540075E227 /* GIF-Swift */,
 				9F4423A9297BB28200E87DF2 /* Main.storyboard */,
 				9F4423AC297BB28300E87DF2 /* Assets.xcassets */,
-				9F508FE9298C49570068E0C5 /* GIF-Swift.swift */,
 				9F4423AE297BB28300E87DF2 /* LaunchScreen.storyboard */,
 				9F4423B1297BB28300E87DF2 /* Info.plist */,
 			);
@@ -236,11 +240,21 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		9F5C98602991D2540075E227 /* GIF-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				9F508FE9298C49570068E0C5 /* GIF-Swift.swift */,
+				9F5C985D2991D2470075E227 /* sand.gif */,
+				9F5C985B2991D0B60075E227 /* nightsky.gif */,
+				9F508FF3299080750068E0C5 /* sunsetocean.gif */,
+				9F508FF5299082F60068E0C5 /* waterfall.gif */,
+			);
+			path = "GIF-Swift";
+			sourceTree = "<group>";
+		};
 		9FD70A5329820E780078AA30 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				9F508FF3299080750068E0C5 /* sunsetocean2.gif */,
-				9F508FF5299082F60068E0C5 /* waterfall.gif */,
 				9FD70A4F29820E510078AA30 /* PageViewController.swift */,
 				9FD70A4D29820E3D0078AA30 /* PageView.swift */,
 				9FD70A5129820E6B0078AA30 /* PageControl.swift */,
@@ -374,10 +388,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5C985E2991D2470075E227 /* sand.gif in Resources */,
 				9F4423B0297BB28300E87DF2 /* LaunchScreen.storyboard in Resources */,
+				9F5C985C2991D0B60075E227 /* nightsky.gif in Resources */,
 				9F4423AD297BB28300E87DF2 /* Assets.xcassets in Resources */,
 				9F4423AB297BB28200E87DF2 /* Main.storyboard in Resources */,
-				9F508FF4299080760068E0C5 /* sunsetocean2.gif in Resources */,
+				9F508FF4299080760068E0C5 /* sunsetocean.gif in Resources */,
 				9F508FF6299082F60068E0C5 /* waterfall.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
