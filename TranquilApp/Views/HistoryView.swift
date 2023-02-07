@@ -11,8 +11,8 @@ import UIKit
 import HealthKit
 import HealthKitUI
 
+//Variables from the health kit:
 
-//var count = 1;
 struct HistoryView: View {
     @Environment(\.presentationMode) var presentationMode
 
@@ -33,27 +33,54 @@ struct HistoryView: View {
             
             ScrollView
             {
-                Text("Weekly Stress Averages:")
-                    .font(.system(size: 18, weight: .heavy))
-                    .bold()
-                    .foregroundColor(Color.teal)
-                
-                BarChart()
-                    .previewLayout(.sizeThatFits)
-                
-                Spacer()
-                
-                Text("Application Usage:")
-                    .font(.system(size: 18, weight: .heavy))
-                    .bold()
-                    .foregroundColor(Color.teal)
-                
-                PieChartView(
-                    values: [10, 20, 30],
-                    names: ["Journals", "Chats", "Breathing"],
-                    formatter: {value in String(format: "%.0f", value)},
-                    colors: [Color.red, Color.purple, Color.orange],
-                    backgroundColor: Color.white)
+                VStack
+                {
+                    let avg: String = String(format: "Current Week: %0.0f", weeklyStressAverage(currentDay))
+                    let lastAvg: String = String(format: "Previous Week: %0.0f", weeklyStressAverage(lastDay))
+                    
+                    Text("Weekly Stress Level Averages: ")
+                        .font(.system(size: 24, weight: .heavy))
+                        .bold()
+                        .foregroundColor(Color.teal)
+                    
+                    BarChart()
+                        .frame(height: 250)
+                    HStack
+                    {
+                        HStack
+                        {
+                            RoundedRectangle(cornerRadius: 5.0)
+                                .fill(Color.teal)
+                                .frame(width: 20, height: 20)
+                            Text(avg)
+                                .font(.system(size: 16, weight: .heavy))
+                                .foregroundColor(Color.gray)
+                        }
+                        HStack
+                        {
+                            RoundedRectangle(cornerRadius: 5.0)
+                                .fill(Color.accentColor)
+                                .frame(width: 20, height: 20)
+                            Text(lastAvg)
+                                .font(.system(size: 16, weight: .heavy))
+                                .foregroundColor(Color.gray)
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    Text("Application Usage:")
+                        .font(.system(size: 24, weight: .heavy))
+                        .bold()
+                        .foregroundColor(Color.teal)
+                    
+                    PieChartView(
+                        values: [10, 20, 30],
+                        names: ["Journals", "Chats", "Breathing"],
+                        formatter: {value in String(format: "%.0f", value)},
+                        colors: [Color.red, Color.purple, Color.orange],
+                        backgroundColor: Color.white)
+                }
             }
         }
         .padding()
@@ -71,20 +98,47 @@ struct stressLevel: Identifiable
 {
     var day : String
     var dailyAvg : Double
-    var weeklyAvg : Double
     var id = UUID()
 }
 
-//Day of the week, Daily HRV average, Weekly HRV average.
-var week: [stressLevel] = [
-    .init(day: "Sun.", dailyAvg: 83, weeklyAvg: 75),
-    .init(day: "Mon.", dailyAvg: 109, weeklyAvg: 75),
-    .init(day: "Tue.", dailyAvg: 78, weeklyAvg: 75),
-    .init(day: "Wed.", dailyAvg: 95, weeklyAvg: 75),
-    .init(day: "Thu.", dailyAvg: 82, weeklyAvg: 75),
-    .init(day: "Fri.", dailyAvg: 60, weeklyAvg: 75),
-    .init(day: "Sat.", dailyAvg: 65, weeklyAvg: 75)
-]
+//Previous weeks data.
+//Previous day, Daily HRV average.
+var lastDay: [stressLevel] = [
+    .init(day: "Sun.", dailyAvg: 99),
+    .init(day: "Mon.", dailyAvg: 150),
+    .init(day: "Tue.", dailyAvg: 85),
+    .init(day: "Wed.", dailyAvg: 100),
+    .init(day: "Thu.", dailyAvg: 90),
+    .init(day: "Fri.", dailyAvg: 74),
+    .init(day: "Sat.", dailyAvg: 79)]
+
+//Current weeks data.
+//Current day, Daily HRV average.
+var currentDay: [stressLevel] = [
+    .init(day: "Sun.", dailyAvg: 83),
+    .init(day: "Mon.", dailyAvg: 109),
+    .init(day: "Tue.", dailyAvg: 78),
+    .init(day: "Wed.", dailyAvg: 95),
+    .init(day: "Thu.", dailyAvg: 82),
+    .init(day: "Fri.", dailyAvg: 60),
+    .init(day: "Sat.", dailyAvg: 65)]
+
+let weekData = [
+    (period: "Previous Week", data: lastDay),
+    (period: "Current Week", data: currentDay)]
+
+//Function to determine the overall average stress level for the last week.
+func weeklyStressAverage(_ week: [stressLevel]) -> Double {
+    var total = 0.0
+    var counter = 1.0
+    for stressLevel in week
+    {
+        total += stressLevel.dailyAvg
+        counter += 1.0
+    }
+    
+    return total/counter
+}
 
 struct BarChart: View
 {
@@ -93,50 +147,30 @@ struct BarChart: View
         Chart
         {
             //Defining data in the bar chart view:
-            ForEach(week) { stressLevel in
+            ForEach(currentDay) { stressLevel in
+                BarMark(
+                    x: .value("Day of Week", stressLevel.day),
+                    y: .value("Average HRV", stressLevel.dailyAvg)
+                )
+                .foregroundStyle(Color.teal)
+                .annotation(position: .overlay, alignment: .center, spacing: 3) {
+                    Text("\(stressLevel.dailyAvg, specifier: "%0.0f")")
+                        .font(.footnote)
+                        .foregroundColor(.white)
+                }
+            }
+            ForEach(lastDay) { stressLevel in
                 BarMark(
                     x: .value("Day of Week", stressLevel.day),
                     y: .value("Average HRV", stressLevel.dailyAvg)
                 )
                 .foregroundStyle(Color.accentColor)
                 .annotation(position: .overlay, alignment: .center, spacing: 3) {
-                    Text("\(stressLevel.dailyAvg, specifier: "%.F")")
+                    Text("\(stressLevel.dailyAvg, specifier: "%0.0f")")
                         .font(.footnote)
                         .foregroundColor(.white)
                 }
             }
-            
-            /*
-            //Defining data in the chart.
-            BarMark(
-                x: .value("Day of Week", week[0].day),
-                y: .value("Average HRV", week[0].dailyAvg)
-            )
-            BarMark(
-                x: .value("Day of Week", week[1].day),
-                y: .value("Average HRV", week[1].dailyAvg)
-            )
-            BarMark(
-                x: .value("Day of Week", week[2].day),
-                y: .value("Average HRV", week[2].dailyAvg)
-            )
-            BarMark(
-                x: .value("Day of Week", week[3].day),
-                y: .value("Average HRV", week[3].dailyAvg)
-            )
-            BarMark(
-                x: .value("Day of Week", week[4].day),
-                y: .value("Average HRV", week[4].dailyAvg)
-            )
-            BarMark(
-                x: .value("Day of Week", week[5].day),
-                y: .value("Average HRV", week[5].dailyAvg)
-            )
-            BarMark(
-                x: .value("Day of Week", week[6].day),
-                y: .value("Average HRV", week[6].weeklyAvg)
-            )
-             */
         }
     }
 }
@@ -264,7 +298,7 @@ struct PieChartRows: View {
 
 struct PieChartView_Previews: PreviewProvider {
     static var previews: some View {
-        PieChartView(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], formatter: {value in String(format: "$%.2f", value)})
+        PieChartView(values: [13, 5, 3], names: ["Journals", "Breathing", "Chats"], formatter: {value in String(format: "%.0f", value)})
     }
 }
 
