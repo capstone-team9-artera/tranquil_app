@@ -73,11 +73,11 @@ struct MultiLineTextField: UIViewRepresentable {
             self.parent.txt = textView.text
             
             //Calculation of characters
-               let allowed = 101
-               let typed = textView.text.count
-               let remaining = allowed - typed
-               
-            self.parent.counterLabel = "\(remaining)/101"
+//               let allowed = 101
+//               let typed = textView.text.count
+//               let remaining = allowed - typed
+//
+//            self.parent.counterLabel = "\(remaining)/101"
         }
         
         /* Updated for Swift 4 */
@@ -93,10 +93,10 @@ struct MultiLineTextField: UIViewRepresentable {
                  return false
              }
              //Stop entry while reached 101 chars
-            return textView.text.count + (text.count - range.length) <= 101
+//            return textView.text.count + (text.count - range.length) <= 101
             
             
-          //  return true
+            return true
         }
     }
 }

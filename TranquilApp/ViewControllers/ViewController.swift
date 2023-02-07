@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import CoreData
 
 class ViewController: UIViewController {
 
@@ -18,8 +19,15 @@ class ViewController: UIViewController {
     private let notifButton = UIButton()
     private let name = UILabel()
     
+    private var timer: Timer?
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var items:[HeartRate]?
+    private var lastHeartRate = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
        
         view.backgroundColor = .white
         self.title = "Home Page"
@@ -28,7 +36,7 @@ class ViewController: UIViewController {
         name.text = "TRANQUIL"
         name.textColor = .systemTeal
         name.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
-        name.font = .systemFont(ofSize: 55, weight: UIFont.Weight(rawValue: 10))
+        name.font = .systemFont(ofSize: 65, weight: UIFont.Weight(rawValue: 10))
         view.addSubview(name)
        
         addBreathingButton()
@@ -37,6 +45,21 @@ class ViewController: UIViewController {
         addAiChatbotButton()
     }
     
+    @objc private func getHeartRate(){
+        
+        let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
+        let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
+        do {
+            items = try context.fetch(HeartRate.fetchRequest())
+        } catch {
+            print("Cannot fetch Expenses")
+        }
+        if lastHeartRate != 0{
+            //algorithm
+        }
+   }
+    
     @objc private func addBreathingButton() {
         breathingButton.setTitle("Breathing Exercises", for: .normal)
         view.addSubview(breathingButton)
@@ -44,9 +67,14 @@ class ViewController: UIViewController {
         breathingButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         breathingButton.titleLabel?.textAlignment = .center
         breathingButton.backgroundColor = .systemTeal
+        breathingButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         breathingButton.titleLabel?.textColor = .white
         breathingButton.layer.cornerRadius = 8
-        breathingButton.frame = CGRect(x: 25, y:300, width: 165, height: 165)
+        breathingButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
+        breathingButton.layer.shadowOpacity = 0.8
+        breathingButton.layer.shadowRadius = 4
+        breathingButton.layer.shadowOffset = CGSizeMake(1, 1)
+        breathingButton.frame = CGRect(x: 20, y:300, width: 170, height: 170)
         breathingButton.addTarget(self, action: #selector(didTapBreathingButton), for: .touchUpInside)
 
     }
@@ -59,8 +87,13 @@ class ViewController: UIViewController {
         journalButton.titleLabel?.textAlignment = .center
         journalButton.titleLabel?.textColor = .white
         journalButton.backgroundColor = .systemGray2
+        journalButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         journalButton.layer.cornerRadius = 8
-        journalButton.frame = CGRect(x: 200, y:300, width: 165, height: 165)
+        journalButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
+        journalButton.layer.shadowOpacity = 0.8
+        journalButton.layer.shadowRadius = 4
+        journalButton.layer.shadowOffset = CGSizeMake(1, 1)
+        journalButton.frame = CGRect(x: 205, y:300, width: 170, height: 170)
         journalButton.addTarget(self, action: #selector(didTapJournalButton), for: .touchUpInside)
     }
     
@@ -71,9 +104,14 @@ class ViewController: UIViewController {
         historyButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         historyButton.titleLabel?.textAlignment = .center
         historyButton.backgroundColor = .systemGray2
+        historyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         historyButton.titleLabel?.textColor = .white
         historyButton.layer.cornerRadius = 8
-        historyButton.frame = CGRect(x: 25, y: 500, width: 165, height: 165)
+        historyButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
+        historyButton.layer.shadowOpacity = 0.8
+        historyButton.layer.shadowRadius = 4
+        historyButton.layer.shadowOffset = CGSizeMake(1, 1)
+        historyButton.frame = CGRect(x: 20, y: 500, width: 170, height: 170)
         historyButton.addTarget(self, action: #selector(didTapHistoryButton), for: .touchUpInside)
     }
     
@@ -84,9 +122,14 @@ class ViewController: UIViewController {
         aiChatbotButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         aiChatbotButton.titleLabel?.textAlignment = .center
         aiChatbotButton.backgroundColor = .systemTeal
+        aiChatbotButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         aiChatbotButton.titleLabel?.textColor = .white
         aiChatbotButton.layer.cornerRadius = 8
-        aiChatbotButton.frame = CGRect(x: 200, y: 500, width: 165, height: 165)
+        aiChatbotButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
+        aiChatbotButton.layer.shadowOpacity = 0.8
+        aiChatbotButton.layer.shadowRadius = 4
+        aiChatbotButton.layer.shadowOffset = CGSizeMake(1, 1)
+        aiChatbotButton.frame = CGRect(x: 205, y: 500, width: 170, height: 170)
         aiChatbotButton.addTarget(self, action: #selector(didTapAIChatbotButton), for: .touchUpInside)
     }
     
@@ -121,30 +164,17 @@ class ViewController: UIViewController {
     }
 
     @objc private func didTapHistoryButton() {
-//        let rootVC = HistoryViewController()
-//        let navVC = UINavigationController(rootViewController: rootVC)
-//        navVC.modalPresentationStyle = .fullScreen
-//        present(navVC, animated: false)
-        let parent = UIViewController()
-        let controller = UIHostingController(rootView: HistoryView())
-        parent.view.addSubview(controller.view)
-        controller.didMove(toParent: self)
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: false)
-
+        let rootVC = HistoryViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: false)
     }
 
     @objc private func didTapAIChatbotButton() {
-//        let rootVC = AIChatbotViewController()
-//        let navVC = UINavigationController(rootViewController: rootVC)
-//        navVC.modalPresentationStyle = .fullScreen
-//        present(navVC, animated: false)
-        let parent = UIViewController()
-        let controller = UIHostingController(rootView: AIChatbotView())
-        parent.view.addSubview(controller.view)
-        controller.didMove(toParent: self)
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: false)
+        let rootVC = AIChatbotViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: false)
     }
 
     

@@ -10,45 +10,38 @@ class BreathingViewController: UIViewController {
     private let button = UIButton()
     private let myView = UIView(frame: CGRect())
     private let label = UILabel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         myView.backgroundColor = .white
         view = myView
         title = "Breathing Exercises"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .done, target: self, action: #selector(dismissSelf))
-        button.setTitle("Empty Button", for: .normal)
-        button.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
-        button.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        button.titleLabel?.textAlignment = .center
-        view.addSubview(button)
-        label.text = "hi"
-        label.textColor = .blue
-        view.addSubview(label)
-        button.backgroundColor = .lightGray
-        button.setTitleColor(.black, for: .normal)
-        button.frame = CGRect(x: 35, y:160, width: 330, height: 600)
-        button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-    }
-    
-    @objc private func didTapButton() {
-//        let vc = NotificationViewController()
-//        vc.modalPresentationStyle  = .popover
-//        navigationController?.pushViewController(vc, animated: true)
-//        navigationController?.popViewController(animated: true)
-//        present(vc, animated: true)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
+        
+        
+        let quickSession = SessionViewController()
+        quickSession.name = "QuickSession"
+        quickSession.gifName = "sunsetocean"
+        let homeostasisSession = SessionViewController()
+        homeostasisSession.name = "Homeostasis"
+        homeostasisSession.gifName = "waterfall"
+        let decompressionSession = SessionViewController()
+        decompressionSession.name = "Decompression"
+        decompressionSession.gifName = "nightsky"
+        let customSession = SessionViewController()
+        customSession.name = "Custom"
+        customSession.gifName = "sand"
+        
+        let pageView = PageView(pages: [quickSession, homeostasisSession, decompressionSession, customSession])
+        
+        let controller = UIHostingController(rootView: pageView)
+        controller.view.frame = CGRect(x: 0, y:100, width: 400, height: 700)
+        controller.didMove(toParent: self)
+        controller.modalPresentationStyle = .fullScreen
+        view.addSubview(controller.view)
     }
     
     @objc private func dismissSelf() {
         dismiss(animated: false, completion: nil)
     }
 }
-
-class ThirdViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemGreen
-//        self.navigationItem.setHidesBackButton(true, animated:true)
-    }
-}
-

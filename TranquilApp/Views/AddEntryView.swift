@@ -17,7 +17,7 @@ struct AddEntryView: View {
     @State private var happyIsSelected = false
     @State private var mehIsSelected = false
     @State private var sadIsSelected = false
-    @State private var counterLabel = "101/101"
+    @State private var counterLabel = ""
     
     var body: some View {
         VStack(spacing: 30) {
@@ -54,8 +54,8 @@ struct AddEntryView: View {
                 }
             }
             ZStack(alignment: .bottomTrailing) {
-            MultiLineTextField(txt: $text, counterLabel: $counterLabel).frame(height: 100).cornerRadius(20)
-                Text("Remaining: \(counterLabel)").font(.footnote).foregroundColor(.gray).padding([.bottom, .trailing], 8)
+            MultiLineTextField(txt: $text, counterLabel: $counterLabel).frame(height: 450).cornerRadius(20)
+//                Text("Remaining: \(counterLabel)").font(.footnote).foregroundColor(.gray).padding([.bottom, .trailing], 8)
         }
             Button(action: {
                     self.entryModelController.createEntry(emotion: Emotion(state: self.emotionState, color: self.moodColor), comment: self.text, date: Date())

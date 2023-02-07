@@ -25,12 +25,6 @@ struct HistoryView: View {
                 .bold()
                 .foregroundColor(Color.teal)
             
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
-                Text("Dismiss")
-            }
-            
             ScrollView
             {
                 VStack
