@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
 
-        let container = NSPersistentCloudKitContainer(name: "Model")
+        let container = NSPersistentCloudKitContainer(name: "DataModels")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error {
 

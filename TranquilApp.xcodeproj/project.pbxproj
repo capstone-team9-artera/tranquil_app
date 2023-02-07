@@ -105,6 +105,8 @@
 		55DFFC5429906E4800729B3D /* TranquilWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TranquilWatch Watch App.entitlements"; sourceTree = "<group>"; };
 		55DFFC562990712100729B3D /* DataModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModels.xcdatamodel; sourceTree = "<group>"; };
 		55DFFC592990719500729B3D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		55DFFC5C299078AA00729B3D /* TranquilWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TranquilWatch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		55DFFC5D2990795C00729B3D /* TranquilApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TranquilApp.entitlements; sourceTree = "<group>"; };
 		9F4423A0297BB28200E87DF2 /* TranquilApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TranquilApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4423A3297BB28200E87DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F4423A7297BB28200E87DF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		55DFFC2B29906DDB00729B3D /* TranquilWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				55DFFC5C299078AA00729B3D /* TranquilWatch-Watch-App-Info.plist */,
 				55DFFC5429906E4800729B3D /* TranquilWatch Watch App.entitlements */,
 				55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */,
 				55DFFC2E29906DDB00729B3D /* WatchView.swift */,
@@ -267,6 +270,7 @@
 		9F4423A2297BB28200E87DF2 /* TranquilApp */ = {
 			isa = PBXGroup;
 			children = (
+				55DFFC5D2990795C00729B3D /* TranquilApp.entitlements */,
 				B38186B32980B54B0083A4ED /* Model */,
 				9F4423A3297BB28200E87DF2 /* AppDelegate.swift */,
 				B38186CC2980C5200083A4ED /* MultiLineTextField.swift */,
@@ -726,10 +730,11 @@
 				DEVELOPMENT_TEAM = H8ZD339FFM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TranquilWatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TranquilWatch;
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "using to measure anxiety";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "using to measure anxiety";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "using to measure anxiety";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "using to measure anxieties";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "using to measure anxieties";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "using to measure anxieties";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ucsb.Tranquil;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -760,10 +765,11 @@
 				DEVELOPMENT_TEAM = H8ZD339FFM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TranquilWatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = TranquilWatch;
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "using to measure anxiety";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "using to measure anxiety";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "using to measure anxiety";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "using to measure anxieties";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "using to measure anxieties";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "using to measure anxieties";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ucsb.Tranquil;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -792,7 +798,7 @@
 				DEVELOPMENT_TEAM = H8ZD339FFM;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ucsb.TranquilWatch-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ucsb.Tranquil2Watch-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -813,7 +819,7 @@
 				DEVELOPMENT_TEAM = H8ZD339FFM;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ucsb.TranquilWatch-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ucsb.Tranquil2Watch-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -833,7 +839,7 @@
 				DEVELOPMENT_TEAM = H8ZD339FFM;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ucsb.TranquilWatch-Watch-AppUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ucsb.Tranquil2Watch-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -853,7 +859,7 @@
 				DEVELOPMENT_TEAM = H8ZD339FFM;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ucsb.TranquilWatch-Watch-AppUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ucsb.Tranquil2Watch-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -983,6 +989,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TranquilApp/TranquilApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H8ZD339FFM;
@@ -1011,6 +1018,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TranquilApp/TranquilApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H8ZD339FFM;
@@ -1041,10 +1049,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5Y6HST6U6C;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ucsb.tranquilW.watchkitapp.TranquilAppTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1060,10 +1069,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5Y6HST6U6C;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ucsb.tranquilW.watchkitapp.TranquilAppTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1078,9 +1088,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5Y6HST6U6C;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ucsb.tranquilW.watchkitapp.TranquilAppUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil2UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1095,9 +1106,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5Y6HST6U6C;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ucsb.tranquilW.watchkitapp.TranquilAppUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil2UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
