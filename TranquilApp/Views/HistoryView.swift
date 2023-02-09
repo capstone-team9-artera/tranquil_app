@@ -13,21 +13,24 @@ import HealthKitUI
 
 //Variables from the health kit:
 
+
 struct HistoryView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View
     {
-        VStack (spacing: 15)
-        {
+        //VStack
+        //{
+            /*
             Text("TRANQUIL")
                 .font(.system(size: 60, weight: .heavy))
                 .bold()
                 .foregroundColor(Color.teal)
+             */
             
             ScrollView
             {
-                VStack
+                VStack(spacing: 15)
                 {
                     let avg: String = String(format: "Current Week: %0.0f", weeklyStressAverage(currentDay))
                     let lastAvg: String = String(format: "Previous Week: %0.0f", weeklyStressAverage(lastDay))
@@ -72,12 +75,13 @@ struct HistoryView: View {
                         values: [10, 20, 30],
                         names: ["Journals", "Chats", "Breathing"],
                         formatter: {value in String(format: "%.0f", value)},
-                        colors: [Color.red, Color.purple, Color.orange],
+                        colors: [Color.blue, Color.teal, Color.indigo],
                         backgroundColor: Color.white)
                 }
+                .padding()
             }
-        }
-        .padding()
+        //}
+        //.padding()
     }
 }
 
@@ -347,8 +351,4 @@ struct PieSlice_Previews: PreviewProvider {
     }
 }
 
-func stress(HRV: Float) -> Float {
-    let stress = HRV / 2;
-    return stress
-}
 
