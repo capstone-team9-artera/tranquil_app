@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "91367aaed5985f0dce98bf5487ea0c3fc76e9949"
+      }
+    },
+    {
       "identity" : "swiftpiechart",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ilamanov/SwiftPieChart.git",
