@@ -19,6 +19,7 @@ class SessionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         myView.backgroundColor = .white
+        
         view = myView
         view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
 //        view.addSubview(animation)
@@ -45,7 +46,6 @@ class SessionViewController: UIViewController {
         view.addSubview(label)
         view.addSubview(promptLabel)
         view.layer.cornerRadius = 10
-        
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.goToView(_:)))
         view.addGestureRecognizer(gesture)

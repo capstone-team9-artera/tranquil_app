@@ -145,6 +145,8 @@ class ViewController: UIViewController {
     @objc private func didTapBreathingButton() {
         let rootVC = BreathingViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.view.inputViewController?.loadView()
+//        navVC.loadView()
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: false)
     }
