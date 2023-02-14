@@ -29,8 +29,8 @@ struct AnimationView: View {
             Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
-                Text("Dismiss")
-            }.offset(y: -115)
+                Image(systemName: "xmark")
+            }.offset(x: 170, y: -115)
             
             Text(name)
                 .font(.system(size: 30, weight: .medium))
