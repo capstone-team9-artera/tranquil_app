@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var items:[HeartRate]?
     private var lastHeartRate = 0
+    private var variability = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +56,21 @@ class ViewController: UIViewController {
         } catch {
             print("Cannot fetch Expenses")
         }
+        let length = items!.count
         if lastHeartRate != 0{
             //algorithm
+            let currentHeartRate = Int(items![(length - 1)].value)
+            print("Heart ", currentHeartRate)
+            variability = Int(items![(length - 1)].value) - lastHeartRate
+            if(variability > 7 && currentHeartRate > 85){
+                print(true)
+                didTapNotifButton()
+            }
+            lastHeartRate = currentHeartRate
+            
+        }
+        else{
+            lastHeartRate = Int(items![(length - 1)].value)
         }
    }
     
