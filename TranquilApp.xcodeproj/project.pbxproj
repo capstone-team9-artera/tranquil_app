@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		552619D82992BCF70080AAB9 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552619D72992BCF70080AAB9 /* OpenAIService.swift */; };
+		552619DA2992BD0A0080AAB9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552619D92992BD0A0080AAB9 /* Constants.swift */; };
+		552619DD2992BD2A0080AAB9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 552619DC2992BD2A0080AAB9 /* Alamofire */; };
 		55DFFC2D29906DDB00729B3D /* TranquilWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */; };
 		55DFFC2F29906DDB00729B3D /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2E29906DDB00729B3D /* WatchView.swift */; };
 		55DFFC3129906DDE00729B3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55DFFC3029906DDE00729B3D /* Assets.xcassets */; };
@@ -101,6 +104,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		552619D72992BCF70080AAB9 /* OpenAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		552619D92992BD0A0080AAB9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TranquilWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranquilWatchApp.swift; sourceTree = "<group>"; };
 		55DFFC2E29906DDB00729B3D /* WatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
@@ -198,7 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F30BC473297F6D0200E340C1 /* SwiftPieChart in Frameworks */,
-				9F5C989A2995DD270075E227 /* Alamofire in Frameworks */,
+				552619DD2992BD2A0080AAB9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,8 +346,8 @@
 		9F4423D8297BB40E00E87DF2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9F5C98942995DD1E0075E227 /* Constants.swift */,
-				9F5C98952995DD1E0075E227 /* OpenAIService.swift */,
+				552619D92992BD0A0080AAB9 /* Constants.swift */,
+				552619D72992BCF70080AAB9 /* OpenAIService.swift */,
 				B3CF27092980C653002EF9F9 /* AddEntryView.swift */,
 				B3CF270B2980C677002EF9F9 /* CalendarView.swift */,
 				B3CF270D2980C697002EF9F9 /* ContentView.swift */,
@@ -468,7 +473,7 @@
 			name = TranquilApp;
 			packageProductDependencies = (
 				F30BC472297F6D0200E340C1 /* SwiftPieChart */,
-				9F5C98992995DD270075E227 /* Alamofire */,
+				552619DC2992BD2A0080AAB9 /* Alamofire */,
 			);
 			productName = TranquilApp;
 			productReference = 9F4423A0297BB28200E87DF2 /* TranquilApp.app */;
@@ -555,7 +560,7 @@
 			mainGroup = 9F442397297BB28200E87DF2;
 			packageReferences = (
 				F30BC471297F6D0200E340C1 /* XCRemoteSwiftPackageReference "SwiftPieChart" */,
-				9F5C98982995DD270075E227 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				552619DB2992BD2A0080AAB9 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 9F4423A1297BB28200E87DF2 /* Products */;
 			projectDirPath = "";
@@ -659,8 +664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3CF27142980C6E6002EF9F9 /* HomeView.swift in Sources */,
-				9F5C98962995DD1E0075E227 /* Constants.swift in Sources */,
-				9F5C98972995DD1E0075E227 /* OpenAIService.swift in Sources */,
+				552619DA2992BD0A0080AAB9 /* Constants.swift in Sources */,
 				B3CF271A2980C737002EF9F9 /* WeekdaysView.swift in Sources */,
 				B3CF27102980C6AE002EF9F9 /* DayCellView.swift in Sources */,
 				9F4423D7297BB3F400E87DF2 /* NotificationViewController.swift in Sources */,
@@ -685,6 +689,7 @@
 				9F508FF0298C53700068E0C5 /* SessionViewController.swift in Sources */,
 				9F4423E6297BC41B00E87DF2 /* HistoryView.swift in Sources */,
 				B3CF270A2980C653002EF9F9 /* AddEntryView.swift in Sources */,
+				552619D82992BCF70080AAB9 /* OpenAIService.swift in Sources */,
 				9FD70A5229820E6B0078AA30 /* PageControl.swift in Sources */,
 				55DFFC5A2990719500729B3D /* Persistence.swift in Sources */,
 				9FD70A5F2988948D0078AA30 /* ExerciseModelData.swift in Sources */,
@@ -1231,7 +1236,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9F5C98982995DD270075E227 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		552619DB2992BD2A0080AAB9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -1250,9 +1255,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9F5C98992995DD270075E227 /* Alamofire */ = {
+		552619DC2992BD2A0080AAB9 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9F5C98982995DD270075E227 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 552619DB2992BD2A0080AAB9 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 		F30BC472297F6D0200E340C1 /* SwiftPieChart */ = {

@@ -20,6 +20,7 @@ struct WatchView: View {
     let healthStore = HKHealthStore()
     
     let heartRateQuantity = HKUnit(from: "count/min")
+    private var heartRateVariability = HKUnit(from: "count/min")
     @State var items:[HeartRate]?
 
     var body: some View {
@@ -78,12 +79,12 @@ struct WatchView: View {
     }
     
     private func process(_ samples: [HKQuantitySample], type: HKQuantityTypeIdentifier) {
-        // variable initialization
+        //   variable initialization
         var lastHeartRate = 0.0
         if samples.count == 1 {
         // cycle and value assignment
             for sample in samples {
-                if type == .heartRate {
+                if type == .heartRate{
                     lastHeartRate = sample.quantity.doubleValue(for: heartRateQuantity)
                 }
                 
@@ -91,7 +92,7 @@ struct WatchView: View {
                 let newValue = HeartRate(context: viewContext)
                 newValue.timestamp = Date()
                 newValue.value = Int64(self.value)
-                
+
                 do {
                     try viewContext.save()
                     count += 1
