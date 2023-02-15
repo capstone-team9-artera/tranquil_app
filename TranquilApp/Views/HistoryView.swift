@@ -10,6 +10,7 @@ import Charts
 import UIKit
 import HealthKit
 import HealthKitUI
+import CoreData
 
 //Variables from the health kit:
 
@@ -101,6 +102,7 @@ struct stressLevel: Identifiable
 
 //Previous weeks data.
 //Previous day, Daily HRV average.
+/*
 var lastDay: [stressLevel] = [
     .init(day: "Sun.", dailyAvg: 99),
     .init(day: "Mon.", dailyAvg: 150),
@@ -109,6 +111,8 @@ var lastDay: [stressLevel] = [
     .init(day: "Thu.", dailyAvg: 90),
     .init(day: "Fri.", dailyAvg: 74),
     .init(day: "Sat.", dailyAvg: 79)]
+ */
+var lastDay: [stressLevel] = fill()
 
 //Current weeks data.
 //Current day, Daily HRV average.
@@ -351,4 +355,198 @@ struct PieSlice_Previews: PreviewProvider {
     }
 }
 
+//Organizing apple watch captures from CoreData:
 
+/*
+func fill() -> [stressLevel]
+{
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var items:[HeartRate]?
+
+    let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
+    
+    let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
+    fetchRequest.sortDescriptors = [sort]
+    do {
+        items = try context.fetch(HeartRate.fetchRequest())
+    } catch {
+        print("Cannot fetch Expenses")
+    }
+    
+    var sunCount = 0
+    var sunTotal = 0
+    
+    var monCount = 0
+    var monTotal = 0
+    
+    var tueCount = 0
+    var tueTotal = 0
+    
+    var wedCount = 0
+    var wedTotal = 0
+    
+    var thuCount = 0
+    var thuTotal = 0
+    
+    var friCount = 0
+    var friTotal = 0
+    
+    var satCount = 0
+    var satTotal = 0
+    
+    ForEach<[HeartRate], ObjectIdentifier, Any>(items!)
+    { HeartRate in
+        let calendar = Calendar.current
+        let date = HeartRate.timestamp
+        let weekday = calendar.component(.weekday, from: date!)
+        
+        
+        switch weekday {
+            case 1:
+                sunTotal += Int(HeartRate.value)
+                sunCount += 1
+            case 2:
+                monTotal += Int(HeartRate.value)
+                monCount += 1
+            case 3:
+                tueTotal += Int(HeartRate.value)
+                tueCount += 1
+            case 4:
+                wedTotal += Int(HeartRate.value)
+                wedCount += 1
+            case 5:
+                thuTotal += Int(HeartRate.value)
+                thuCount += 1
+            case 6:
+                friTotal += Int(HeartRate.value)
+                friCount += 1
+            case 7:
+                satTotal += Int(HeartRate.value)
+                satCount += 1
+            default:
+                print("Other")
+        }
+    }
+    
+    var week: [stressLevel] = [
+        .init(day: "Sun.", dailyAvg: Double(sunTotal/sunCount)),
+        .init(day: "Mon.", dailyAvg: Double(monTotal/monCount)),
+        .init(day: "Tue.", dailyAvg: Double(tueTotal/tueCount)),
+        .init(day: "Wed.", dailyAvg: Double(wedTotal/wedCount)),
+        .init(day: "Thu.", dailyAvg: Double(thuTotal/thuCount)),
+        .init(day: "Fri.", dailyAvg: Double(friTotal/friCount)),
+        .init(day: "Sat.", dailyAvg: Double(satTotal/satCount))]
+    
+    return week
+}
+*/
+
+//I believe this may be working, but it does not diferentiate between the current week
+// and the previous week.
+func fill() -> [stressLevel] {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var items: [HeartRate]?
+    let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
+    let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
+    fetchRequest.sortDescriptors = [sort]
+    do {
+        items = try context.fetch(fetchRequest)
+    } catch {
+        print("Cannot fetch HeartRate")
+    }
+    
+    var totals: [Int] = Array(repeating: 0, count: 7)
+    var counts: [Int] = Array(repeating: 0, count: 7)
+
+    let calendar = Calendar.current
+    
+    items?.forEach { heartRate in
+        if let date = heartRate.timestamp {
+            let weekday = calendar.component(.weekday, from: date)
+            if weekday >= 1 && weekday <= 7 {
+                counts[weekday - 1] += 1
+                totals[weekday - 1] += Int(heartRate.value)
+            }
+        }
+    }
+    
+    var week: [stressLevel] = []
+    let days = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
+    for i in 0..<7 {
+        if counts[i] > 0 {
+            let avg = totals[i] / counts[i]
+            week.append(.init(day: days[i], dailyAvg: Double(avg)))
+        }
+    }
+    
+    return week
+}
+
+/*
+func fill(forCurrentWeek: Bool) -> [stressLevel] {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
+    
+    let startDate: Date
+    let endDate: Date
+    if forCurrentWeek {
+        // Calculate the start and end dates of the current week
+        let calendar = Calendar.current
+        let now = Date()
+        var startOfCurrentWeek: Date = now
+        calendar.dateInterval(of: .weekOfYear, start: &startOfCurrentWeek, interval: nil, for: now)
+        startDate = startOfCurrentWeek
+        endDate = calendar.date(byAdding: .day, value: 6, to: startOfCurrentWeek)!
+    } else {
+        // Calculate the start and end dates of the previous week
+        let calendar = Calendar.current
+        let now = Date()
+        var startOfCurrentWeek: Date = now
+        calendar.dateInterval(of: .weekOfYear, start: &startOfCurrentWeek, interval: nil, for: now)
+        let startOfPreviousWeek = calendar.date(byAdding: .day, value: -7, to: startOfCurrentWeek)!
+        startDate = startOfPreviousWeek
+        endDate = calendar.date(byAdding: .day, value: 6, to: startOfPreviousWeek)!
+    }
+    
+    // Configure the fetch request to only fetch HeartRate objects within the date range
+    let predicate = NSPredicate(format: "timestamp >= %@ AND timestamp <= %@", startDate as NSDate, endDate as NSDate)
+    fetchRequest.predicate = predicate
+    
+    let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
+    fetchRequest.sortDescriptors = [sort]
+    
+    let items: [HeartRate]
+    do {
+        items = try context.fetch(fetchRequest)
+    } catch {
+        print("Cannot fetch HeartRates")
+        return []
+    }
+    
+    // Calculate the daily averages for the selected date range
+    var totals: [Int] = Array(repeating: 0, count: 7)
+    var counts: [Int] = Array(repeating: 0, count: 7)
+
+    let calendar = Calendar.current
+    
+    items.forEach { heartRate in
+        if let date = heartRate.timestamp {
+            let weekday = calendar.component(.weekday, from: date)
+            if weekday >= 1 && weekday <= 7 {
+                counts[weekday - 1] += 1
+                totals[weekday - 1] += Int(heartRate.value)
+            }
+        }
+    }
+    
+    var week: [stressLevel] = []
+    let days = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
+    for i in 0..<7 {
+        if counts[i] > 0 {
+            let avg = totals[i] / counts[i]
+            week.append(.init(day: days[i], dailyAvg: Double(avg)))
+        }
+    }
+    return week
+}
+*/
