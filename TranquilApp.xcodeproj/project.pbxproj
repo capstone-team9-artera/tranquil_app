@@ -70,6 +70,9 @@
 		B3CF27202980C7A8002EF9F9 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CF271F2980C7A8002EF9F9 /* Month.swift */; };
 		B3CF27222980C7C6002EF9F9 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CF27212980C7C6002EF9F9 /* Entry.swift */; };
 		F30BC473297F6D0200E340C1 /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = F30BC472297F6D0200E340C1 /* SwiftPieChart */; };
+		F30BC4762991EBDA00E340C1 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BC4742991EBD900E340C1 /* OpenAIService.swift */; };
+		F30BC4772991EBDA00E340C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BC4752991EBDA00E340C1 /* Constants.swift */; };
+		F30BC47A2991EC3900E340C1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F30BC4792991EC3900E340C1 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +177,8 @@
 		B3CF271D2980C785002EF9F9 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		B3CF271F2980C7A8002EF9F9 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		B3CF27212980C7C6002EF9F9 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		F30BC4742991EBD900E340C1 /* OpenAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		F30BC4752991EBDA00E340C1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -776,7 +781,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TranquilWatch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = H8ZD339FFM;
+				DEVELOPMENT_TEAM = 5Y6HST6U6C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TranquilWatch-Watch-App-Info.plist";
@@ -785,13 +790,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "using to measure anxieties";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "using to measure anxieties";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ucsb.Tranquil;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ucsb.Tranquil2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -811,7 +816,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TranquilWatch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = H8ZD339FFM;
+				DEVELOPMENT_TEAM = 5Y6HST6U6C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TranquilWatch-Watch-App-Info.plist";
@@ -820,13 +825,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "using to measure anxieties";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "using to measure anxieties";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ucsb.Tranquil;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ucsb.Tranquil2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil2.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1041,7 +1046,7 @@
 				CODE_SIGN_ENTITLEMENTS = TranquilApp/TranquilApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H8ZD339FFM;
+				DEVELOPMENT_TEAM = 5Y6HST6U6C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TranquilApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1054,7 +1059,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1070,7 +1075,7 @@
 				CODE_SIGN_ENTITLEMENTS = TranquilApp/TranquilApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H8ZD339FFM;
+				DEVELOPMENT_TEAM = 5Y6HST6U6C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TranquilApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1083,7 +1088,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ucsb.Tranquil2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1252,6 +1257,14 @@
 				kind = branch;
 			};
 		};
+		F30BC4782991EC3900E340C1 /* XCRemoteSwiftPackageReference "alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alamofire/alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1264,6 +1277,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F30BC471297F6D0200E340C1 /* XCRemoteSwiftPackageReference "SwiftPieChart" */;
 			productName = SwiftPieChart;
+		};
+		F30BC4792991EC3900E340C1 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F30BC4782991EC3900E340C1 /* XCRemoteSwiftPackageReference "alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 

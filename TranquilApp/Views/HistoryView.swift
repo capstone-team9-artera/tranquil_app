@@ -10,45 +10,79 @@ import Charts
 import UIKit
 import HealthKit
 import HealthKitUI
+import CoreData
+
+//Variables from the health kit:
 
 
-//var count = 1;
 struct HistoryView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View
     {
-        VStack (spacing: 15)
-        {
+        //VStack
+        //{
+            /*
             Text("TRANQUIL")
                 .font(.system(size: 60, weight: .heavy))
                 .bold()
                 .foregroundColor(Color.teal)
+             */
             
             ScrollView
             {
-                Text("Weekly Stress Averages:")
-                    .font(.system(size: 18, weight: .heavy))
-                    .bold()
-                    .foregroundColor(Color.teal)
-                
-                BarChart()
-                    .previewLayout(.sizeThatFits)
-                
-                Text("Application Usage:")
-                    .font(.system(size: 18, weight: .heavy))
-                    .bold()
-                    .foregroundColor(Color.teal)
-                
-                PieChartView(
-                    values: [10, 20, 30],
-                    names: ["Journals", "Chats", "Breathing"],
-                    formatter: {value in String(format: "%.0f", value)},
-                    colors: [Color.red, Color.purple, Color.orange],
-                    backgroundColor: Color.white)
+                VStack(spacing: 15)
+                {
+                    let avg: String = String(format: "Current Week: %0.0f", weeklyStressAverage(currentDay))
+                    let lastAvg: String = String(format: "Previous Week: %0.0f", weeklyStressAverage(lastDay))
+                    
+                    Text("Weekly Stress Level Averages: ")
+                        .font(.system(size: 24, weight: .heavy))
+                        .bold()
+                        .foregroundColor(Color.teal)
+                    
+                    BarChart()
+                        .frame(height: 250)
+                    HStack
+                    {
+                        HStack
+                        {
+                            RoundedRectangle(cornerRadius: 5.0)
+                                .fill(Color.teal)
+                                .frame(width: 20, height: 20)
+                            Text(avg)
+                                .font(.system(size: 16, weight: .heavy))
+                                .foregroundColor(Color.gray)
+                        }
+                        HStack
+                        {
+                            RoundedRectangle(cornerRadius: 5.0)
+                                .fill(Color.accentColor)
+                                .frame(width: 20, height: 20)
+                            Text(lastAvg)
+                                .font(.system(size: 16, weight: .heavy))
+                                .foregroundColor(Color.gray)
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    Text("Application Usage:")
+                        .font(.system(size: 24, weight: .heavy))
+                        .bold()
+                        .foregroundColor(Color.teal)
+                    
+                    PieChartView(
+                        values: [10, 20, 30],
+                        names: ["Journals", "Chats", "Breathing"],
+                        formatter: {value in String(format: "%.0f", value)},
+                        colors: [Color.blue, Color.teal, Color.indigo],
+                        backgroundColor: Color.white)
+                }
+                .padding()
             }
-        }
-        .padding()
+        //}
+        //.padding()
     }
 }
 
@@ -63,20 +97,50 @@ struct stressLevel: Identifiable
 {
     var day : String
     var dailyAvg : Double
-    var weeklyAvg : Double
     var id = UUID()
 }
 
-//Day of the week, Daily HRV average, Weekly HRV average.
-var week: [stressLevel] = [
-    .init(day: "Sun.", dailyAvg: 83, weeklyAvg: 75),
-    .init(day: "Mon.", dailyAvg: 109, weeklyAvg: 75),
-    .init(day: "Tue.", dailyAvg: 78, weeklyAvg: 75),
-    .init(day: "Wed.", dailyAvg: 95, weeklyAvg: 75),
-    .init(day: "Thu.", dailyAvg: 82, weeklyAvg: 75),
-    .init(day: "Fri.", dailyAvg: 60, weeklyAvg: 75),
-    .init(day: "Sat.", dailyAvg: 65, weeklyAvg: 75)
-]
+//Previous weeks data.
+//Previous day, Daily HRV average.
+/*
+var lastDay: [stressLevel] = [
+    .init(day: "Sun.", dailyAvg: 99),
+    .init(day: "Mon.", dailyAvg: 150),
+    .init(day: "Tue.", dailyAvg: 85),
+    .init(day: "Wed.", dailyAvg: 100),
+    .init(day: "Thu.", dailyAvg: 90),
+    .init(day: "Fri.", dailyAvg: 74),
+    .init(day: "Sat.", dailyAvg: 79)]
+ */
+var lastDay: [stressLevel] = fill()
+
+//Current weeks data.
+//Current day, Daily HRV average.
+var currentDay: [stressLevel] = [
+    .init(day: "Sun.", dailyAvg: 83),
+    .init(day: "Mon.", dailyAvg: 109),
+    .init(day: "Tue.", dailyAvg: 78),
+    .init(day: "Wed.", dailyAvg: 95),
+    .init(day: "Thu.", dailyAvg: 82),
+    .init(day: "Fri.", dailyAvg: 60),
+    .init(day: "Sat.", dailyAvg: 65)]
+
+let weekData = [
+    (period: "Previous Week", data: lastDay),
+    (period: "Current Week", data: currentDay)]
+
+//Function to determine the overall average stress level for the last week.
+func weeklyStressAverage(_ week: [stressLevel]) -> Double {
+    var total = 0.0
+    var counter = 1.0
+    for stressLevel in week
+    {
+        total += stressLevel.dailyAvg
+        counter += 1.0
+    }
+    
+    return total/counter
+}
 
 struct BarChart: View
 {
@@ -84,35 +148,31 @@ struct BarChart: View
     {
         Chart
         {
-            //Defining data in the chart.
-            BarMark(
-                x: .value("Day of Week", week[0].day),
-                y: .value("Average HRV", week[0].dailyAvg)
-            )
-            BarMark(
-                x: .value("Day of Week", week[1].day),
-                y: .value("Average HRV", week[1].dailyAvg)
-            )
-            BarMark(
-                x: .value("Day of Week", week[2].day),
-                y: .value("Average HRV", week[2].dailyAvg)
-            )
-            BarMark(
-                x: .value("Day of Week", week[3].day),
-                y: .value("Average HRV", week[3].dailyAvg)
-            )
-            BarMark(
-                x: .value("Day of Week", week[4].day),
-                y: .value("Average HRV", week[4].dailyAvg)
-            )
-            BarMark(
-                x: .value("Day of Week", week[5].day),
-                y: .value("Average HRV", week[5].dailyAvg)
-            )
-            BarMark(
-                x: .value("Day of Week", week[6].day),
-                y: .value("Average HRV", week[6].weeklyAvg)
-            )
+            //Defining data in the bar chart view:
+            ForEach(currentDay) { stressLevel in
+                BarMark(
+                    x: .value("Day of Week", stressLevel.day),
+                    y: .value("Average HRV", stressLevel.dailyAvg)
+                )
+                .foregroundStyle(Color.teal)
+                .annotation(position: .overlay, alignment: .center, spacing: 3) {
+                    Text("\(stressLevel.dailyAvg, specifier: "%0.0f")")
+                        .font(.footnote)
+                        .foregroundColor(.white)
+                }
+            }
+            ForEach(lastDay) { stressLevel in
+                BarMark(
+                    x: .value("Day of Week", stressLevel.day),
+                    y: .value("Average HRV", stressLevel.dailyAvg)
+                )
+                .foregroundStyle(Color.accentColor)
+                .annotation(position: .overlay, alignment: .center, spacing: 3) {
+                    Text("\(stressLevel.dailyAvg, specifier: "%0.0f")")
+                        .font(.footnote)
+                        .foregroundColor(.white)
+                }
+            }
         }
     }
 }
@@ -240,7 +300,7 @@ struct PieChartRows: View {
 
 struct PieChartView_Previews: PreviewProvider {
     static var previews: some View {
-        PieChartView(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], formatter: {value in String(format: "$%.2f", value)})
+        PieChartView(values: [13, 5, 3], names: ["Journals", "Breathing", "Chats"], formatter: {value in String(format: "%.0f", value)})
     }
 }
 
@@ -295,8 +355,198 @@ struct PieSlice_Previews: PreviewProvider {
     }
 }
 
-func stress(HRV: Float) -> Float {
-    let stress = HRV / 2;
-    return stress
+//Organizing apple watch captures from CoreData:
+
+/*
+func fill() -> [stressLevel]
+{
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var items:[HeartRate]?
+
+    let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
+    
+    let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
+    fetchRequest.sortDescriptors = [sort]
+    do {
+        items = try context.fetch(HeartRate.fetchRequest())
+    } catch {
+        print("Cannot fetch Expenses")
+    }
+    
+    var sunCount = 0
+    var sunTotal = 0
+    
+    var monCount = 0
+    var monTotal = 0
+    
+    var tueCount = 0
+    var tueTotal = 0
+    
+    var wedCount = 0
+    var wedTotal = 0
+    
+    var thuCount = 0
+    var thuTotal = 0
+    
+    var friCount = 0
+    var friTotal = 0
+    
+    var satCount = 0
+    var satTotal = 0
+    
+    ForEach<[HeartRate], ObjectIdentifier, Any>(items!)
+    { HeartRate in
+        let calendar = Calendar.current
+        let date = HeartRate.timestamp
+        let weekday = calendar.component(.weekday, from: date!)
+        
+        
+        switch weekday {
+            case 1:
+                sunTotal += Int(HeartRate.value)
+                sunCount += 1
+            case 2:
+                monTotal += Int(HeartRate.value)
+                monCount += 1
+            case 3:
+                tueTotal += Int(HeartRate.value)
+                tueCount += 1
+            case 4:
+                wedTotal += Int(HeartRate.value)
+                wedCount += 1
+            case 5:
+                thuTotal += Int(HeartRate.value)
+                thuCount += 1
+            case 6:
+                friTotal += Int(HeartRate.value)
+                friCount += 1
+            case 7:
+                satTotal += Int(HeartRate.value)
+                satCount += 1
+            default:
+                print("Other")
+        }
+    }
+    
+    var week: [stressLevel] = [
+        .init(day: "Sun.", dailyAvg: Double(sunTotal/sunCount)),
+        .init(day: "Mon.", dailyAvg: Double(monTotal/monCount)),
+        .init(day: "Tue.", dailyAvg: Double(tueTotal/tueCount)),
+        .init(day: "Wed.", dailyAvg: Double(wedTotal/wedCount)),
+        .init(day: "Thu.", dailyAvg: Double(thuTotal/thuCount)),
+        .init(day: "Fri.", dailyAvg: Double(friTotal/friCount)),
+        .init(day: "Sat.", dailyAvg: Double(satTotal/satCount))]
+    
+    return week
+}
+*/
+
+//I believe this may be working, but it does not diferentiate between the current week
+// and the previous week.
+func fill() -> [stressLevel] {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var items: [HeartRate]?
+    let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
+    let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
+    fetchRequest.sortDescriptors = [sort]
+    do {
+        items = try context.fetch(fetchRequest)
+    } catch {
+        print("Cannot fetch HeartRate")
+    }
+    
+    var totals: [Int] = Array(repeating: 0, count: 7)
+    var counts: [Int] = Array(repeating: 0, count: 7)
+
+    let calendar = Calendar.current
+    
+    items?.forEach { heartRate in
+        if let date = heartRate.timestamp {
+            let weekday = calendar.component(.weekday, from: date)
+            if weekday >= 1 && weekday <= 7 {
+                counts[weekday - 1] += 1
+                totals[weekday - 1] += Int(heartRate.value)
+            }
+        }
+    }
+    
+    var week: [stressLevel] = []
+    let days = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
+    for i in 0..<7 {
+        if counts[i] > 0 {
+            let avg = totals[i] / counts[i]
+            week.append(.init(day: days[i], dailyAvg: Double(avg)))
+        }
+    }
+    
+    return week
 }
 
+/*
+func fill(forCurrentWeek: Bool) -> [stressLevel] {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
+    
+    let startDate: Date
+    let endDate: Date
+    if forCurrentWeek {
+        // Calculate the start and end dates of the current week
+        let calendar = Calendar.current
+        let now = Date()
+        var startOfCurrentWeek: Date = now
+        calendar.dateInterval(of: .weekOfYear, start: &startOfCurrentWeek, interval: nil, for: now)
+        startDate = startOfCurrentWeek
+        endDate = calendar.date(byAdding: .day, value: 6, to: startOfCurrentWeek)!
+    } else {
+        // Calculate the start and end dates of the previous week
+        let calendar = Calendar.current
+        let now = Date()
+        var startOfCurrentWeek: Date = now
+        calendar.dateInterval(of: .weekOfYear, start: &startOfCurrentWeek, interval: nil, for: now)
+        let startOfPreviousWeek = calendar.date(byAdding: .day, value: -7, to: startOfCurrentWeek)!
+        startDate = startOfPreviousWeek
+        endDate = calendar.date(byAdding: .day, value: 6, to: startOfPreviousWeek)!
+    }
+    
+    // Configure the fetch request to only fetch HeartRate objects within the date range
+    let predicate = NSPredicate(format: "timestamp >= %@ AND timestamp <= %@", startDate as NSDate, endDate as NSDate)
+    fetchRequest.predicate = predicate
+    
+    let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
+    fetchRequest.sortDescriptors = [sort]
+    
+    let items: [HeartRate]
+    do {
+        items = try context.fetch(fetchRequest)
+    } catch {
+        print("Cannot fetch HeartRates")
+        return []
+    }
+    
+    // Calculate the daily averages for the selected date range
+    var totals: [Int] = Array(repeating: 0, count: 7)
+    var counts: [Int] = Array(repeating: 0, count: 7)
+
+    let calendar = Calendar.current
+    
+    items.forEach { heartRate in
+        if let date = heartRate.timestamp {
+            let weekday = calendar.component(.weekday, from: date)
+            if weekday >= 1 && weekday <= 7 {
+                counts[weekday - 1] += 1
+                totals[weekday - 1] += Int(heartRate.value)
+            }
+        }
+    }
+    
+    var week: [stressLevel] = []
+    let days = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
+    for i in 0..<7 {
+        if counts[i] > 0 {
+            let avg = totals[i] / counts[i]
+            week.append(.init(day: days[i], dailyAvg: Double(avg)))
+        }
+    }
+    return week
+}
+*/
