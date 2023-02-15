@@ -23,6 +23,11 @@ struct PageViewController<Page: UIViewController>: UIViewControllerRepresentable
         pageViewController.isDoubleSided = false
         pageViewController.dataSource = context.coordinator
         pageViewController.delegate = context.coordinator
+        print(context.coordinator.controllers)
+        pageViewController.setViewControllers(                  [context.coordinator.controllers[0]], direction: .forward, animated: true)
+        pageViewController.setViewControllers(                  [context.coordinator.controllers[1]], direction: .forward, animated: true)
+        pageViewController.setViewControllers(                  [context.coordinator.controllers[2]], direction: .forward, animated: true)
+        pageViewController.setViewControllers(                  [context.coordinator.controllers[3]], direction: .forward, animated: true)
         return pageViewController
     }
 

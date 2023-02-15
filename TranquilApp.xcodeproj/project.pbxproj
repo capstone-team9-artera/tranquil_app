@@ -39,10 +39,14 @@
 		9F4423EA297BC67900E87DF2 /* BotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423E9297BC67900E87DF2 /* BotResponse.swift */; };
 		9F508FEA298C49570068E0C5 /* GIF-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FE9298C49570068E0C5 /* GIF-Swift.swift */; };
 		9F508FF0298C53700068E0C5 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FEF298C53700068E0C5 /* SessionViewController.swift */; };
-		9F508FF4299080760068E0C5 /* sunsetocean.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F508FF3299080750068E0C5 /* sunsetocean.gif */; };
 		9F508FF6299082F60068E0C5 /* waterfall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F508FF5299082F60068E0C5 /* waterfall.gif */; };
 		9F5C985C2991D0B60075E227 /* nightsky.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985B2991D0B60075E227 /* nightsky.gif */; };
 		9F5C985E2991D2470075E227 /* sand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985D2991D2470075E227 /* sand.gif */; };
+		9F5C98932995D6F50075E227 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C98922995D6F50075E227 /* AnimationView.swift */; };
+		9F5C98962995DD1E0075E227 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C98942995DD1E0075E227 /* Constants.swift */; };
+		9F5C98972995DD1E0075E227 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C98952995DD1E0075E227 /* OpenAIService.swift */; };
+		9F5C989A2995DD270075E227 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F5C98992995DD270075E227 /* Alamofire */; };
+		9F5C989E299B12940075E227 /* sunsetocean.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C989D299B12940075E227 /* sunsetocean.gif */; };
 		9FD70A4E29820E3D0078AA30 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4D29820E3D0078AA30 /* PageView.swift */; };
 		9FD70A5029820E510078AA30 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4F29820E510078AA30 /* PageViewController.swift */; };
 		9FD70A5229820E6B0078AA30 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5129820E6B0078AA30 /* PageControl.swift */; };
@@ -139,10 +143,13 @@
 		9F4423E9297BC67900E87DF2 /* BotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotResponse.swift; sourceTree = "<group>"; };
 		9F508FE9298C49570068E0C5 /* GIF-Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIF-Swift.swift"; sourceTree = "<group>"; };
 		9F508FEF298C53700068E0C5 /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
-		9F508FF3299080750068E0C5 /* sunsetocean.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sunsetocean.gif; sourceTree = "<group>"; };
 		9F508FF5299082F60068E0C5 /* waterfall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = waterfall.gif; sourceTree = "<group>"; };
 		9F5C985B2991D0B60075E227 /* nightsky.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nightsky.gif; sourceTree = "<group>"; };
 		9F5C985D2991D2470075E227 /* sand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sand.gif; sourceTree = "<group>"; };
+		9F5C98922995D6F50075E227 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		9F5C98942995DD1E0075E227 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9F5C98952995DD1E0075E227 /* OpenAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		9F5C989D299B12940075E227 /* sunsetocean.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sunsetocean.gif; sourceTree = "<group>"; };
 		9FD70A4D29820E3D0078AA30 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		9FD70A4F29820E510078AA30 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9FD70A5129820E6B0078AA30 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
@@ -352,6 +359,7 @@
 				B3CF27192980C737002EF9F9 /* WeekdaysView.swift */,
 				9F4423E5297BC41B00E87DF2 /* HistoryView.swift */,
 				9F4423E7297BC63400E87DF2 /* AIChatbotView.swift */,
+				9F5C98922995D6F50075E227 /* AnimationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -359,10 +367,10 @@
 		9F5C98602991D2540075E227 /* GIF-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				9F5C989D299B12940075E227 /* sunsetocean.gif */,
 				9F508FE9298C49570068E0C5 /* GIF-Swift.swift */,
 				9F5C985D2991D2470075E227 /* sand.gif */,
 				9F5C985B2991D0B60075E227 /* nightsky.gif */,
-				9F508FF3299080750068E0C5 /* sunsetocean.gif */,
 				9F508FF5299082F60068E0C5 /* waterfall.gif */,
 			);
 			path = "GIF-Swift";
@@ -601,8 +609,8 @@
 				9F5C985C2991D0B60075E227 /* nightsky.gif in Resources */,
 				9F4423AD297BB28300E87DF2 /* Assets.xcassets in Resources */,
 				9F4423AB297BB28200E87DF2 /* Main.storyboard in Resources */,
-				9F508FF4299080760068E0C5 /* sunsetocean.gif in Resources */,
 				9F508FF6299082F60068E0C5 /* waterfall.gif in Resources */,
+				9F5C989E299B12940075E227 /* sunsetocean.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +683,7 @@
 				9F4423A4297BB28200E87DF2 /* AppDelegate.swift in Sources */,
 				B3CF27202980C7A8002EF9F9 /* Month.swift in Sources */,
 				B3CF271C2980C767002EF9F9 /* Colors.swift in Sources */,
+				9F5C98932995D6F50075E227 /* AnimationView.swift in Sources */,
 				B3CF27122980C6C8002EF9F9 /* GridStack.swift in Sources */,
 				B3CF27182980C710002EF9F9 /* EntryRowView.swift in Sources */,
 				9F508FF0298C53700068E0C5 /* SessionViewController.swift in Sources */,
