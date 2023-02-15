@@ -10,6 +10,11 @@ class BreathingViewController: UIViewController {
     private let button = UIButton()
     private let myView = UIView(frame: CGRect())
     private let label = UILabel()
+    private let quickSession = SessionViewController()
+    private let homeostasisSession = SessionViewController()
+    private let decompressionSession = SessionViewController()
+    private let customSession = SessionViewController()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,18 +24,21 @@ class BreathingViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
         
         
-        let quickSession = SessionViewController()
         quickSession.name = "QuickSession"
         quickSession.gifName = "sunsetocean"
-        let homeostasisSession = SessionViewController()
+        quickSession.loadViewIfNeeded()
+        
         homeostasisSession.name = "Homeostasis"
         homeostasisSession.gifName = "waterfall"
-        let decompressionSession = SessionViewController()
+        homeostasisSession.loadViewIfNeeded()
+        
         decompressionSession.name = "Decompression"
         decompressionSession.gifName = "nightsky"
-        let customSession = SessionViewController()
+        decompressionSession.loadViewIfNeeded()
+        
         customSession.name = "Custom"
         customSession.gifName = "sand"
+        customSession.loadViewIfNeeded()
         
         let pageView = PageView(pages: [quickSession, homeostasisSession, decompressionSession, customSession])
         
