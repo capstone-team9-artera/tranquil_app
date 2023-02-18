@@ -27,12 +27,7 @@ struct HomeView: View {
 //    }
 //
     var body: some View {
-        Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
-            Text("Dismiss")
-        }
-        NavigationView {
+//        NavigationView {
         ZStack(alignment: .bottomTrailing) {
             
             VStack(spacing: 0){
@@ -97,9 +92,9 @@ struct HomeView: View {
             
         }.animation(.default).navigationBarTitle("Diary").navigationBarItems(trailing: NavigationLink(destination: CalendarView(start: Date(), monthsToShow: 1, daysSelectable: true, entryController: entryModelController), label: {
             Image(systemName: "calendar")
-        }))
+        })).accentColor(.black)
             
-        }.accentColor(.black)
+//        }.accentColor(.black)
     }
     
 }

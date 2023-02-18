@@ -35,8 +35,6 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         self.title = "Home Page"
         
-        addBackgroundWaves()
-
         name.textAlignment = .center
         name.text = "TRANQUIL"
         name.textColor = .systemTeal
@@ -77,14 +75,6 @@ class ViewController: UIViewController {
             lastHeartRate = Int(items![(length - 1)].value)
         }
    }
-    
-    @objc private func addBackgroundWaves() {
-        let background = UIHostingController(rootView: BackgroundWavesView())
-        background.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        background.didMove(toParent: self)
-        background.modalPresentationStyle = .fullScreen
-        view.addSubview(background.view)
-    }
     
     @objc private func addBreathingButton() {
         breathingButton.setTitle("Breathing Exercises", for: .normal)
@@ -182,17 +172,10 @@ class ViewController: UIViewController {
     }
     
     @objc private func didTapJournalButton() {
-        let parent = UIViewController()
-        let controller = UIHostingController(rootView: ContentView())
-        parent.view.addSubview(controller.view)
-        controller.didMove(toParent: self)
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: false)
-        
-//        let rootVC = JournalViewController()
-//        let navVC = UINavigationController(rootViewController: rootVC)
-//        navVC.modalPresentationStyle = .fullScreen
-//        present(navVC, animated: false)
+        let rootVC = JournalViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: false)
     }
 
     @objc private func didTapHistoryButton() {
