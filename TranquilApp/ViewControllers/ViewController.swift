@@ -12,18 +12,20 @@ import CoreData
 
 class ViewController: UIViewController {
 
+    private let universalSize = UIScreen.main.bounds
+    @State var isAnimated = false
+    private var timer: Timer?
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var items:[HeartRate]?
+    private var lastHeartRate = 0
+    private var variability = 0
+
     private let breathingButton = UIButton()
     private let journalButton = UIButton()
     private let historyButton = UIButton()
     private let aiChatbotButton = UIButton()
     private let notifButton = UIButton()
     private let name = UILabel()
-    
-    private var timer: Timer?
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    private var items:[HeartRate]?
-    private var lastHeartRate = 0
-    private var variability = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +35,15 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         self.title = "Home Page"
         
+        addBackgroundWaves()
+
         name.textAlignment = .center
         name.text = "TRANQUIL"
         name.textColor = .systemTeal
         name.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
         name.font = .systemFont(ofSize: 65, weight: UIFont.Weight(rawValue: 10))
         view.addSubview(name)
-       
+
         addBreathingButton()
         addJournalButton()
         addHistoryButton()
@@ -74,6 +78,14 @@ class ViewController: UIViewController {
         }
    }
     
+    @objc private func addBackgroundWaves() {
+        let background = UIHostingController(rootView: BackgroundWavesView())
+        background.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        background.didMove(toParent: self)
+        background.modalPresentationStyle = .fullScreen
+        view.addSubview(background.view)
+    }
+    
     @objc private func addBreathingButton() {
         breathingButton.setTitle("Breathing Exercises", for: .normal)
         view.addSubview(breathingButton)
@@ -83,6 +95,7 @@ class ViewController: UIViewController {
         breathingButton.backgroundColor = .systemTeal
         breathingButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         breathingButton.titleLabel?.textColor = .white
+        breathingButton.layer.opacity = 0.8
         breathingButton.layer.cornerRadius = 8
         breathingButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
         breathingButton.layer.shadowOpacity = 0.8
@@ -102,6 +115,7 @@ class ViewController: UIViewController {
         journalButton.titleLabel?.textColor = .white
         journalButton.backgroundColor = .systemGray2
         journalButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
+        journalButton.layer.opacity = 0.8
         journalButton.layer.cornerRadius = 8
         journalButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
         journalButton.layer.shadowOpacity = 0.8
@@ -120,6 +134,7 @@ class ViewController: UIViewController {
         historyButton.backgroundColor = .systemGray2
         historyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         historyButton.titleLabel?.textColor = .white
+        historyButton.layer.opacity = 0.8
         historyButton.layer.cornerRadius = 8
         historyButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
         historyButton.layer.shadowOpacity = 0.8
@@ -138,6 +153,7 @@ class ViewController: UIViewController {
         aiChatbotButton.backgroundColor = .systemTeal
         aiChatbotButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         aiChatbotButton.titleLabel?.textColor = .white
+        aiChatbotButton.layer.opacity = 0.8
         aiChatbotButton.layer.cornerRadius = 8
         aiChatbotButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
         aiChatbotButton.layer.shadowOpacity = 0.8
@@ -201,6 +217,63 @@ class ViewController: UIViewController {
 //        navigationController?.pushViewController(navVC, animated: true)
         present(navVC, animated: false)
     }
+    
+    func getSinWave(interval:CGFloat, amplitude: CGFloat = 100 ,baseline:CGFloat = UIScreen.main.bounds.height/2) -> Path {
+        Path{path in
+            path.move(to: CGPoint(x: 0, y: baseline
+            ))
+            path.addCurve(
+                to: CGPoint(x: 1*interval,y: baseline),
+                control1: CGPoint(x: interval * (0.35),y: amplitude + baseline),
+                control2: CGPoint(x: interval * (0.65),y: -amplitude + baseline)
+            )
+            path.addCurve(
+                to: CGPoint(x: 2*interval,y: baseline),
+                control1: CGPoint(x: interval * (1.35),y: amplitude + baseline),
+                control2: CGPoint(x: interval * (1.65),y: -amplitude + baseline)
+            )
+            path.addLine(to: CGPoint(x: 2*interval, y: universalSize.height))
+            path.addLine(to: CGPoint(x: 0, y: universalSize.height))
+            
+            
+        }
+    
+    }
+    
+    func getBezierWave(interval:CGFloat, amplitude: CGFloat = 100 ,baseline:CGFloat = UIScreen.main.bounds.height/2) -> UIBezierPath {
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x: 0, y: baseline))
+        bezierPath.addCurve(
+            to: CGPoint(x: 1*interval, y: baseline),
+            controlPoint1: CGPoint(x: interval * (0.35), y: amplitude + baseline),
+            controlPoint2: CGPoint(x: interval * (0.65), y: -amplitude + baseline))
+        bezierPath.addCurve(to: CGPoint(x: 2 * interval, y: baseline), controlPoint1: CGPoint(x: interval * (1.35), y: amplitude + baseline), controlPoint2: CGPoint(x: interval * (1.65), y: -amplitude + baseline))
+        bezierPath.addLine(to: CGPoint(x: 2 * interval, y: universalSize.height))
+        bezierPath.addLine(to: CGPoint(x: 0, y: universalSize.height))
+        bezierPath.close()
+        return bezierPath
+//        Path{path in
+//            path.move(to: CGPoint(x: 0, y: baseline
+//            ))
+//            path.addCurve(
+//                to: CGPoint(x: 1*interval,y: baseline),
+//                control1: CGPoint(x: interval * (0.35),y: amplitude + baseline),
+//                control2: CGPoint(x: interval * (0.65),y: -amplitude + baseline)
+//            )
+//            path.addCurve(
+//                to: CGPoint(x: 2*interval,y: baseline),
+//                control1: CGPoint(x: interval * (1.35),y: amplitude + baseline),
+//                control2: CGPoint(x: interval * (1.65),y: -amplitude + baseline)
+//            )
+//            path.addLine(to: CGPoint(x: 2*interval, y: universalSize.height))
+//            path.addLine(to: CGPoint(x: 0, y: universalSize.height))
+//
+//
+//        }
+    
+    }
+
+
 
 }
 
