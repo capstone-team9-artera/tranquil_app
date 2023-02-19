@@ -16,10 +16,10 @@ struct BackgroundWavesView: View {
     @State var isAnimated = false
     var body: some View {
         ZStack {
-        LinearGradient(gradient: Gradient(colors: [.blue, .red, .orange]),
-                       startPoint: .leading, endPoint: .trailing)
-                       
+//            LinearGradient(gradient: Gradient(colors: [Color(red: 67/255, green: 142/255, blue: 247/255),Color(red: 247/255, green: 151/255, blue: 67/255), .white]),
+//                           startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 0, y: 0.7))
 
+            
             getSinWave(interval: universalSize.width * 1.5, amplitude: 110, baseline: 5 + universalSize.height/2)
                 .foregroundColor(Color.init(red: 0.2, green: 0.4, blue: 0.7).opacity(0.4))
                 .offset(x: isAnimated ? -1*(universalSize.width ) : 0)
