@@ -12,7 +12,6 @@ struct BackgroundWavesView: View {
     @Environment(\.presentationMode) var presentationMode
     
     let universalSize = UIScreen.main.bounds
-    
     @State var isAnimated = false
     var body: some View {
         ZStack {
@@ -58,26 +57,27 @@ struct BackgroundWavesView: View {
         }
             
     }
-    
-    func getSinWave(interval:CGFloat, amplitude: CGFloat = 100 ,baseline:CGFloat = UIScreen.main.bounds.height/2) -> Path {
-        Path{path in
-            path.move(to: CGPoint(x: 0, y: baseline
-            ))
-            path.addCurve(
-                to: CGPoint(x: 1*interval,y: baseline),
-                control1: CGPoint(x: interval * (0.35),y: amplitude + baseline),
-                control2: CGPoint(x: interval * (0.65),y: -amplitude + baseline)
-            )
-            path.addCurve(
-                to: CGPoint(x: 2*interval,y: baseline),
-                control1: CGPoint(x: interval * (1.35),y: amplitude + baseline),
-                control2: CGPoint(x: interval * (1.65),y: -amplitude + baseline)
-            )
-            path.addLine(to: CGPoint(x: 2*interval, y: universalSize.height))
-            path.addLine(to: CGPoint(x: 0, y: universalSize.height))
-            
-            
-        }
-    
-    }
 }
+
+func getSinWave(interval:CGFloat, amplitude: CGFloat = 100 ,baseline:CGFloat = UIScreen.main.bounds.height/2) -> Path {
+    Path{path in
+        path.move(to: CGPoint(x: 0, y: baseline
+        ))
+        path.addCurve(
+            to: CGPoint(x: 1*interval,y: baseline),
+            control1: CGPoint(x: interval * (0.35),y: amplitude + baseline),
+            control2: CGPoint(x: interval * (0.65),y: -amplitude + baseline)
+        )
+        path.addCurve(
+            to: CGPoint(x: 2*interval,y: baseline),
+            control1: CGPoint(x: interval * (1.35),y: amplitude + baseline),
+            control2: CGPoint(x: interval * (1.65),y: -amplitude + baseline)
+        )
+        path.addLine(to: CGPoint(x: 2*interval, y: UIScreen.main.bounds.height))
+        path.addLine(to: CGPoint(x: 0, y: UIScreen.main.bounds.height))
+        
+        
+    }
+
+}
+

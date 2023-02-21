@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
+//        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
        
         view.backgroundColor = .white
         self.title = "Home Page"
@@ -48,6 +48,11 @@ class ViewController: UIViewController {
         addJournalButton()
         addHistoryButton()
         addAiChatbotButton()
+    }
+    
+    // animation when opening the app
+    override func viewDidLayoutSubviews() {
+        // some animation for the label
     }
     
     @objc private func getHeartRate(){
@@ -217,63 +222,5 @@ class ViewController: UIViewController {
 //        navigationController?.pushViewController(navVC, animated: true)
         present(navVC, animated: false)
     }
-    
-    func getSinWave(interval:CGFloat, amplitude: CGFloat = 100 ,baseline:CGFloat = UIScreen.main.bounds.height/2) -> Path {
-        Path{path in
-            path.move(to: CGPoint(x: 0, y: baseline
-            ))
-            path.addCurve(
-                to: CGPoint(x: 1*interval,y: baseline),
-                control1: CGPoint(x: interval * (0.35),y: amplitude + baseline),
-                control2: CGPoint(x: interval * (0.65),y: -amplitude + baseline)
-            )
-            path.addCurve(
-                to: CGPoint(x: 2*interval,y: baseline),
-                control1: CGPoint(x: interval * (1.35),y: amplitude + baseline),
-                control2: CGPoint(x: interval * (1.65),y: -amplitude + baseline)
-            )
-            path.addLine(to: CGPoint(x: 2*interval, y: universalSize.height))
-            path.addLine(to: CGPoint(x: 0, y: universalSize.height))
-            
-            
-        }
-    
-    }
-    
-    func getBezierWave(interval:CGFloat, amplitude: CGFloat = 100 ,baseline:CGFloat = UIScreen.main.bounds.height/2) -> UIBezierPath {
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 0, y: baseline))
-        bezierPath.addCurve(
-            to: CGPoint(x: 1*interval, y: baseline),
-            controlPoint1: CGPoint(x: interval * (0.35), y: amplitude + baseline),
-            controlPoint2: CGPoint(x: interval * (0.65), y: -amplitude + baseline))
-        bezierPath.addCurve(to: CGPoint(x: 2 * interval, y: baseline), controlPoint1: CGPoint(x: interval * (1.35), y: amplitude + baseline), controlPoint2: CGPoint(x: interval * (1.65), y: -amplitude + baseline))
-        bezierPath.addLine(to: CGPoint(x: 2 * interval, y: universalSize.height))
-        bezierPath.addLine(to: CGPoint(x: 0, y: universalSize.height))
-        bezierPath.close()
-        return bezierPath
-//        Path{path in
-//            path.move(to: CGPoint(x: 0, y: baseline
-//            ))
-//            path.addCurve(
-//                to: CGPoint(x: 1*interval,y: baseline),
-//                control1: CGPoint(x: interval * (0.35),y: amplitude + baseline),
-//                control2: CGPoint(x: interval * (0.65),y: -amplitude + baseline)
-//            )
-//            path.addCurve(
-//                to: CGPoint(x: 2*interval,y: baseline),
-//                control1: CGPoint(x: interval * (1.35),y: amplitude + baseline),
-//                control2: CGPoint(x: interval * (1.65),y: -amplitude + baseline)
-//            )
-//            path.addLine(to: CGPoint(x: 2*interval, y: universalSize.height))
-//            path.addLine(to: CGPoint(x: 0, y: universalSize.height))
-//
-//
-//        }
-    
-    }
-
-
-
 }
 
