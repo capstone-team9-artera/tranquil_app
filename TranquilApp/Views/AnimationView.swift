@@ -10,6 +10,10 @@ import SwiftUI
 struct AnimationView: View {
     @Environment(\.presentationMode) var presentationMode
     var name: String = "Default name"
+    var breatheInDuration: Double = 4
+    var breatheOutDuration: Double = 4
+    var holdDuration: Double = 4
+    var numRepeats: Int = 0
     @State private var breathIn = false
     @State private var breathOut = false
     @State private var hold = true
@@ -67,35 +71,35 @@ struct AnimationView: View {
                             .rotationEffect(.degrees(90))
                         
                         // top
-                        Capsule()
-                            .trim(from: 1/2, to: 1)
-                            .frame(width: 20, height: 25)
-                            .foregroundColor(Color.white)
-                            .rotationEffect(.degrees(180))
-                            .offset(y: -187)
+//                        Capsule()
+//                            .trim(from: 1/2, to: 1)
+//                            .frame(width: 20, height: 25)
+//                            .foregroundColor(Color.white)
+//                            .rotationEffect(.degrees(180))
+//                            .offset(y: -187)
                         
                         // right
-                        Capsule()
-                            .trim(from: 1/2, to: 1)
-                            .frame(width: 20, height: 25)
-                            .foregroundColor(Color.white)
-                            .rotationEffect(.degrees(-90))
-                            .offset(x: 187)
+//                        Capsule()
+//                            .trim(from: 1/2, to: 1)
+//                            .frame(width: 20, height: 25)
+//                            .foregroundColor(Color.white)
+//                            .rotationEffect(.degrees(-90))
+//                            .offset(x: 187)
                         
                         // left
-                        Capsule()
-                            .trim(from: 1/2, to: 1)
-                            .frame(width: 20, height: 25)
-                            .foregroundColor(Color.white)
-                            .rotationEffect(.degrees(90))
-                            .offset(x: -187)
+//                        Capsule()
+//                            .trim(from: 1/2, to: 1)
+//                            .frame(width: 20, height: 25)
+//                            .foregroundColor(Color.white)
+//                            .rotationEffect(.degrees(90))
+//                            .offset(x: -187)
                         
                         // bottom
-                        Capsule()
-                            .trim(from: 1/2, to: 1)
-                            .frame(width: 20, height: 25)
-                            .foregroundColor(Color.white)
-                            .offset(y: 187)
+//                        Capsule()
+//                            .trim(from: 1/2, to: 1)
+//                            .frame(width: 20, height: 25)
+//                            .foregroundColor(Color.white)
+//                            .offset(y: 187)
                         
                         ZStack {
                             Circle()
@@ -110,7 +114,7 @@ struct AnimationView: View {
                                 .offset(y: 187)
                                 .rotationEffect(.degrees(circularMotion ? 360 : 0))
                                 .onAppear() {
-                                    withAnimation(Animation.linear(duration: 16)) {
+                                    withAnimation(Animation.linear(duration: 16).delay(1)) {
                                         self.circularMotion = true
                                     }
                                 }
@@ -120,22 +124,24 @@ struct AnimationView: View {
                         .scaleEffect(hold ? 1 : 1)
                         .scaleEffect(breathOut ? 0.8 : 1)
                         .onAppear() {
-                            withAnimation(Animation.linear(duration: 4)) {
+                            withAnimation(Animation.linear(duration: breatheInDuration).delay(1)) {
                                 self.breathIn.toggle()
                             }
                             
-                            withAnimation(Animation.linear(duration: 4).delay(4)) {
+                            withAnimation(Animation.linear(duration: holdDuration).delay(breatheInDuration + 1)) {
                                 self.hold.toggle()
                             }
                             
-                            withAnimation(Animation.linear(duration: 4).delay(8)) {
+                            withAnimation(Animation.linear(duration: breatheOutDuration).delay(breatheInDuration + holdDuration + 1)) {
                                 self.breathOut.toggle()
                             }
-                            
-                            withAnimation(Animation.linear(duration: 4).delay(12)) {
+
+                            withAnimation(Animation.linear(duration: holdDuration).delay(breatheInDuration + holdDuration + holdDuration + 1)) {
                                 self.hold.toggle()
                             }
                         }
+                    
+                    // text
                     ZStack {
                         Text("Breathe Out")
                             .foregroundColor(Color.white)
@@ -143,11 +149,11 @@ struct AnimationView: View {
                             .opacity(displayBreathOut ? 1 : 0)
                             .opacity(hideBreathOut ? 0 : 1)
                             .onAppear() {
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(8)) {
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + 1).repeatCount(numRepeats)) {
                                     self.displayBreathOut.toggle()
                                 }
                                 
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(12)) {
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration + 1).repeatCount(numRepeats)) {
                                     self.hideBreathOut.toggle()
                                 }
                                 
@@ -159,11 +165,11 @@ struct AnimationView: View {
                             .opacity(displaySecondHold ? 1 : 0)
                             .opacity(hideSecondHold ? 0 : 1)
                             .onAppear() {
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(12)) {
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration + 1).repeatCount(numRepeats)) {
                                     self.displaySecondHold.toggle()
                                 }
                                 
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(16)) {
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration + holdDuration + 1).repeatCount(numRepeats)) {
                                     self.hideSecondHold.toggle()
                                 }
                                 
@@ -176,11 +182,11 @@ struct AnimationView: View {
                             .opacity(displayHold ? 1 : 0)
                             .opacity(hideHold ? 0 : 1)
                             .onAppear() {
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(4)) {
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + 1).repeatCount(numRepeats)) {
                                     self.displayHold.toggle()
                                 }
                                 
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(8)) {
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + 1).repeatCount(numRepeats)) {
                                     self.hideHold.toggle()
                                 }
                                 
@@ -190,7 +196,7 @@ struct AnimationView: View {
                             .foregroundColor(Color.white)
                             .opacity(hideBreathIn ? 0 : 1)
                             .onAppear() {
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(4)) {
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + 1).repeatCount(numRepeats)) {
                                     self.hideBreathIn.toggle()
                                 }
                                 
