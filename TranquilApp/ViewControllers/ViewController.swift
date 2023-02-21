@@ -26,6 +26,25 @@ class ViewController: UIViewController {
     private let aiChatbotButton = UIButton()
     private let notifButton = UIButton()
     private let name = UILabel()
+    private let background = UIHostingController(rootView: BackgroundWavesView())
+    
+    private func animate() {
+        UIView.animate(withDuration: 0.8, delay: 0.8, animations: {
+            self.name.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
+            self.background.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            self.breathingButton.layer.opacity = 0.8
+            self.journalButton.layer.opacity = 0.8
+            self.historyButton.layer.opacity = 0.8
+            self.aiChatbotButton.layer.opacity = 0.8
+        })
+    }
+    
+    // animation when opening the app
+    override func viewDidLayoutSubviews() {
+        // some animation for the label
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {self.animate()})
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,22 +56,18 @@ class ViewController: UIViewController {
         
         addBackgroundWaves()
 
-        name.textAlignment = .center
-        name.text = "TRANQUIL"
-        name.textColor = .systemTeal
-        name.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
-        name.font = .systemFont(ofSize: 65, weight: UIFont.Weight(rawValue: 10))
-        view.addSubview(name)
-
         addBreathingButton()
         addJournalButton()
         addHistoryButton()
         addAiChatbotButton()
-    }
-    
-    // animation when opening the app
-    override func viewDidLayoutSubviews() {
-        // some animation for the label
+        
+        name.textAlignment = .center
+        name.text = "TRANQUIL"
+        name.textColor = .systemTeal
+        name.frame = CGRect(x: 25, y: 350, width: 350, height: 52)
+        name.font = .systemFont(ofSize: 65, weight: UIFont.Weight(rawValue: 10))
+        view.addSubview(name)
+
     }
     
     @objc private func getHeartRate(){
@@ -84,8 +99,8 @@ class ViewController: UIViewController {
    }
     
     @objc private func addBackgroundWaves() {
-        let background = UIHostingController(rootView: BackgroundWavesView())
-        background.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        let background = UIHostingController(rootView: BackgroundWavesView())
+        background.view.frame = CGRect(x: 0, y: 300, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         background.didMove(toParent: self)
         background.modalPresentationStyle = .fullScreen
         view.addSubview(background.view)
@@ -100,7 +115,7 @@ class ViewController: UIViewController {
         breathingButton.backgroundColor = .systemTeal
         breathingButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         breathingButton.titleLabel?.textColor = .white
-        breathingButton.layer.opacity = 0.8
+        breathingButton.layer.opacity = 0.0
         breathingButton.layer.cornerRadius = 8
         breathingButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
         breathingButton.layer.shadowOpacity = 0.8
@@ -120,7 +135,7 @@ class ViewController: UIViewController {
         journalButton.titleLabel?.textColor = .white
         journalButton.backgroundColor = .systemGray2
         journalButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
-        journalButton.layer.opacity = 0.8
+        journalButton.layer.opacity = 0.0
         journalButton.layer.cornerRadius = 8
         journalButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
         journalButton.layer.shadowOpacity = 0.8
@@ -139,7 +154,7 @@ class ViewController: UIViewController {
         historyButton.backgroundColor = .systemGray2
         historyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         historyButton.titleLabel?.textColor = .white
-        historyButton.layer.opacity = 0.8
+        historyButton.layer.opacity = 0.0
         historyButton.layer.cornerRadius = 8
         historyButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
         historyButton.layer.shadowOpacity = 0.8
@@ -158,7 +173,7 @@ class ViewController: UIViewController {
         aiChatbotButton.backgroundColor = .systemTeal
         aiChatbotButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         aiChatbotButton.titleLabel?.textColor = .white
-        aiChatbotButton.layer.opacity = 0.8
+        aiChatbotButton.layer.opacity = 0.0
         aiChatbotButton.layer.cornerRadius = 8
         aiChatbotButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
         aiChatbotButton.layer.shadowOpacity = 0.8

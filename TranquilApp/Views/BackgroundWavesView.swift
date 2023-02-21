@@ -19,7 +19,7 @@ struct BackgroundWavesView: View {
 //                           startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 0, y: 0.7))
 
             
-            getSinWave(interval: universalSize.width * 1.5, amplitude: 110, baseline: 5 + universalSize.height/2)
+            getSinWave(interval: universalSize.width * 1.5, amplitude: 110, baseline: 65 + universalSize.height/2)
                 .foregroundColor(Color.init(red: 0.2, green: 0.4, blue: 0.7).opacity(0.4))
                 .offset(x: isAnimated ? -1*(universalSize.width ) : 0)
                 .animation(
@@ -27,7 +27,7 @@ struct BackgroundWavesView: View {
                     .repeatForever(autoreverses: false)
             )
             
-            getSinWave(interval: universalSize.width, amplitude: 200, baseline: 0 + universalSize.height/2)
+            getSinWave(interval: universalSize.width, amplitude: 200, baseline: 70 + universalSize.height/2)
                 .foregroundColor(Color.init(red: 0.3, green: 0.6, blue: 1).opacity(0.4))
                 .offset(x: isAnimated ? -1*(universalSize.width ) : 0)
             .animation(
@@ -35,7 +35,7 @@ struct BackgroundWavesView: View {
                 .repeatForever(autoreverses: false)
             )
 
-            getSinWave(interval: universalSize.width * 3, amplitude: 200, baseline: 5 + universalSize.height/2)
+            getSinWave(interval: universalSize.width * 3, amplitude: 200, baseline: 95 + universalSize.height/2)
                 .foregroundColor(Color.black.opacity(0.2))
                 .offset(x: isAnimated ? -1*(universalSize.width  * 3) : 0)
             .animation(
@@ -43,7 +43,7 @@ struct BackgroundWavesView: View {
                 .repeatForever(autoreverses: false)
             )
             
-            getSinWave(interval: universalSize.width * 1.2, amplitude: 50, baseline: 5 + universalSize.height/2)
+            getSinWave(interval: universalSize.width * 1.2, amplitude: 50, baseline: 75 + universalSize.height/2)
                 .foregroundColor(Color.init(red: 0.6, green: 0.9, blue: 1).opacity(0.4))
                 .offset(x: isAnimated ? -1*(universalSize.width  * 1.2) : 0)
             .animation(
