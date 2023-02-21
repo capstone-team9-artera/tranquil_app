@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     private let historyButton = UIButton()
     private let aiChatbotButton = UIButton()
     private let notifButton = UIButton()
+    private let nlpButton = UIButton()
     private let name = UILabel()
     
     private var timer: Timer?
@@ -27,7 +28,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
+       // commented out so it doesn't keep crashing !!!
         timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
        
         view.backgroundColor = .white
@@ -44,6 +46,7 @@ class ViewController: UIViewController {
         addJournalButton()
         addHistoryButton()
         addAiChatbotButton()
+        addNLPButton()
     }
     
     @objc private func getHeartRate(){
@@ -154,6 +157,22 @@ class ViewController: UIViewController {
         notifButton.setTitleColor(.white, for: .normal)
         notifButton.frame = CGRect(x: 50, y: 750, width: 300, height: 52)
         notifButton.addTarget(self, action: #selector(didTapNotifButton), for: .touchUpInside)
+    }
+    
+    @objc private func addNLPButton() {
+        nlpButton.setTitle("Test NLP", for: .normal)
+        view.addSubview(nlpButton)
+        nlpButton.backgroundColor = .systemPurple
+        nlpButton.setTitleColor(.white, for: .normal)
+        nlpButton.frame = CGRect(x: 250, y: 90, width: 100, height: 50)
+        nlpButton.addTarget(self, action: #selector(didTapNLPButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapNLPButton() {
+        let rootVC = NLPViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: false)
     }
     
     @objc private func didTapBreathingButton() {
