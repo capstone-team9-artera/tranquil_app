@@ -29,7 +29,7 @@ struct HistoryView: View {
                 .foregroundColor(Color.teal)
              */
             
-            ScrollView
+        ScrollView(.vertical)
             {
                 VStack(spacing: 15)
                 {
