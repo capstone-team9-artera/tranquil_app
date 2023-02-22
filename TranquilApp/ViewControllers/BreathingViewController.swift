@@ -43,7 +43,7 @@ class BreathingViewController: UIViewController {
         let pageView = PageView(pages: [quickSession, homeostasisSession, decompressionSession, customSession])
         
         let controller = UIHostingController(rootView: pageView)
-        controller.view.frame = CGRect(x: 0, y:100, width: 400, height: 700)
+        controller.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 20)
         controller.didMove(toParent: self)
         controller.modalPresentationStyle = .fullScreen
         view.addSubview(controller.view)
