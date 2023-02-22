@@ -66,6 +66,7 @@
 		B3CF271E2980C785002EF9F9 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CF271D2980C785002EF9F9 /* Day.swift */; };
 		B3CF27202980C7A8002EF9F9 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CF271F2980C7A8002EF9F9 /* Month.swift */; };
 		B3CF27222980C7C6002EF9F9 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CF27212980C7C6002EF9F9 /* Entry.swift */; };
+		B3DE690029A6998D00ED158C /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DE68FF29A6998D00ED158C /* EditEntryView.swift */; };
 		F30BC473297F6D0200E340C1 /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = F30BC472297F6D0200E340C1 /* SwiftPieChart */; };
 /* End PBXBuildFile section */
 
@@ -169,6 +170,7 @@
 		B3CF271D2980C785002EF9F9 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		B3CF271F2980C7A8002EF9F9 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		B3CF27212980C7C6002EF9F9 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		B3DE68FF29A6998D00ED158C /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +346,7 @@
 				552619D92992BD0A0080AAB9 /* Constants.swift */,
 				552619D72992BCF70080AAB9 /* OpenAIService.swift */,
 				B3CF27092980C653002EF9F9 /* AddEntryView.swift */,
+				B3DE68FF29A6998D00ED158C /* EditEntryView.swift */,
 				B3CF270B2980C677002EF9F9 /* CalendarView.swift */,
 				B3CF270D2980C697002EF9F9 /* ContentView.swift */,
 				B3CF270F2980C6AE002EF9F9 /* DayCellView.swift */,
@@ -659,6 +662,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3CF27142980C6E6002EF9F9 /* HomeView.swift in Sources */,
+				B3DE690029A6998D00ED158C /* EditEntryView.swift in Sources */,
 				552619DA2992BD0A0080AAB9 /* Constants.swift in Sources */,
 				B3CF271A2980C737002EF9F9 /* WeekdaysView.swift in Sources */,
 				B3CF27102980C6AE002EF9F9 /* DayCellView.swift in Sources */,
