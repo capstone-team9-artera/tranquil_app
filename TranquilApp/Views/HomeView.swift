@@ -49,12 +49,15 @@ struct HomeView: View {
                 List {
                     ForEach(self.entryModelController.entries, id: \.id) { entry in
                         
-                        EntryRowView(entry: entry)
+                        EntryRowView(entryModelController: EntryModelController(), entry: entry)
                      
                     }.onDelete { (index) in
                         
                         self.entryModelController.deleteEntry(at: index)
                     }
+                    .toolbar {
+                                   EditButton()
+                               }
                 }.onAppear {
                     //Removes extra cells that are not being used.
                     UITableView.appearance().tableFooterView = UIView()
