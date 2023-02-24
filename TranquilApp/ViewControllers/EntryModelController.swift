@@ -26,9 +26,15 @@ class EntryModelController: ObservableObject {
 
         let newEntry = Entry(emotion: emotion, comment: comment, date: date)
         
+        print("type: ", type(of: newEntry.id))
         //count here
         let newCount = JournalCount(context: context)
-        newCount.timestamp = Date()
+        let newStressValue = NLPValue(context: context)
+        newCount.timestamp = date
+        newStressValue.id = newEntry.id
+        newStressValue.timestamp = date
+        // NLP logic here
+        newStressValue.stressValue = 0.8
         do {
             try context.save()
         } catch {

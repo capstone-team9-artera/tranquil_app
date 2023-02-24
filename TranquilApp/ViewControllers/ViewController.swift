@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
        
        // commented out so it doesn't keep crashing !!!
-        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
+//        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
        
         view.backgroundColor = .white
         self.title = "Home Page"
