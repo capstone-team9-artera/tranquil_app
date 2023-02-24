@@ -7,11 +7,14 @@
 
 import Foundation
 import Combine
+import CoreData
 
 class EntryModelController: ObservableObject {
     
     //MARK: - Properties
     @Published var entries: [Entry] = []
+    
+    private let context = PersistenceController.preview.container.viewContext
         
     init() {
         loadFromPersistentStore()
@@ -22,6 +25,16 @@ class EntryModelController: ObservableObject {
     func createEntry(emotion: Emotion, comment: String?, date: Date) {
 
         let newEntry = Entry(emotion: emotion, comment: comment, date: date)
+        
+        //count here
+        let newCount = JournalCount(context: context)
+        newCount.timestamp = Date()
+        do {
+            try context.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
         
         entries.append(newEntry)
         saveToPersistentStore()
