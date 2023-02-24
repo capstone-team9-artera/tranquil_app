@@ -40,12 +40,11 @@
 		9F508FEA298C49570068E0C5 /* GIF-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FE9298C49570068E0C5 /* GIF-Swift.swift */; };
 		9F508FF0298C53700068E0C5 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FEF298C53700068E0C5 /* SessionViewController.swift */; };
 		9F508FF6299082F60068E0C5 /* waterfall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F508FF5299082F60068E0C5 /* waterfall.gif */; };
+		9F5894DB29A95A5700084F58 /* NLPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5894D929A95A5700084F58 /* NLPViewController.swift */; };
+		9F5894DC29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9F5894DA29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel */; };
 		9F5C985C2991D0B60075E227 /* nightsky.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985B2991D0B60075E227 /* nightsky.gif */; };
 		9F5C985E2991D2470075E227 /* sand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985D2991D2470075E227 /* sand.gif */; };
 		9F5C98932995D6F50075E227 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C98922995D6F50075E227 /* AnimationView.swift */; };
-		9F5C98962995DD1E0075E227 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C98942995DD1E0075E227 /* Constants.swift */; };
-		9F5C98972995DD1E0075E227 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C98952995DD1E0075E227 /* OpenAIService.swift */; };
-		9F5C989A2995DD270075E227 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F5C98992995DD270075E227 /* Alamofire */; };
 		9F5C989E299B12940075E227 /* sunsetocean.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C989D299B12940075E227 /* sunsetocean.gif */; };
 		9FD70A4E29820E3D0078AA30 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4D29820E3D0078AA30 /* PageView.swift */; };
 		9FD70A5029820E510078AA30 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4F29820E510078AA30 /* PageViewController.swift */; };
@@ -70,9 +69,6 @@
 		B3CF27202980C7A8002EF9F9 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CF271F2980C7A8002EF9F9 /* Month.swift */; };
 		B3CF27222980C7C6002EF9F9 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CF27212980C7C6002EF9F9 /* Entry.swift */; };
 		F30BC473297F6D0200E340C1 /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = F30BC472297F6D0200E340C1 /* SwiftPieChart */; };
-		F30BC4762991EBDA00E340C1 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BC4742991EBD900E340C1 /* OpenAIService.swift */; };
-		F30BC4772991EBDA00E340C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BC4752991EBDA00E340C1 /* Constants.swift */; };
-		F30BC47A2991EC3900E340C1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F30BC4792991EC3900E340C1 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,11 +143,11 @@
 		9F508FE9298C49570068E0C5 /* GIF-Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIF-Swift.swift"; sourceTree = "<group>"; };
 		9F508FEF298C53700068E0C5 /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		9F508FF5299082F60068E0C5 /* waterfall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = waterfall.gif; sourceTree = "<group>"; };
+		9F5894D929A95A5700084F58 /* NLPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPViewController.swift; sourceTree = "<group>"; };
+		9F5894DA29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionSentimentClassifier.mlmodel; sourceTree = "<group>"; };
 		9F5C985B2991D0B60075E227 /* nightsky.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nightsky.gif; sourceTree = "<group>"; };
 		9F5C985D2991D2470075E227 /* sand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sand.gif; sourceTree = "<group>"; };
 		9F5C98922995D6F50075E227 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
-		9F5C98942995DD1E0075E227 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		9F5C98952995DD1E0075E227 /* OpenAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		9F5C989D299B12940075E227 /* sunsetocean.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sunsetocean.gif; sourceTree = "<group>"; };
 		9FD70A4D29820E3D0078AA30 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		9FD70A4F29820E510078AA30 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -177,8 +173,6 @@
 		B3CF271D2980C785002EF9F9 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		B3CF271F2980C7A8002EF9F9 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		B3CF27212980C7C6002EF9F9 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
-		F30BC4742991EBD900E340C1 /* OpenAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
-		F30BC4752991EBDA00E340C1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +292,7 @@
 		9F4423A2297BB28200E87DF2 /* TranquilApp */ = {
 			isa = PBXGroup;
 			children = (
+				9F5894D829A95A5700084F58 /* NLP */,
 				55DFFC5D2990795C00729B3D /* TranquilApp.entitlements */,
 				B38186B32980B54B0083A4ED /* Model */,
 				9F4423A3297BB28200E87DF2 /* AppDelegate.swift */,
@@ -367,6 +362,15 @@
 				9F5C98922995D6F50075E227 /* AnimationView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9F5894D829A95A5700084F58 /* NLP */ = {
+			isa = PBXGroup;
+			children = (
+				9F5894D929A95A5700084F58 /* NLPViewController.swift */,
+				9F5894DA29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel */,
+			);
+			path = NLP;
 			sourceTree = "<group>";
 		};
 		9F5C98602991D2540075E227 /* GIF-Swift */ = {
@@ -679,6 +683,7 @@
 				B38186CD2980C5200083A4ED /* MultiLineTextField.swift in Sources */,
 				B3CF27082980C5C9002EF9F9 /* EntryModelController.swift in Sources */,
 				B38186C52980C4300083A4ED /* Helper.swift in Sources */,
+				9F5894DB29A95A5700084F58 /* NLPViewController.swift in Sources */,
 				B38186CB2980C4FC0083A4ED /* SceneDelegate.swift in Sources */,
 				9F508FEA298C49570068E0C5 /* GIF-Swift.swift in Sources */,
 				9FD70A5729820EAB0078AA30 /* Landmark.swift in Sources */,
@@ -687,6 +692,7 @@
 				B3CF271E2980C785002EF9F9 /* Day.swift in Sources */,
 				9F4423A4297BB28200E87DF2 /* AppDelegate.swift in Sources */,
 				B3CF27202980C7A8002EF9F9 /* Month.swift in Sources */,
+				9F5894DC29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel in Sources */,
 				B3CF271C2980C767002EF9F9 /* Colors.swift in Sources */,
 				9F5C98932995D6F50075E227 /* AnimationView.swift in Sources */,
 				B3CF27122980C6C8002EF9F9 /* GridStack.swift in Sources */,
@@ -1257,14 +1263,6 @@
 				kind = branch;
 			};
 		};
-		F30BC4782991EC3900E340C1 /* XCRemoteSwiftPackageReference "alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/alamofire/alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1277,11 +1275,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F30BC471297F6D0200E340C1 /* XCRemoteSwiftPackageReference "SwiftPieChart" */;
 			productName = SwiftPieChart;
-		};
-		F30BC4792991EC3900E340C1 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F30BC4782991EC3900E340C1 /* XCRemoteSwiftPackageReference "alamofire" */;
-			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 
