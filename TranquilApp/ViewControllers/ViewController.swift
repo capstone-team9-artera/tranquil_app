@@ -29,9 +29,9 @@ class ViewController: UIViewController {
     private let background = UIHostingController(rootView: BackgroundWavesView())
     
     private func animate() {
-        UIView.animate(withDuration: 0.8, delay: 0.8, animations: {
+        UIView.animate(withDuration: 1, delay: 0.8, animations: {
             self.name.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
-            self.background.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//            self.background.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             self.breathingButton.layer.opacity = 0.8
             self.journalButton.layer.opacity = 0.8
             self.historyButton.layer.opacity = 0.8
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         
         name.textAlignment = .center
         name.text = "TRANQUIL"
-        name.textColor = .systemTeal
+        name.textColor = UIColor(PRIMARY_TEXT_COLOR)
         name.frame = CGRect(x: 25, y: 350, width: 350, height: 52)
         name.font = .systemFont(ofSize: 65, weight: UIFont.Weight(rawValue: 10))
         view.addSubview(name)
@@ -100,7 +100,9 @@ class ViewController: UIViewController {
     
     @objc private func addBackgroundWaves() {
 //        let background = UIHostingController(rootView: BackgroundWavesView())
-        background.view.frame = CGRect(x: 0, y: 300, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        background.view.frame = CGRect(x: 0, y: 300, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        background.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+
         background.didMove(toParent: self)
         background.modalPresentationStyle = .fullScreen
         view.addSubview(background.view)

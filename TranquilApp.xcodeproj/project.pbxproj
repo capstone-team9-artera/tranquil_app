@@ -40,6 +40,7 @@
 		9F508FEA298C49570068E0C5 /* GIF-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FE9298C49570068E0C5 /* GIF-Swift.swift */; };
 		9F508FF0298C53700068E0C5 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FEF298C53700068E0C5 /* SessionViewController.swift */; };
 		9F508FF6299082F60068E0C5 /* waterfall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F508FF5299082F60068E0C5 /* waterfall.gif */; };
+		9F5894D729A7F2E900084F58 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5894D629A7F2E900084F58 /* ColorConstants.swift */; };
 		9F5C985C2991D0B60075E227 /* nightsky.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985B2991D0B60075E227 /* nightsky.gif */; };
 		9F5C985E2991D2470075E227 /* sand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985D2991D2470075E227 /* sand.gif */; };
 		9F5C98932995D6F50075E227 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C98922995D6F50075E227 /* AnimationView.swift */; };
@@ -141,6 +142,7 @@
 		9F508FE9298C49570068E0C5 /* GIF-Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIF-Swift.swift"; sourceTree = "<group>"; };
 		9F508FEF298C53700068E0C5 /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		9F508FF5299082F60068E0C5 /* waterfall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = waterfall.gif; sourceTree = "<group>"; };
+		9F5894D629A7F2E900084F58 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		9F5C985B2991D0B60075E227 /* nightsky.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nightsky.gif; sourceTree = "<group>"; };
 		9F5C985D2991D2470075E227 /* sand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sand.gif; sourceTree = "<group>"; };
 		9F5C98922995D6F50075E227 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				9FD70A5329820E780078AA30 /* Pages */,
 				9F4423E9297BC67900E87DF2 /* BotResponse.swift */,
 				9F5C98602991D2540075E227 /* GIF-Swift */,
+				9F5894D629A7F2E900084F58 /* ColorConstants.swift */,
 				9F4423A9297BB28200E87DF2 /* Main.storyboard */,
 				9F4423AC297BB28300E87DF2 /* Assets.xcassets */,
 				9F4423AE297BB28300E87DF2 /* LaunchScreen.storyboard */,
@@ -659,6 +662,7 @@
 				B3CF27142980C6E6002EF9F9 /* HomeView.swift in Sources */,
 				552619DA2992BD0A0080AAB9 /* Constants.swift in Sources */,
 				B3CF271A2980C737002EF9F9 /* WeekdaysView.swift in Sources */,
+				9F5894D729A7F2E900084F58 /* ColorConstants.swift in Sources */,
 				B3CF27102980C6AE002EF9F9 /* DayCellView.swift in Sources */,
 				9F4423D7297BB3F400E87DF2 /* NotificationViewController.swift in Sources */,
 				B3CF270E2980C697002EF9F9 /* ContentView.swift in Sources */,
