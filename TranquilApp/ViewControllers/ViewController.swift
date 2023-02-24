@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     private var items:[HeartRate]?
     private var lastHeartRate = 0
     private var variability = 0
+    private let notify = NotificationHandler()
 
     private let breathingButton = UIButton()
     private let journalButton = UIButton()
@@ -62,10 +63,12 @@ class ViewController: UIViewController {
         if lastHeartRate != 0{
             //algorithm
             let currentHeartRate = Int(items![(length - 1)].value)
+            print("length ", length)
             print("Heart ", currentHeartRate)
             variability = Int(items![(length - 1)].value) - lastHeartRate
             if(variability > 7 && currentHeartRate > 85){
                 print(true)
+                notify.sendNotification()
                 didTapNotifButton()
             }
             lastHeartRate = currentHeartRate
