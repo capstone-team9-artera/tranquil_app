@@ -21,7 +21,7 @@ class NotificationHandler{
     
     func sendNotification(){
         var trigger: UNNotificationTrigger?
-        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
         let content = UNMutableNotificationContent()
         content.title = "anxiety warning"
         content.body = "are you okay?"

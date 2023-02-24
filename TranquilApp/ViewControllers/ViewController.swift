@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
+        notify.askPermission()
        
         view.backgroundColor = .white
         self.title = "Home Page"
