@@ -5,6 +5,7 @@
 //  Created by Heather Dinh on 1/18/23.
 //
 import SwiftUI
+import CoreData
 
 class SessionViewController: UIViewController {
     var name: String = "Default"
@@ -15,6 +16,8 @@ class SessionViewController: UIViewController {
     private let promptLabel = UILabel()
     private let myView = UIView(frame: CGRect())
     private let animation = AnimationView()
+    
+    private let context = PersistenceController.preview.container.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +80,16 @@ class SessionViewController: UIViewController {
         controller.didMove(toParent: self)
 //        controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true)
+        
+
+        let newCount = BreathingCount(context: context)
+        newCount.timestamp = Date()
+        do {
+            try context.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
 
 
     }

@@ -55,7 +55,6 @@ class ViewController: UIViewController {
         self.title = "Home Page"
         
         addBackgroundWaves()
-
         addBreathingButton()
         addJournalButton()
         addHistoryButton()
@@ -204,17 +203,10 @@ class ViewController: UIViewController {
     }
     
     @objc private func didTapJournalButton() {
-        let parent = UIViewController()
-        let controller = UIHostingController(rootView: ContentView())
-        parent.view.addSubview(controller.view)
-        controller.didMove(toParent: self)
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: false)
-        
-//        let rootVC = JournalViewController()
-//        let navVC = UINavigationController(rootViewController: rootVC)
-//        navVC.modalPresentationStyle = .fullScreen
-//        present(navVC, animated: false)
+        let rootVC = JournalViewController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: false)
     }
 
     @objc private func didTapHistoryButton() {

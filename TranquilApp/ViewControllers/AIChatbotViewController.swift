@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import CoreData
 
 class AIChatbotViewController: UIViewController {
     private let myView = UIView(frame: CGRect())
+    
+    private let context = PersistenceController.preview.container.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,16 @@ class AIChatbotViewController: UIViewController {
         controller.didMove(toParent: self)
         controller.modalPresentationStyle = .fullScreen
         view.addSubview(controller.view)
+        
+        let newCount = AICount(context: context)
+        newCount.timestamp = Date()
+        do {
+            try context.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+        
     }
 
     @objc private func dismissSelf() {
