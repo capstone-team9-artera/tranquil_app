@@ -112,10 +112,11 @@ var lastDay: [stressLevel] = [
     .init(day: "Fri.", dailyAvg: 74),
     .init(day: "Sat.", dailyAvg: 79)]
  */
-var lastDay: [stressLevel] = fill()
+var lastDay: [stressLevel] = fill(forCurrentWeek: false)
 
 //Current weeks data.
 //Current day, Daily HRV average.
+/*
 var currentDay: [stressLevel] = [
     .init(day: "Sun.", dailyAvg: 83),
     .init(day: "Mon.", dailyAvg: 109),
@@ -124,6 +125,8 @@ var currentDay: [stressLevel] = [
     .init(day: "Thu.", dailyAvg: 82),
     .init(day: "Fri.", dailyAvg: 60),
     .init(day: "Sat.", dailyAvg: 65)]
+*/
+var currentDay: [stressLevel] = fill(forCurrentWeek: true)
 
 let weekData = [
     (period: "Previous Week", data: lastDay),
@@ -441,6 +444,7 @@ func fill() -> [stressLevel]
 }
 */
 
+/*
 //I believe this may be working, but it does not diferentiate between the current week
 // and the previous week.
 func fill() -> [stressLevel] {
@@ -481,60 +485,44 @@ func fill() -> [stressLevel] {
     
     return week
 }
+*/
 
-/*
 func fill(forCurrentWeek: Bool) -> [stressLevel] {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var items: [HeartRate]?
     let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
-    
-    let startDate: Date
-    let endDate: Date
-    if forCurrentWeek {
-        // Calculate the start and end dates of the current week
-        let calendar = Calendar.current
-        let now = Date()
-        var startOfCurrentWeek: Date = now
-        calendar.dateInterval(of: .weekOfYear, start: &startOfCurrentWeek, interval: nil, for: now)
-        startDate = startOfCurrentWeek
-        endDate = calendar.date(byAdding: .day, value: 6, to: startOfCurrentWeek)!
-    } else {
-        // Calculate the start and end dates of the previous week
-        let calendar = Calendar.current
-        let now = Date()
-        var startOfCurrentWeek: Date = now
-        calendar.dateInterval(of: .weekOfYear, start: &startOfCurrentWeek, interval: nil, for: now)
-        let startOfPreviousWeek = calendar.date(byAdding: .day, value: -7, to: startOfCurrentWeek)!
-        startDate = startOfPreviousWeek
-        endDate = calendar.date(byAdding: .day, value: 6, to: startOfPreviousWeek)!
-    }
-    
-    // Configure the fetch request to only fetch HeartRate objects within the date range
-    let predicate = NSPredicate(format: "timestamp >= %@ AND timestamp <= %@", startDate as NSDate, endDate as NSDate)
-    fetchRequest.predicate = predicate
-    
     let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
     fetchRequest.sortDescriptors = [sort]
-    
-    let items: [HeartRate]
     do {
         items = try context.fetch(fetchRequest)
     } catch {
-        print("Cannot fetch HeartRates")
-        return []
+        print("Cannot fetch HeartRate")
     }
     
-    // Calculate the daily averages for the selected date range
     var totals: [Int] = Array(repeating: 0, count: 7)
     var counts: [Int] = Array(repeating: 0, count: 7)
-
+    
     let calendar = Calendar.current
     
-    items.forEach { heartRate in
+    let today = Date()
+    let weekStart = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!
+    let prevWeekStart = calendar.date(byAdding: .weekOfYear, value: -1, to: weekStart)!
+    
+    items?.forEach { heartRate in
         if let date = heartRate.timestamp {
             let weekday = calendar.component(.weekday, from: date)
             if weekday >= 1 && weekday <= 7 {
-                counts[weekday - 1] += 1
-                totals[weekday - 1] += Int(heartRate.value)
+                if forCurrentWeek {
+                    if date >= weekStart {
+                        counts[weekday - 1] += 1
+                        totals[weekday - 1] += Int(heartRate.value)
+                    }
+                } else {
+                    if date >= prevWeekStart && date < weekStart {
+                        counts[weekday - 1] += 1
+                        totals[weekday - 1] += Int(heartRate.value)
+                    }
+                }
             }
         }
     }
@@ -547,6 +535,7 @@ func fill(forCurrentWeek: Bool) -> [stressLevel] {
             week.append(.init(day: days[i], dailyAvg: Double(avg)))
         }
     }
+    
     return week
 }
-*/
+
