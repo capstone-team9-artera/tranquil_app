@@ -135,7 +135,7 @@ let weekData = [
 //Function to determine the overall average stress level for the last week.
 func weeklyStressAverage(_ week: [stressLevel]) -> Double {
     var total = 0.0
-    var counter = 1.0
+    var counter = 0.0
     for stressLevel in week
     {
         total += stressLevel.dailyAvg
