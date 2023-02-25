@@ -17,44 +17,47 @@ struct HomeView: View {
     @State var docID = ""
     @State var remove = false
     
-//    init() {
-//
-//        UINavigationBar.appearance().backgroundColor = .systemRed
-//
-//         UINavigationBar.appearance().largeTitleTextAttributes = [
-//            .foregroundColor: UIColor.white]
-//
-//    }
-//
+    init() {
+
+        UINavigationBar.appearance().backgroundColor = .systemRed
+
+         UINavigationBar.appearance().largeTitleTextAttributes = [
+            .foregroundColor: UIColor.white]
+
+    }
+
     var body: some View {
 //        NavigationView {
         ZStack(alignment: .bottomTrailing) {
             
             VStack(spacing: 0){
                 
-//                HStack(alignment: .center) {
-//
-//
-//                    Text("My Entry").font(.title).foregroundColor(.white)
-//
-//                    Spacer()
+                HStack(alignment: .center) {
+
+
+                    Text("My Entries").font(.title).foregroundColor(.red)
+
+                    Spacer()
 //                    NavigationLink(destination: CalendarView(start: Date(), monthsToShow: 1, daysSelectable: true, entryController: entryModelController)) {
-//                        Text("Calendar").foregroundColor(.white)
+//                        Text("Calendar").foregroundColor(.red)
 //                    }
-//
-//
-//                }.padding()
-//                    .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
-//                    .background(Color.red)
+
+
+                }.padding()
+                    .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
+                
                 List {
                     ForEach(self.entryModelController.entries, id: \.id) { entry in
                         
-                        EntryRowView(entry: entry)
+                        EntryRowView(entryModelController: EntryModelController(), entry: entry)
                      
                     }.onDelete { (index) in
                         
                         self.entryModelController.deleteEntry(at: index)
                     }
+                    .toolbar {
+                                   EditButton()
+                               }
                 }.onAppear {
                     //Removes extra cells that are not being used.
                     UITableView.appearance().tableFooterView = UIView()

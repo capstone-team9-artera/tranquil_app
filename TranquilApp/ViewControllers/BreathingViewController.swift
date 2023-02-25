@@ -24,19 +24,19 @@ class BreathingViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
         
         
-        quickSession.name = "QuickSession"
+        quickSession.name = "Balance"
         quickSession.gifName = "sunsetocean"
         quickSession.loadViewIfNeeded()
         
-        homeostasisSession.name = "Homeostasis"
+        homeostasisSession.name = "Relax"
         homeostasisSession.gifName = "waterfall"
         homeostasisSession.loadViewIfNeeded()
         
-        decompressionSession.name = "Decompression"
+        decompressionSession.name = "Tranquil"
         decompressionSession.gifName = "nightsky"
         decompressionSession.loadViewIfNeeded()
         
-        customSession.name = "Custom"
+        customSession.name = "Focus"
         customSession.gifName = "sand"
         customSession.loadViewIfNeeded()
         

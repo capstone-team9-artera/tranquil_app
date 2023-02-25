@@ -8,25 +8,54 @@
 import SwiftUI
 
 struct EntryRowView: View {
+    @ObservedObject var entryModelController: EntryModelController
     var entry: Entry
-    
+    @State private var updatedComment: String
+
+    init(entryModelController: EntryModelController, entry: Entry) {
+        self.entryModelController = entryModelController
+        self.entry = entry
+        self._updatedComment = State(initialValue: entry.comment ?? "")
+    }
+
     var body: some View {
-  ZStack {
-  
-  Rectangle().fill(Color(UIColor.systemBackground)).cornerRadius(10).shadow(color: .gray, radius: 5, x: 1, y: 1)
-        HStack {
-            VStack {
-            Text(entry.monthString)
-            Text("\(entry.dayAsInt)")
-            
+        ZStack {
+            Rectangle()
+                .fill(Color(UIColor.systemBackground))
+                .cornerRadius(10)
+                .shadow(color: .gray, radius: 5, x: 1, y: 1)
+
+            HStack {
+                VStack {
+                    Text(entry.monthString)
+                    Text("\(entry.dayAsInt)")
+                }
+
+                //update entry comment
+                TextEditor(text: $updatedComment)
+                    .font(.system(size: 16))
+                    .bold()
+                    .frame(minHeight: 50)
+                    .lineSpacing(10)
+                    .onAppear {
+                        UITextView.appearance().backgroundColor = .clear
+                    }
+                    .onChange(of: updatedComment) { value in
+                        entryModelController.updateEntryComment(entry: entry, comment: updatedComment)
+                    }
+                
+                Spacer()
+                entryImage()
+                
+                Image(systemName: "square.and.arrow.down")
+                    .foregroundColor(.blue)
+                    .onTapGesture {
+                        entryModelController.updateEntryComment(entry: entry, comment: updatedComment)
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
+                    }
             }
-            Text(entry.comment ?? "No comment made.").font(.title).bold()
-            
-            Spacer()
-            
-            entryImage()
-           
-            }.foregroundColor(entry.emotion.moodColor).padding()
+            .foregroundColor(entry.emotion.moodColor)
+            .padding()
         }
     }
     
@@ -45,8 +74,8 @@ struct EntryRowView: View {
     }
 }
 
-struct MoodRowView_Previews: PreviewProvider {
+struct EntryRowView_Previews: PreviewProvider {
     static var previews: some View {
-        EntryRowView(entry: Entry(emotion: Emotion(state: .happy, color: .happyColor), comment: "Test", date: Date()))
+        EntryRowView(entryModelController: EntryModelController(), entry: Entry(emotion: Emotion(state: .happy, color: .happyColor), comment: "Test", date: Date()))
     }
 }

@@ -22,7 +22,7 @@ public struct CalendarView: View {
     self.selectableDays = daysSelectable
     self.entryModelController = entryController
     }
-
+//push date into update entry comment to push another page to open page 
     public var body: some View {
         
         VStack {
