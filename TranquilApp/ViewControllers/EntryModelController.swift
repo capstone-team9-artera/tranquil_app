@@ -23,12 +23,57 @@ class EntryModelController: ObservableObject {
     
     //MARK: - CRUD Functions
     func createEntry(emotion: Emotion, comment: String?, date: Date) {
-
         let newEntry = Entry(emotion: emotion, comment: comment, date: date)
         
-        //count here
+        //count and stress value here
         let newCount = JournalCount(context: context)
-        newCount.timestamp = Date()
+        let newStressValue = NLPValue(context: context)
+        newCount.timestamp = date
+        newStressValue.id = newEntry.id
+        newStressValue.timestamp = date
+        
+        let model = EmotionSentimentClassifier()
+        var calculatedStress = 0.0
+
+        // string parsing
+        let trimmedComment = comment?.trimmingCharacters(in: .whitespacesAndNewlines.union(.init(charactersIn: "\"")))
+            .replacingOccurrences(of: "’", with: "")                // this was a pain...need the slanted apostrophe
+        let punctuation = CharacterSet(charactersIn: ".;/!?")
+        let commentArr = trimmedComment?.components(separatedBy: punctuation).filter({ $0 != ""})
+        
+        // NLP on each sentence, average our for total calculated stress
+        commentArr?.forEach {
+            do {
+                let prediction = try model.prediction(text: $0)
+                switch (prediction.label) {
+                case "0":
+//                    print("sadness")
+                    calculatedStress += 0.5
+                case "1":
+//                    print("joy")
+                    calculatedStress += 0.1
+                case "2":
+//                    print("love")
+                    calculatedStress += 0.1
+                case "3":
+//                    print("anger")
+                    calculatedStress += 0.8
+                default:
+//                    print("fear")
+                    calculatedStress += 0.8
+                }
+            } catch {
+                print(error)
+            }
+        }
+        
+        if(trimmedComment == nil) {
+            calculatedStress = 0.0
+        } else {
+            calculatedStress = calculatedStress / Double(commentArr?.count ?? 1)
+        }
+        
+        newStressValue.stressValue = calculatedStress
         do {
             try context.save()
         } catch {
@@ -44,7 +89,6 @@ class EntryModelController: ObservableObject {
     func deleteEntry(at offset: IndexSet) {
         
         guard let index = Array(offset).first else { return }
-     print("INDEX: \(index)")
         entries.remove(at: index)
         
         saveToPersistentStore()
