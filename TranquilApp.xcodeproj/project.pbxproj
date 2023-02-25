@@ -12,6 +12,9 @@
 		552619DD2992BD2A0080AAB9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 552619DC2992BD2A0080AAB9 /* Alamofire */; };
 		55C0CA7529A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
 		55C0CA7629A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
+		55C0CA7829A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */; };
+		55C0CA7929A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */; };
+		55C0CA7B29A9E10D006111F3 /* TranquilWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		55DFFC2D29906DDB00729B3D /* TranquilWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */; };
 		55DFFC2F29906DDB00729B3D /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2E29906DDB00729B3D /* WatchView.swift */; };
 		55DFFC3129906DDE00729B3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55DFFC3029906DDE00729B3D /* Assets.xcassets */; };
@@ -76,6 +79,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		55C0CA7C29A9E10D006111F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9F442398297BB28200E87DF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55DFFC2929906DDB00729B3D;
+			remoteInfo = "TranquilWatch Watch App";
+		};
 		55DFFC3A29906DDE00729B3D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9F442398297BB28200E87DF2 /* Project object */;
@@ -106,10 +116,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		55C0CA7E29A9E10D006111F3 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				55C0CA7B29A9E10D006111F3 /* TranquilWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		552619D72992BCF70080AAB9 /* OpenAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		552619D92992BD0A0080AAB9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		55C0CA7429A84241006111F3 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TranquilWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranquilWatchApp.swift; sourceTree = "<group>"; };
 		55DFFC2E29906DDB00729B3D /* WatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
@@ -230,6 +255,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55C0CA7A29A9E10D006111F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		55DFFC2B29906DDB00729B3D /* TranquilWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				55C0CA7429A84241006111F3 /* NotificationHandler.swift */,
+				55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */,
 				55DFFC552990712100729B3D /* DataModels.xcdatamodeld */,
 				55DFFC592990719500729B3D /* Persistence.swift */,
 				9F4423A2297BB28200E87DF2 /* TranquilApp */,
@@ -281,6 +314,7 @@
 				55DFFC3C29906DDF00729B3D /* TranquilWatch Watch AppTests */,
 				55DFFC4629906DDF00729B3D /* TranquilWatch Watch AppUITests */,
 				9F4423A1297BB28200E87DF2 /* Products */,
+				55C0CA7A29A9E10D006111F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -476,10 +510,12 @@
 				9F44239C297BB28200E87DF2 /* Sources */,
 				9F44239D297BB28200E87DF2 /* Frameworks */,
 				9F44239E297BB28200E87DF2 /* Resources */,
+				55C0CA7E29A9E10D006111F3 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				55C0CA7D29A9E10D006111F3 /* PBXTargetDependency */,
 			);
 			name = TranquilApp;
 			packageProductDependencies = (
@@ -650,6 +686,7 @@
 				55DFFC5B2990719500729B3D /* Persistence.swift in Sources */,
 				55C0CA7629A84241006111F3 /* NotificationHandler.swift in Sources */,
 				55DFFC582990712100729B3D /* DataModels.xcdatamodeld in Sources */,
+				55C0CA7929A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */,
 				55DFFC2D29906DDB00729B3D /* TranquilWatchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -718,6 +755,7 @@
 				9FD70A5029820E510078AA30 /* PageViewController.swift in Sources */,
 				9F4423DE297BB87D00E87DF2 /* HistoryViewController.swift in Sources */,
 				9F4423E0297BB88C00E87DF2 /* AIChatbotViewController.swift in Sources */,
+				55C0CA7829A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */,
 				B3CF27162980C6FA002EF9F9 /* MonthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -742,6 +780,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		55C0CA7D29A9E10D006111F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55DFFC2929906DDB00729B3D /* TranquilWatch Watch App */;
+			targetProxy = 55C0CA7C29A9E10D006111F3 /* PBXContainerItemProxy */;
+		};
 		55DFFC3B29906DDE00729B3D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55DFFC2929906DDB00729B3D /* TranquilWatch Watch App */;

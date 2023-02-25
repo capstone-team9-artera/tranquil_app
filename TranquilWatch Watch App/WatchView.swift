@@ -14,6 +14,7 @@ struct WatchView: View {
     
     @State var count = 0
     
+    @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
     
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -22,6 +23,8 @@ struct WatchView: View {
     let heartRateQuantity = HKUnit(from: "count/min")
     private var heartRateVariability = HKUnit(from: "count/min")
     @State var items:[HeartRate]?
+    
+    private let notify = NotificationHandler()
 
     var body: some View {
         VStack {
@@ -38,6 +41,7 @@ struct WatchView: View {
      func start() {
         if HKHealthStore.isHealthDataAvailable() {
             authorizeKit()
+            notify.askPermission()
             startHeartRateQuery(quantityTypeIdentifier: .heartRate)
         }
     }
@@ -102,6 +106,17 @@ struct WatchView: View {
                 }
             }
         }
+        
+        if connectivityManager.notificationMessage != nil{
+            print("message ")
+            let temp =
+            connectivityManager.notificationMessage!.text
+            notify.sendNotification()
+
+        } else {
+            print("no message ")
+        }
+
     }
     
 }
