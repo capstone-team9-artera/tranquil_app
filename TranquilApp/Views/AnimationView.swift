@@ -21,11 +21,8 @@ struct AnimationView: View {
     @State private var circularMotion = false
     @State private var displayHold = false
     @State private var displayBreathOut = false
-    @State private var hideBreathOut = false
     @State private var hideBreathIn = false
-    @State private var hideHold = false
     @State private var displaySecondHold = false
-    @State private var hideSecondHold = false
     @State private var finishText = false
     
     let fillGradient = LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .bottomLeading, endPoint: .topTrailing)
@@ -99,17 +96,20 @@ struct AnimationView: View {
                                 self.breathIn.toggle()
                             }
                             
-                            withAnimation(Animation.linear(duration: breatheInDuration).delay(loopDuration)) {
-//                                self.breathIn.toggle()
-                            }
-                            
                             withAnimation(Animation.linear(duration: holdDuration).delay(breatheInDuration)) {
                                 self.hold.toggle()
                             }
                             
                             withAnimation(Animation.linear(duration: breatheOutDuration).delay(breatheInDuration + holdDuration)) {
                                 self.breathIn.toggle()
-                                self.breathOut.toggle()
+                            }
+                            
+                            withAnimation(Animation.linear(duration: breatheInDuration).delay(loopDuration)) {
+                                self.breathIn.toggle()
+                            }
+                            
+                            withAnimation(Animation.linear(duration: breatheOutDuration).delay(breatheInDuration + holdDuration + loopDuration)) {
+                                self.breathIn.toggle()
                             }
 
                             withAnimation(Animation.linear(duration: holdDuration).delay(breatheInDuration + holdDuration + holdDuration)) {
@@ -122,7 +122,6 @@ struct AnimationView: View {
                             .foregroundColor(Color.white)
                             .scaleEffect(1)
                             .opacity(displayBreathOut ? 1 : 0)
-//                            .opacity(hideBreathOut ? 0 : 1)
                             .onAppear() {
                                 withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration)) {
                                     self.displayBreathOut.toggle()
@@ -138,19 +137,12 @@ struct AnimationView: View {
                                 withAnimation(Animation.easeInOut(duration: 0.4).delay(loopDuration + breatheInDuration + holdDuration + breatheOutDuration)) {
                                     self.displayBreathOut.toggle()
                                 }
-
-                                
-//                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration)) {
-//                                    self.hideBreathOut.toggle()
-//                                }
-                                
                             }
                         
                         Text("Hold")
                             .foregroundColor(Color.white)
                             .scaleEffect(1)
                             .opacity(displaySecondHold ? 1 : 0)
-                            .opacity(hideSecondHold ? 0 : 1)
                             .onAppear() {
                                 withAnimation(Animation.easeIn(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration)) {
                                     self.displaySecondHold.toggle()
@@ -167,8 +159,6 @@ struct AnimationView: View {
                                 withAnimation(Animation.easeOut(duration: 0.4).delay(loopDuration * 2)) {
                                     self.displaySecondHold.toggle()
                                 }
-
-                                
                             }
                         
                         
@@ -176,7 +166,6 @@ struct AnimationView: View {
                             .foregroundColor(Color.white)
                             .scaleEffect(1)
                             .opacity(displayHold ? 1 : 0)
-//                            .opacity(hideHold ? 0 : 1)
                             .onAppear() {
                                 withAnimation(Animation.easeIn(duration: 0.4).delay(breatheInDuration)) {
                                     self.displayHold.toggle()
@@ -198,7 +187,6 @@ struct AnimationView: View {
                         Text("Breathe In")
                             .foregroundColor(Color.white)
                             .opacity(hideBreathIn ? 0 : 1)
-//                            .opacity(breathIn ? 1 : 0)
                             .onAppear() {
                                 withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration)) {
                                     self.hideBreathIn.toggle()
@@ -209,14 +197,6 @@ struct AnimationView: View {
                                 withAnimation(Animation.easeOut(duration: 0.4).delay(loopDuration + breatheInDuration)) {
                                     self.hideBreathIn.toggle()
                                 }
-
-//                                withAnimation(Animation.easeIn(duration: 0.2).delay(breatheInDuration)) {
-//                                    self.hideBreathIn.toggle()
-//                                }
-//                                withAnimation(Animation.easeOut(duration: 0.2).delay(breatheInDuration + 0.2)) {
-//                                    self.hideBreathIn.toggle()
-//                                }
-
                             }
                         
                         Text("Great Job")
