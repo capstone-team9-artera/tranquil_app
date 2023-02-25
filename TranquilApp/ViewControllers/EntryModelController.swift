@@ -62,8 +62,6 @@ class EntryModelController: ObservableObject {
 //                    print("fear")
                     calculatedStress += 0.8
                 }
-                print(prediction.label, ", ", calculatedStress)
-                
             } catch {
                 print(error)
             }
