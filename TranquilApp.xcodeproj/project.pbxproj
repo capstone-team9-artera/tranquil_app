@@ -10,6 +10,8 @@
 		552619D82992BCF70080AAB9 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552619D72992BCF70080AAB9 /* OpenAIService.swift */; };
 		552619DA2992BD0A0080AAB9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552619D92992BD0A0080AAB9 /* Constants.swift */; };
 		552619DD2992BD2A0080AAB9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 552619DC2992BD2A0080AAB9 /* Alamofire */; };
+		55C0CA7529A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
+		55C0CA7629A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
 		55DFFC2D29906DDB00729B3D /* TranquilWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */; };
 		55DFFC2F29906DDB00729B3D /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2E29906DDB00729B3D /* WatchView.swift */; };
 		55DFFC3129906DDE00729B3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55DFFC3029906DDE00729B3D /* Assets.xcassets */; };
@@ -21,6 +23,7 @@
 		55DFFC582990712100729B3D /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC552990712100729B3D /* DataModels.xcdatamodeld */; };
 		55DFFC5A2990719500729B3D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC592990719500729B3D /* Persistence.swift */; };
 		55DFFC5B2990719500729B3D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC592990719500729B3D /* Persistence.swift */; };
+		9F0728F529AA9BB1006DABC7 /* Animation3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0728F429AA9BB1006DABC7 /* Animation3View.swift */; };
 		9F4423A4297BB28200E87DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423A3297BB28200E87DF2 /* AppDelegate.swift */; };
 		9F4423A8297BB28200E87DF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423A7297BB28200E87DF2 /* ViewController.swift */; };
 		9F4423AB297BB28200E87DF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F4423A9297BB28200E87DF2 /* Main.storyboard */; };
@@ -41,10 +44,13 @@
 		9F508FF0298C53700068E0C5 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FEF298C53700068E0C5 /* SessionViewController.swift */; };
 		9F508FF6299082F60068E0C5 /* waterfall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F508FF5299082F60068E0C5 /* waterfall.gif */; };
 		9F5894D729A7F2E900084F58 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5894D629A7F2E900084F58 /* ColorConstants.swift */; };
+		9F5894DC29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9F5894DA29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel */; };
 		9F5C985C2991D0B60075E227 /* nightsky.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985B2991D0B60075E227 /* nightsky.gif */; };
 		9F5C985E2991D2470075E227 /* sand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985D2991D2470075E227 /* sand.gif */; };
 		9F5C98932995D6F50075E227 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5C98922995D6F50075E227 /* AnimationView.swift */; };
 		9F5C989E299B12940075E227 /* sunsetocean.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C989D299B12940075E227 /* sunsetocean.gif */; };
+		9F6DA4CD29A9D86400DE2320 /* Animation2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6DA4CC29A9D86400DE2320 /* Animation2View.swift */; };
+		9F6DA4CF29A9F2C100DE2320 /* Animation4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6DA4CE29A9F2C100DE2320 /* Animation4View.swift */; };
 		9FD70A4E29820E3D0078AA30 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4D29820E3D0078AA30 /* PageView.swift */; };
 		9FD70A5029820E510078AA30 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4F29820E510078AA30 /* PageViewController.swift */; };
 		9FD70A5229820E6B0078AA30 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5129820E6B0078AA30 /* PageControl.swift */; };
@@ -103,6 +109,7 @@
 /* Begin PBXFileReference section */
 		552619D72992BCF70080AAB9 /* OpenAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		552619D92992BD0A0080AAB9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		55C0CA7429A84241006111F3 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TranquilWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranquilWatchApp.swift; sourceTree = "<group>"; };
 		55DFFC2E29906DDB00729B3D /* WatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
@@ -118,6 +125,7 @@
 		55DFFC592990719500729B3D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		55DFFC5C299078AA00729B3D /* TranquilWatch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TranquilWatch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		55DFFC5D2990795C00729B3D /* TranquilApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TranquilApp.entitlements; sourceTree = "<group>"; };
+		9F0728F429AA9BB1006DABC7 /* Animation3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation3View.swift; sourceTree = "<group>"; };
 		9F4423A0297BB28200E87DF2 /* TranquilApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TranquilApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F4423A3297BB28200E87DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F4423A7297BB28200E87DF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,10 +150,13 @@
 		9F508FEF298C53700068E0C5 /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		9F508FF5299082F60068E0C5 /* waterfall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = waterfall.gif; sourceTree = "<group>"; };
 		9F5894D629A7F2E900084F58 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
+		9F5894DA29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionSentimentClassifier.mlmodel; sourceTree = "<group>"; };
 		9F5C985B2991D0B60075E227 /* nightsky.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nightsky.gif; sourceTree = "<group>"; };
 		9F5C985D2991D2470075E227 /* sand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sand.gif; sourceTree = "<group>"; };
 		9F5C98922995D6F50075E227 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		9F5C989D299B12940075E227 /* sunsetocean.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sunsetocean.gif; sourceTree = "<group>"; };
+		9F6DA4CC29A9D86400DE2320 /* Animation2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation2View.swift; sourceTree = "<group>"; };
+		9F6DA4CE29A9F2C100DE2320 /* Animation4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation4View.swift; sourceTree = "<group>"; };
 		9FD70A4D29820E3D0078AA30 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		9FD70A4F29820E510078AA30 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9FD70A5129820E6B0078AA30 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
@@ -259,6 +270,7 @@
 		9F442397297BB28200E87DF2 = {
 			isa = PBXGroup;
 			children = (
+				55C0CA7429A84241006111F3 /* NotificationHandler.swift */,
 				55DFFC552990712100729B3D /* DataModels.xcdatamodeld */,
 				55DFFC592990719500729B3D /* Persistence.swift */,
 				9F4423A2297BB28200E87DF2 /* TranquilApp */,
@@ -300,6 +312,7 @@
 				9F5C98602991D2540075E227 /* GIF-Swift */,
 				9F5894D629A7F2E900084F58 /* ColorConstants.swift */,
 				9F4423A9297BB28200E87DF2 /* Main.storyboard */,
+				9F5894DA29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel */,
 				9F4423AC297BB28300E87DF2 /* Assets.xcassets */,
 				9F4423AE297BB28300E87DF2 /* LaunchScreen.storyboard */,
 				9F4423B1297BB28300E87DF2 /* Info.plist */,
@@ -355,6 +368,9 @@
 				9F4423E5297BC41B00E87DF2 /* HistoryView.swift */,
 				9F4423E7297BC63400E87DF2 /* AIChatbotView.swift */,
 				9F5C98922995D6F50075E227 /* AnimationView.swift */,
+				9F6DA4CC29A9D86400DE2320 /* Animation2View.swift */,
+				9F0728F429AA9BB1006DABC7 /* Animation3View.swift */,
+				9F6DA4CE29A9F2C100DE2320 /* Animation4View.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -630,6 +646,7 @@
 			files = (
 				55DFFC2F29906DDB00729B3D /* WatchView.swift in Sources */,
 				55DFFC5B2990719500729B3D /* Persistence.swift in Sources */,
+				55C0CA7629A84241006111F3 /* NotificationHandler.swift in Sources */,
 				55DFFC582990712100729B3D /* DataModels.xcdatamodeld in Sources */,
 				55DFFC2D29906DDB00729B3D /* TranquilWatchApp.swift in Sources */,
 			);
@@ -657,6 +674,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3CF27142980C6E6002EF9F9 /* HomeView.swift in Sources */,
+				9F0728F529AA9BB1006DABC7 /* Animation3View.swift in Sources */,
 				552619DA2992BD0A0080AAB9 /* Constants.swift in Sources */,
 				B3CF271A2980C737002EF9F9 /* WeekdaysView.swift in Sources */,
 				9F5894D729A7F2E900084F58 /* ColorConstants.swift in Sources */,
@@ -669,12 +687,16 @@
 				B3CF27082980C5C9002EF9F9 /* EntryModelController.swift in Sources */,
 				B38186C52980C4300083A4ED /* Helper.swift in Sources */,
 				B38186CB2980C4FC0083A4ED /* SceneDelegate.swift in Sources */,
+				9F6DA4CF29A9F2C100DE2320 /* Animation4View.swift in Sources */,
 				9F508FEA298C49570068E0C5 /* GIF-Swift.swift in Sources */,
 				9F4423E8297BC63400E87DF2 /* AIChatbotView.swift in Sources */,
 				9F4423A8297BB28200E87DF2 /* ViewController.swift in Sources */,
 				B3CF271E2980C785002EF9F9 /* Day.swift in Sources */,
+				55C0CA7529A84241006111F3 /* NotificationHandler.swift in Sources */,
 				9F4423A4297BB28200E87DF2 /* AppDelegate.swift in Sources */,
 				B3CF27202980C7A8002EF9F9 /* Month.swift in Sources */,
+				9F6DA4CD29A9D86400DE2320 /* Animation2View.swift in Sources */,
+				9F5894DC29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel in Sources */,
 				B3CF271C2980C767002EF9F9 /* Colors.swift in Sources */,
 				9F5C98932995D6F50075E227 /* AnimationView.swift in Sources */,
 				B3CF27122980C6C8002EF9F9 /* GridStack.swift in Sources */,

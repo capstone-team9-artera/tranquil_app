@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     private var items:[HeartRate]?
     private var lastHeartRate = 0
     private var variability = 0
+    private let notify = NotificationHandler()
 
     private let breathingButton = UIButton()
     private let journalButton = UIButton()
@@ -48,8 +49,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
+       
+       // comment this out so it doesn't keep crashing !!!
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
+        notify.askPermission()
+
        
         view.backgroundColor = .white
         self.title = "Home Page"
@@ -83,10 +87,12 @@ class ViewController: UIViewController {
         if lastHeartRate != 0{
             //algorithm
             let currentHeartRate = Int(items![(length - 1)].value)
+            print("length ", length)
             print("Heart ", currentHeartRate)
             variability = Int(items![(length - 1)].value) - lastHeartRate
             if(variability > 7 && currentHeartRate > 85){
                 print(true)
+                notify.sendNotification()
                 didTapNotifButton()
             }
             lastHeartRate = currentHeartRate
