@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     private var lastHeartRate = 0
     private var variability = 0
     private let notify = NotificationHandler()
+    @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
 
     private let breathingButton = UIButton()
     private let journalButton = UIButton()
@@ -71,6 +72,7 @@ class ViewController: UIViewController {
             if(variability > 7 && currentHeartRate > 85){
                 print(true)
                 notify.sendNotification()
+                connectivityManager.send(String("notify"))
                 didTapNotifButton()
             }
             lastHeartRate = currentHeartRate
