@@ -10,6 +10,8 @@
 		552619D82992BCF70080AAB9 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552619D72992BCF70080AAB9 /* OpenAIService.swift */; };
 		552619DA2992BD0A0080AAB9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552619D92992BD0A0080AAB9 /* Constants.swift */; };
 		552619DD2992BD2A0080AAB9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 552619DC2992BD2A0080AAB9 /* Alamofire */; };
+		55C0CA7529A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
+		55C0CA7629A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
 		55DFFC2D29906DDB00729B3D /* TranquilWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */; };
 		55DFFC2F29906DDB00729B3D /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DFFC2E29906DDB00729B3D /* WatchView.swift */; };
 		55DFFC3129906DDE00729B3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55DFFC3029906DDE00729B3D /* Assets.xcassets */; };
@@ -103,6 +105,7 @@
 /* Begin PBXFileReference section */
 		552619D72992BCF70080AAB9 /* OpenAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		552619D92992BD0A0080AAB9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		55C0CA7429A84241006111F3 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TranquilWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranquilWatchApp.swift; sourceTree = "<group>"; };
 		55DFFC2E29906DDB00729B3D /* WatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
@@ -260,6 +263,7 @@
 		9F442397297BB28200E87DF2 = {
 			isa = PBXGroup;
 			children = (
+				55C0CA7429A84241006111F3 /* NotificationHandler.swift */,
 				55DFFC552990712100729B3D /* DataModels.xcdatamodeld */,
 				55DFFC592990719500729B3D /* Persistence.swift */,
 				9F4423A2297BB28200E87DF2 /* TranquilApp */,
@@ -632,6 +636,7 @@
 			files = (
 				55DFFC2F29906DDB00729B3D /* WatchView.swift in Sources */,
 				55DFFC5B2990719500729B3D /* Persistence.swift in Sources */,
+				55C0CA7629A84241006111F3 /* NotificationHandler.swift in Sources */,
 				55DFFC582990712100729B3D /* DataModels.xcdatamodeld in Sources */,
 				55DFFC2D29906DDB00729B3D /* TranquilWatchApp.swift in Sources */,
 			);
@@ -675,6 +680,7 @@
 				9F4423E8297BC63400E87DF2 /* AIChatbotView.swift in Sources */,
 				9F4423A8297BB28200E87DF2 /* ViewController.swift in Sources */,
 				B3CF271E2980C785002EF9F9 /* Day.swift in Sources */,
+				55C0CA7529A84241006111F3 /* NotificationHandler.swift in Sources */,
 				9F4423A4297BB28200E87DF2 /* AppDelegate.swift in Sources */,
 				B3CF27202980C7A8002EF9F9 /* Month.swift in Sources */,
 				B3CF271C2980C767002EF9F9 /* Colors.swift in Sources */,
