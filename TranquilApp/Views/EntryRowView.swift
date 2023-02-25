@@ -47,7 +47,7 @@ struct EntryRowView: View {
                 Spacer()
                 entryImage()
                 
-                Image(systemName: "pencil")
+                Image(systemName: "square.and.arrow.down")
                     .foregroundColor(.blue)
                     .onTapGesture {
                         entryModelController.updateEntryComment(entry: entry, comment: updatedComment)
