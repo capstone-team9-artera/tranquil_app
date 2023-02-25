@@ -3,19 +3,10 @@
     {
       "identity" : "alamofire",
       "kind" : "remoteSourceControl",
-<<<<<<< HEAD
-
-      "location" : "https://github.com/Alamofire/Alamofire",
-
-      "state" : {
-        "branch" : "master",
-        "revision" : "f1f7a06f40c6aadb4beb2a78f380f9938d574fa7"
-=======
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
         "branch" : "master",
-        "revision" : "e68cfdf9c5aa4e69f675198a3cf8bef72c7cdede"
->>>>>>> 1205e4b031f7671a36d31fd2fa1f8ae1f7fdfa0d
+        "revision" : "f1f7a06f40c6aadb4beb2a78f380f9938d574fa7"
       }
     },
     {
