@@ -7,5 +7,5 @@
 
 import Foundation
 enum Constants {
-    static let openAIAPIKey = "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"
+    static let openAIAPIKey = "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"
 }
