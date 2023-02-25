@@ -40,7 +40,6 @@
 		9F508FEA298C49570068E0C5 /* GIF-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FE9298C49570068E0C5 /* GIF-Swift.swift */; };
 		9F508FF0298C53700068E0C5 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FEF298C53700068E0C5 /* SessionViewController.swift */; };
 		9F508FF6299082F60068E0C5 /* waterfall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F508FF5299082F60068E0C5 /* waterfall.gif */; };
-		9F5894DB29A95A5700084F58 /* NLPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5894D929A95A5700084F58 /* NLPViewController.swift */; };
 		9F5894DC29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9F5894DA29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel */; };
 		9F5C985C2991D0B60075E227 /* nightsky.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985B2991D0B60075E227 /* nightsky.gif */; };
 		9F5C985E2991D2470075E227 /* sand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985D2991D2470075E227 /* sand.gif */; };
@@ -143,7 +142,6 @@
 		9F508FE9298C49570068E0C5 /* GIF-Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIF-Swift.swift"; sourceTree = "<group>"; };
 		9F508FEF298C53700068E0C5 /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		9F508FF5299082F60068E0C5 /* waterfall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = waterfall.gif; sourceTree = "<group>"; };
-		9F5894D929A95A5700084F58 /* NLPViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLPViewController.swift; sourceTree = "<group>"; };
 		9F5894DA29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionSentimentClassifier.mlmodel; sourceTree = "<group>"; };
 		9F5C985B2991D0B60075E227 /* nightsky.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nightsky.gif; sourceTree = "<group>"; };
 		9F5C985D2991D2470075E227 /* sand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sand.gif; sourceTree = "<group>"; };
@@ -292,7 +290,6 @@
 		9F4423A2297BB28200E87DF2 /* TranquilApp */ = {
 			isa = PBXGroup;
 			children = (
-				9F5894D829A95A5700084F58 /* NLP */,
 				55DFFC5D2990795C00729B3D /* TranquilApp.entitlements */,
 				B38186B32980B54B0083A4ED /* Model */,
 				9F4423A3297BB28200E87DF2 /* AppDelegate.swift */,
@@ -305,6 +302,7 @@
 				9F4423E9297BC67900E87DF2 /* BotResponse.swift */,
 				9F5C98602991D2540075E227 /* GIF-Swift */,
 				9F4423A9297BB28200E87DF2 /* Main.storyboard */,
+				9F5894DA29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel */,
 				9F4423AC297BB28300E87DF2 /* Assets.xcassets */,
 				9F4423AE297BB28300E87DF2 /* LaunchScreen.storyboard */,
 				9F4423B1297BB28300E87DF2 /* Info.plist */,
@@ -362,15 +360,6 @@
 				9F5C98922995D6F50075E227 /* AnimationView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		9F5894D829A95A5700084F58 /* NLP */ = {
-			isa = PBXGroup;
-			children = (
-				9F5894D929A95A5700084F58 /* NLPViewController.swift */,
-				9F5894DA29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel */,
-			);
-			path = NLP;
 			sourceTree = "<group>";
 		};
 		9F5C98602991D2540075E227 /* GIF-Swift */ = {
@@ -683,7 +672,6 @@
 				B38186CD2980C5200083A4ED /* MultiLineTextField.swift in Sources */,
 				B3CF27082980C5C9002EF9F9 /* EntryModelController.swift in Sources */,
 				B38186C52980C4300083A4ED /* Helper.swift in Sources */,
-				9F5894DB29A95A5700084F58 /* NLPViewController.swift in Sources */,
 				B38186CB2980C4FC0083A4ED /* SceneDelegate.swift in Sources */,
 				9F508FEA298C49570068E0C5 /* GIF-Swift.swift in Sources */,
 				9FD70A5729820EAB0078AA30 /* Landmark.swift in Sources */,
