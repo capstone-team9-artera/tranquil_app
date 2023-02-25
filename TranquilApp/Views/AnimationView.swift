@@ -14,6 +14,7 @@ struct AnimationView: View {
     var breatheOutDuration: Double = 4
     var holdDuration: Double = 4
     var numRepeats: Int = 2
+//    var loopDuration = breatheInDuration + breatheOutDuration + holdDuration * 2
     @State private var breathIn = false
     @State private var breathOut = false
     @State private var hold = true
@@ -30,6 +31,7 @@ struct AnimationView: View {
     let fillGradient = LinearGradient(gradient: Gradient(colors: [Color.purple, Color.blue]), startPoint: .bottomLeading, endPoint: .topTrailing)
     
     var body: some View {
+        let loopDuration =  breatheInDuration + breatheOutDuration + holdDuration * 2
         VStack (spacing: 50){
             Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
@@ -41,7 +43,6 @@ struct AnimationView: View {
                 .font(.system(size: 30, weight: .medium))
                 .bold()
                 .foregroundColor(Color.teal)
-//           Spacer()
             
             ZStack {
                 ZStack {
@@ -84,7 +85,7 @@ struct AnimationView: View {
                                 .offset(y: 187)
                                 .rotationEffect(.degrees(circularMotion ? 360 : 0))
                                 .onAppear() {
-                                    withAnimation(Animation.linear(duration: 16).delay(1).repeatCount(numRepeats, autoreverses: false)) {
+                                    withAnimation(Animation.linear(duration: 16).repeatCount(numRepeats, autoreverses: false)) {
                                         self.circularMotion = true
                                     }
                                 }
@@ -94,38 +95,54 @@ struct AnimationView: View {
                         .scaleEffect(hold ? 1 : 1)
                         .scaleEffect(breathOut ? 0.8 : 1)
                         .onAppear() {
-                            withAnimation(Animation.linear(duration: breatheInDuration).delay(1).repeatCount(numRepeats, autoreverses: false)) {
+                            withAnimation(Animation.linear(duration: breatheInDuration)) {
                                 self.breathIn.toggle()
                             }
                             
-                            withAnimation(Animation.linear(duration: holdDuration).delay(breatheInDuration + 1).repeatCount(numRepeats, autoreverses: false)) {
+                            withAnimation(Animation.linear(duration: breatheInDuration).delay(loopDuration)) {
+//                                self.breathIn.toggle()
+                            }
+                            
+                            withAnimation(Animation.linear(duration: holdDuration).delay(breatheInDuration)) {
                                 self.hold.toggle()
                             }
                             
-                            withAnimation(Animation.linear(duration: breatheOutDuration).delay(breatheInDuration + holdDuration + 1).repeatCount(numRepeats, autoreverses: false)) {
+                            withAnimation(Animation.linear(duration: breatheOutDuration).delay(breatheInDuration + holdDuration)) {
+                                self.breathIn.toggle()
                                 self.breathOut.toggle()
                             }
 
-                            withAnimation(Animation.linear(duration: holdDuration).delay(breatheInDuration + holdDuration + holdDuration + 1).repeatCount(numRepeats, autoreverses: false)) {
+                            withAnimation(Animation.linear(duration: holdDuration).delay(breatheInDuration + holdDuration + holdDuration)) {
                                 self.hold.toggle()
                             }
                         }
-                    
                     // text
                     ZStack {
                         Text("Breathe Out")
                             .foregroundColor(Color.white)
                             .scaleEffect(1)
                             .opacity(displayBreathOut ? 1 : 0)
-                            .opacity(hideBreathOut ? 0 : 1)
+//                            .opacity(hideBreathOut ? 0 : 1)
                             .onAppear() {
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + 1).repeatCount(numRepeats, autoreverses: false)) {
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration)) {
                                     self.displayBreathOut.toggle()
                                 }
                                 
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration + 1).repeatCount(numRepeats, autoreverses: false)) {
-                                    self.hideBreathOut.toggle()
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration)) {
+                                    self.displayBreathOut.toggle()
                                 }
+                                
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(loopDuration + breatheInDuration + holdDuration)) {
+                                    self.displayBreathOut.toggle()
+                                }
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(loopDuration + breatheInDuration + holdDuration + breatheOutDuration)) {
+                                    self.displayBreathOut.toggle()
+                                }
+
+                                
+//                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration)) {
+//                                    self.hideBreathOut.toggle()
+//                                }
                                 
                             }
                         
@@ -135,13 +152,22 @@ struct AnimationView: View {
                             .opacity(displaySecondHold ? 1 : 0)
                             .opacity(hideSecondHold ? 0 : 1)
                             .onAppear() {
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration + 1).repeatCount(numRepeats, autoreverses: false)) {
+                                withAnimation(Animation.easeIn(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration)) {
                                     self.displaySecondHold.toggle()
                                 }
                                 
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration + holdDuration + 1).repeatCount(numRepeats, autoreverses: false)) {
-                                    self.hideSecondHold.toggle()
+                                withAnimation(Animation.easeOut(duration: 0.4).delay(loopDuration)) {
+                                    self.displaySecondHold.toggle()
                                 }
+                                
+                                withAnimation(Animation.easeIn(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration + loopDuration)) {
+                                    self.displaySecondHold.toggle()
+                                }
+                                
+                                withAnimation(Animation.easeOut(duration: 0.4).delay(loopDuration * 2)) {
+                                    self.displaySecondHold.toggle()
+                                }
+
                                 
                             }
                         
@@ -150,33 +176,54 @@ struct AnimationView: View {
                             .foregroundColor(Color.white)
                             .scaleEffect(1)
                             .opacity(displayHold ? 1 : 0)
-                            .opacity(hideHold ? 0 : 1)
+//                            .opacity(hideHold ? 0 : 1)
                             .onAppear() {
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + 1).repeatCount(numRepeats, autoreverses: false)) {
+                                withAnimation(Animation.easeIn(duration: 0.4).delay(breatheInDuration)) {
                                     self.displayHold.toggle()
                                 }
                                 
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + 1).repeatCount(numRepeats, autoreverses: false)) {
-                                    self.hideHold.toggle()
+                                withAnimation(Animation.easeOut(duration: 0.4).delay(breatheInDuration + holdDuration)) {
+                                    self.displayHold.toggle()
                                 }
                                 
+                                withAnimation(Animation.easeIn(duration: 0.4).delay(breatheInDuration + loopDuration)) {
+                                    self.displayHold.toggle()
+                                }
+                                
+                                withAnimation(Animation.easeOut(duration: 0.4).delay(breatheInDuration + holdDuration + loopDuration)) {
+                                    self.displayHold.toggle()
+                                }
                             }
                         
                         Text("Breathe In")
                             .foregroundColor(Color.white)
                             .opacity(hideBreathIn ? 0 : 1)
+//                            .opacity(breathIn ? 1 : 0)
                             .onAppear() {
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + 1).repeatCount(numRepeats, autoreverses: false)) {
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration)) {
                                     self.hideBreathIn.toggle()
                                 }
-                                
+                                withAnimation(Animation.easeIn(duration: 0.4).delay(loopDuration)) {
+                                    self.hideBreathIn.toggle()
+                                }
+                                withAnimation(Animation.easeOut(duration: 0.4).delay(loopDuration + breatheInDuration)) {
+                                    self.hideBreathIn.toggle()
+                                }
+
+//                                withAnimation(Animation.easeIn(duration: 0.2).delay(breatheInDuration)) {
+//                                    self.hideBreathIn.toggle()
+//                                }
+//                                withAnimation(Animation.easeOut(duration: 0.2).delay(breatheInDuration + 0.2)) {
+//                                    self.hideBreathIn.toggle()
+//                                }
+
                             }
                         
                         Text("Great Job")
                             .foregroundColor(Color.white)
                             .opacity(finishText ? 1 : 0)
                             .onAppear() {
-                                withAnimation(Animation.easeInOut(duration: 0.4).delay(breatheInDuration + holdDuration + breatheOutDuration + holdDuration + 1).repeatCount(numRepeats, autoreverses: false)) {
+                                withAnimation(Animation.easeInOut(duration: 0.4).delay(loopDuration * Double(numRepeats))) {
                                     self.finishText.toggle()
                                 }
                             }
