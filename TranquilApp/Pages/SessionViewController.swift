@@ -55,16 +55,28 @@ class SessionViewController: UIViewController {
     }
     
     @objc private func goToView(_ sender:UITapGestureRecognizer) {
-//        print(name)
-//        let rootVC = HistoryViewController()
-//        let navVC = UINavigationController(rootViewController: HistoryView())
-//        navVC.modalPresentationStyle = .fullScreen
-//        present(navVC, animated: false)
-        let controller = UIHostingController(rootView: AnimationView(name: name))
-//        parent.view.addSubview(controller.view)
-        controller.didMove(toParent: self)
-//        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true)
+        switch(name) {
+        case "Balance":
+            let controller = UIHostingController(rootView: AnimationView(name: name))
+            controller.didMove(toParent: self)
+            present(controller, animated: true)
+        case "Relax":
+            let controller = UIHostingController(rootView: Animation2View(name: name))
+            controller.didMove(toParent: self)
+            present(controller, animated: true)
+        case "Tranquil":
+            let controller = UIHostingController(rootView: Animation3View(name: name))
+            controller.didMove(toParent: self)
+            present(controller, animated: true)
+        case "Focus":
+            let controller = UIHostingController(rootView: Animation4View(name: name))
+            controller.didMove(toParent: self)
+            present(controller, animated: true)
+        default:
+            let controller = UIHostingController(rootView: AnimationView(name: name))
+            controller.didMove(toParent: self)
+            present(controller, animated: true)
+        }
         
 
         let newCount = BreathingCount(context: context)
