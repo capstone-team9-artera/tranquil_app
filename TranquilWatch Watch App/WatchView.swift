@@ -108,10 +108,13 @@ struct WatchView: View {
         }
         
         if connectivityManager.notificationMessage != nil{
+            print("message ")
             let temp =
             connectivityManager.notificationMessage!.text
             notify.sendNotification()
 
+        } else {
+            print("no message ")
         }
 
     }
