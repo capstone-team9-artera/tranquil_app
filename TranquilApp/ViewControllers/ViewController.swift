@@ -32,7 +32,6 @@ class ViewController: UIViewController {
     private func animate() {
         UIView.animate(withDuration: 1, delay: 0.8, animations: {
             self.name.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
-//            self.background.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             self.breathingButton.layer.opacity = 0.8
             self.journalButton.layer.opacity = 0.8
             self.historyButton.layer.opacity = 0.8
@@ -42,7 +41,6 @@ class ViewController: UIViewController {
     
     // animation when opening the app
     override func viewDidLayoutSubviews() {
-        // some animation for the label
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {self.animate()})
 
     }
@@ -104,8 +102,6 @@ class ViewController: UIViewController {
    }
     
     @objc private func addBackgroundWaves() {
-//        let background = UIHostingController(rootView: BackgroundWavesView())
-//        background.view.frame = CGRect(x: 0, y: 300, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         background.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 
         background.didMove(toParent: self)
@@ -203,7 +199,6 @@ class ViewController: UIViewController {
         let rootVC = BreathingViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.view.inputViewController?.loadView()
-//        navVC.loadView()
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: false)
     }
@@ -234,7 +229,6 @@ class ViewController: UIViewController {
         let rootVC = NotificationViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.modalPresentationStyle = .fullScreen
-//        navigationController?.pushViewController(navVC, animated: true)
         present(navVC, animated: false)
     }
 }

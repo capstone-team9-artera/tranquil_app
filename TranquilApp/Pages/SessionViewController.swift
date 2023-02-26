@@ -41,7 +41,6 @@ class SessionViewController: UIViewController {
 
         let myGif = UIImage.gifImageWithName(gifName)
         let imageView = UIImageView(image: myGif)
-//        let imageView = UIImageView()
         imageView.frame = CGRect(x: 25, y: 20, width: 350, height: 700)
         imageView.layer.masksToBounds = true
         imageView.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
@@ -50,15 +49,6 @@ class SessionViewController: UIViewController {
         imageView.layer.shadowOffset = CGSizeMake(5, 5)
         imageView.layer.cornerRadius = 10
         imageView.inputViewController?.modalPresentationStyle = .fullScreen
-        
-        let controller = UIHostingController(rootView: getSinWave(interval: UIScreen.main.bounds.width, amplitude: 110, baseline: -105 + UIScreen.main.bounds.height/2)
-            .foregroundColor(Color.init(red: 0.2, green: 0.4, blue: 0.7).opacity(0.4)))
-
-        controller.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        controller.didMove(toParent: self)
-        controller.modalPresentationStyle = .fullScreen
-                                    
-        view.addSubview(controller.view)
 
         view.addSubview(imageView)
         view.addSubview(label)
