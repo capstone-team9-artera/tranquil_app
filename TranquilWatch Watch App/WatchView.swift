@@ -27,6 +27,7 @@ struct WatchView: View {
     private let notify = NotificationHandler()
 
     var body: some View {
+        BackgroundWavesView()
         VStack {
             Image(systemName: "heart")
                 .imageScale(.large)
