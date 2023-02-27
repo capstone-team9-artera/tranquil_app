@@ -24,7 +24,7 @@ class SessionViewController: UIViewController {
         myView.backgroundColor = .white
         
         view = myView
-        view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 //        view.addSubview(animation)
         
         label.textAlignment = .center
@@ -41,10 +41,15 @@ class SessionViewController: UIViewController {
 
         let myGif = UIImage.gifImageWithName(gifName)
         let imageView = UIImageView(image: myGif)
-        imageView.frame = CGRect(x: 20, y: 20, width: 350, height: 700)
+        imageView.frame = CGRect(x: 25, y: 20, width: 350, height: 700)
+        imageView.layer.masksToBounds = true
+        imageView.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
+        imageView.layer.shadowOpacity = 0.8
+        imageView.layer.shadowRadius = 4
+        imageView.layer.shadowOffset = CGSizeMake(5, 5)
         imageView.layer.cornerRadius = 10
         imageView.inputViewController?.modalPresentationStyle = .fullScreen
-        
+
         view.addSubview(imageView)
         view.addSubview(label)
         view.addSubview(promptLabel)
