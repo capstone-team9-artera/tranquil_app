@@ -9,6 +9,7 @@
 import UIKit
 import SwiftUI
 import CoreData
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -21,6 +22,7 @@ class ViewController: UIViewController {
     private var variability = 0
     private let notify = NotificationHandler()
     @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
+    private var audioPlayer = AVAudioPlayer()
 
     private let breathingButton = UIButton()
     private let journalButton = UIButton()
@@ -52,6 +54,16 @@ class ViewController: UIViewController {
        // comment this out so it doesn't keep crashing !!!
         timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
         notify.askPermission()
+        
+        //play music
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "ocean", ofType: "mp3")!))
+            audioPlayer.prepareToPlay()
+            print("music do")
+            } catch {
+                   print("music error ", error)
+            }
+        audioPlayer.play()
 
        
         view.backgroundColor = .white

@@ -11,6 +11,10 @@
 		552619DA2992BD0A0080AAB9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552619D92992BD0A0080AAB9 /* Constants.swift */; };
 		552619DD2992BD2A0080AAB9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 552619DC2992BD2A0080AAB9 /* Alamofire */; };
 		55491C6D29AD523400084B7F /* BackgroundWavesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55491C6C29AD523400084B7F /* BackgroundWavesView.swift */; };
+		55491C6F29AD5D7400084B7F /* river.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C6E29AD5D7400084B7F /* river.mp3 */; };
+		55491C7029AD5D7400084B7F /* river.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C6E29AD5D7400084B7F /* river.mp3 */; };
+		55491C7329AD5EB100084B7F /* ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C7229AD5EB000084B7F /* ocean.mp3 */; };
+		55491C7429AD5EB100084B7F /* ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C7229AD5EB000084B7F /* ocean.mp3 */; };
 		55C0CA7529A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
 		55C0CA7629A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
 		55C0CA7829A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */; };
@@ -135,6 +139,8 @@
 		552619D72992BCF70080AAB9 /* OpenAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		552619D92992BD0A0080AAB9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		55491C6C29AD523400084B7F /* BackgroundWavesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundWavesView.swift; sourceTree = "<group>"; };
+		55491C6E29AD5D7400084B7F /* river.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = river.mp3; sourceTree = "<group>"; };
+		55491C7229AD5EB000084B7F /* ocean.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ocean.mp3; sourceTree = "<group>"; };
 		55C0CA7429A84241006111F3 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TranquilWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +262,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55491C7129AD5E9200084B7F /* music */ = {
+			isa = PBXGroup;
+			children = (
+				55491C7229AD5EB000084B7F /* ocean.mp3 */,
+				55491C6E29AD5D7400084B7F /* river.mp3 */,
+			);
+			path = music;
+			sourceTree = "<group>";
+		};
 		55C0CA7A29A9E10D006111F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +321,7 @@
 			children = (
 				55C0CA7429A84241006111F3 /* NotificationHandler.swift */,
 				55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */,
+				55491C7129AD5E9200084B7F /* music */,
 				55DFFC552990712100729B3D /* DataModels.xcdatamodeld */,
 				55DFFC592990719500729B3D /* Persistence.swift */,
 				9F4423A2297BB28200E87DF2 /* TranquilApp */,
@@ -629,8 +645,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55491C7429AD5EB100084B7F /* ocean.mp3 in Resources */,
 				55DFFC3429906DDE00729B3D /* Preview Assets.xcassets in Resources */,
 				55DFFC3129906DDE00729B3D /* Assets.xcassets in Resources */,
+				55491C7029AD5D7400084B7F /* river.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,10 +670,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55491C6F29AD5D7400084B7F /* river.mp3 in Resources */,
 				9F5C985E2991D2470075E227 /* sand.gif in Resources */,
 				9F4423B0297BB28300E87DF2 /* LaunchScreen.storyboard in Resources */,
 				9F5C985C2991D0B60075E227 /* nightsky.gif in Resources */,
 				9F4423AD297BB28300E87DF2 /* Assets.xcassets in Resources */,
+				55491C7329AD5EB100084B7F /* ocean.mp3 in Resources */,
 				9F4423AB297BB28200E87DF2 /* Main.storyboard in Resources */,
 				9F508FF6299082F60068E0C5 /* waterfall.gif in Resources */,
 				9F5C989E299B12940075E227 /* sunsetocean.gif in Resources */,
