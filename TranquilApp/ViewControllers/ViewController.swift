@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     private var timer: Timer?
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var items:[HeartRate]?
-    private var lastHeartRate = 0
+    @State var lastHeartRate = 0
     private var variability = 0
     private let notify = NotificationHandler()
     @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
@@ -51,6 +51,11 @@ class ViewController: UIViewController {
         addJournalButton()
         addHistoryButton()
         addAiChatbotButton()
+        
+        addHeartRateValue()
+    }
+    
+    @objc private func addHeartRateValue(){
     }
     
     @objc private func getHeartRate(){
@@ -208,5 +213,6 @@ class ViewController: UIViewController {
 //        navigationController?.pushViewController(navVC, animated: true)
         present(navVC, animated: false)
     }
+    
 }
 
