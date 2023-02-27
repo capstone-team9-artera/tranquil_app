@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
        
        // comment this out so it doesn't keep crashing !!!
-//        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
         notify.askPermission()
 
        
@@ -74,6 +74,17 @@ class ViewController: UIViewController {
                 print(true)
                 notify.sendNotification()
                 connectivityManager.send(String("notify"))
+                //increase anxiety count
+                let newAnxiety = AnxietyCount(context: context)
+                newAnxiety.timestamp = items![(length - 1)].timestamp
+                newAnxiety.value = items![(length - 1)].value
+
+                do {
+                    try context.save()
+                } catch {
+                    let nsError = error as NSError
+                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                }
                 didTapNotifButton()
             }
             lastHeartRate = currentHeartRate
