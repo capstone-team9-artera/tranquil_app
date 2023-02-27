@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     private let universalSize = UIScreen.main.bounds
     @State var isAnimated = false
     private var timer: Timer?
+    private var timer1: Timer?
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var items:[HeartRate]?
     private var lastHeartRate = 0
@@ -59,11 +60,9 @@ class ViewController: UIViewController {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "ocean", ofType: "mp3")!))
             audioPlayer.prepareToPlay()
-            print("music do")
             } catch {
                    print("music error ", error)
             }
-        audioPlayer.play()
 
        
         view.backgroundColor = .white
@@ -81,7 +80,13 @@ class ViewController: UIViewController {
         name.frame = CGRect(x: 25, y: 350, width: 350, height: 52)
         name.font = .systemFont(ofSize: 65, weight: UIFont.Weight(rawValue: 10))
         view.addSubview(name)
+        timer1 = Timer.scheduledTimer(timeInterval: 117, target:self, selector: #selector(playMusic), userInfo: nil, repeats: true)
 
+
+    }
+    
+    @objc private func playMusic(){
+        audioPlayer.play()
     }
     
     @objc private func getHeartRate(){
