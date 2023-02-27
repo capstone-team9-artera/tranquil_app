@@ -60,9 +60,11 @@ class ViewController: UIViewController {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "ocean", ofType: "mp3")!))
             audioPlayer.prepareToPlay()
+            print("music ready")
             } catch {
                    print("music error ", error)
             }
+        audioPlayer.play()
 
        
         view.backgroundColor = .white

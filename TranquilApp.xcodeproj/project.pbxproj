@@ -15,8 +15,15 @@
 		55491C7029AD5D7400084B7F /* river.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C6E29AD5D7400084B7F /* river.mp3 */; };
 		55491C7329AD5EB100084B7F /* ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C7229AD5EB000084B7F /* ocean.mp3 */; };
 		55491C7429AD5EB100084B7F /* ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C7229AD5EB000084B7F /* ocean.mp3 */; };
+		55491C7C29AD73F400084B7F /* Softchime.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 55491C7B29AD73F400084B7F /* Softchime.m4r */; };
+		55491C7D29AD73F400084B7F /* Softchime.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 55491C7B29AD73F400084B7F /* Softchime.m4r */; };
+		55491C7F29AD74A800084B7F /* NotificationWatchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55491C7E29AD74A800084B7F /* NotificationWatchHandler.swift */; };
+		55491C8429AD752F00084B7F /* sand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8029AD752E00084B7F /* sand.gif */; };
+		55491C8529AD752F00084B7F /* nightsky.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8129AD752E00084B7F /* nightsky.gif */; };
+		55491C8629AD752F00084B7F /* sunsetocean.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8229AD752E00084B7F /* sunsetocean.gif */; };
+		55491C8729AD752F00084B7F /* waterfall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8329AD752E00084B7F /* waterfall.gif */; };
+		55491C8929AD75F900084B7F /* waterfall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8829AD75F800084B7F /* waterfall.gif */; };
 		55C0CA7529A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
-		55C0CA7629A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
 		55C0CA7829A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */; };
 		55C0CA7929A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */; };
 		55C0CA7B29A9E10D006111F3 /* TranquilWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -50,7 +57,6 @@
 		9F4423EA297BC67900E87DF2 /* BotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4423E9297BC67900E87DF2 /* BotResponse.swift */; };
 		9F508FEA298C49570068E0C5 /* GIF-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FE9298C49570068E0C5 /* GIF-Swift.swift */; };
 		9F508FF0298C53700068E0C5 /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F508FEF298C53700068E0C5 /* SessionViewController.swift */; };
-		9F508FF6299082F60068E0C5 /* waterfall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F508FF5299082F60068E0C5 /* waterfall.gif */; };
 		9F5894D729A7F2E900084F58 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5894D629A7F2E900084F58 /* ColorConstants.swift */; };
 		9F5894DC29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 9F5894DA29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel */; };
 		9F5C985C2991D0B60075E227 /* nightsky.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C985B2991D0B60075E227 /* nightsky.gif */; };
@@ -141,6 +147,13 @@
 		55491C6C29AD523400084B7F /* BackgroundWavesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundWavesView.swift; sourceTree = "<group>"; };
 		55491C6E29AD5D7400084B7F /* river.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = river.mp3; sourceTree = "<group>"; };
 		55491C7229AD5EB000084B7F /* ocean.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ocean.mp3; sourceTree = "<group>"; };
+		55491C7B29AD73F400084B7F /* Softchime.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = Softchime.m4r; sourceTree = "<group>"; };
+		55491C7E29AD74A800084B7F /* NotificationWatchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationWatchHandler.swift; sourceTree = "<group>"; };
+		55491C8029AD752E00084B7F /* sand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sand.gif; sourceTree = "<group>"; };
+		55491C8129AD752E00084B7F /* nightsky.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nightsky.gif; sourceTree = "<group>"; };
+		55491C8229AD752E00084B7F /* sunsetocean.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sunsetocean.gif; sourceTree = "<group>"; };
+		55491C8329AD752E00084B7F /* waterfall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = waterfall.gif; sourceTree = "<group>"; };
+		55491C8829AD75F800084B7F /* waterfall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = waterfall.gif; sourceTree = "<group>"; };
 		55C0CA7429A84241006111F3 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TranquilWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,7 +194,6 @@
 		9F4423E9297BC67900E87DF2 /* BotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotResponse.swift; sourceTree = "<group>"; };
 		9F508FE9298C49570068E0C5 /* GIF-Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GIF-Swift.swift"; sourceTree = "<group>"; };
 		9F508FEF298C53700068E0C5 /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
-		9F508FF5299082F60068E0C5 /* waterfall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = waterfall.gif; sourceTree = "<group>"; };
 		9F5894D629A7F2E900084F58 /* ColorConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		9F5894DA29A95A5700084F58 /* EmotionSentimentClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotionSentimentClassifier.mlmodel; sourceTree = "<group>"; };
 		9F5C985B2991D0B60075E227 /* nightsky.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = nightsky.gif; sourceTree = "<group>"; };
@@ -265,6 +277,7 @@
 		55491C7129AD5E9200084B7F /* music */ = {
 			isa = PBXGroup;
 			children = (
+				55491C7B29AD73F400084B7F /* Softchime.m4r */,
 				55491C7229AD5EB000084B7F /* ocean.mp3 */,
 				55491C6E29AD5D7400084B7F /* river.mp3 */,
 			);
@@ -283,6 +296,7 @@
 			children = (
 				55DFFC5C299078AA00729B3D /* TranquilWatch-Watch-App-Info.plist */,
 				55DFFC5429906E4800729B3D /* TranquilWatch Watch App.entitlements */,
+				55491C7E29AD74A800084B7F /* NotificationWatchHandler.swift */,
 				55DFFC2C29906DDB00729B3D /* TranquilWatchApp.swift */,
 				55DFFC2E29906DDB00729B3D /* WatchView.swift */,
 				55DFFC3029906DDE00729B3D /* Assets.xcassets */,
@@ -319,7 +333,6 @@
 		9F442397297BB28200E87DF2 = {
 			isa = PBXGroup;
 			children = (
-				55C0CA7429A84241006111F3 /* NotificationHandler.swift */,
 				55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */,
 				55491C7129AD5E9200084B7F /* music */,
 				55DFFC552990712100729B3D /* DataModels.xcdatamodeld */,
@@ -356,6 +369,7 @@
 				9F4423A3297BB28200E87DF2 /* AppDelegate.swift */,
 				B38186CC2980C5200083A4ED /* MultiLineTextField.swift */,
 				B38186CA2980C4FC0083A4ED /* SceneDelegate.swift */,
+				55C0CA7429A84241006111F3 /* NotificationHandler.swift */,
 				B38186C42980C4300083A4ED /* Helper.swift */,
 				9F4423D3297BB38D00E87DF2 /* ViewControllers */,
 				9F4423D8297BB40E00E87DF2 /* Views */,
@@ -432,10 +446,14 @@
 			isa = PBXGroup;
 			children = (
 				9F5C989D299B12940075E227 /* sunsetocean.gif */,
+				55491C8129AD752E00084B7F /* nightsky.gif */,
+				55491C8029AD752E00084B7F /* sand.gif */,
+				55491C8229AD752E00084B7F /* sunsetocean.gif */,
+				55491C8329AD752E00084B7F /* waterfall.gif */,
+				55491C8829AD75F800084B7F /* waterfall.gif */,
 				9F508FE9298C49570068E0C5 /* GIF-Swift.swift */,
 				9F5C985D2991D2470075E227 /* sand.gif */,
 				9F5C985B2991D0B60075E227 /* nightsky.gif */,
-				9F508FF5299082F60068E0C5 /* waterfall.gif */,
 			);
 			path = "GIF-Swift";
 			sourceTree = "<group>";
@@ -646,6 +664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55491C7429AD5EB100084B7F /* ocean.mp3 in Resources */,
+				55491C7D29AD73F400084B7F /* Softchime.m4r in Resources */,
 				55DFFC3429906DDE00729B3D /* Preview Assets.xcassets in Resources */,
 				55DFFC3129906DDE00729B3D /* Assets.xcassets in Resources */,
 				55491C7029AD5D7400084B7F /* river.mp3 in Resources */,
@@ -671,13 +690,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				55491C6F29AD5D7400084B7F /* river.mp3 in Resources */,
+				55491C8529AD752F00084B7F /* nightsky.gif in Resources */,
+				55491C8629AD752F00084B7F /* sunsetocean.gif in Resources */,
 				9F5C985E2991D2470075E227 /* sand.gif in Resources */,
 				9F4423B0297BB28300E87DF2 /* LaunchScreen.storyboard in Resources */,
 				9F5C985C2991D0B60075E227 /* nightsky.gif in Resources */,
 				9F4423AD297BB28300E87DF2 /* Assets.xcassets in Resources */,
 				55491C7329AD5EB100084B7F /* ocean.mp3 in Resources */,
+				55491C8429AD752F00084B7F /* sand.gif in Resources */,
+				55491C7C29AD73F400084B7F /* Softchime.m4r in Resources */,
 				9F4423AB297BB28200E87DF2 /* Main.storyboard in Resources */,
-				9F508FF6299082F60068E0C5 /* waterfall.gif in Resources */,
+				55491C8929AD75F900084B7F /* waterfall.gif in Resources */,
+				55491C8729AD752F00084B7F /* waterfall.gif in Resources */,
 				9F5C989E299B12940075E227 /* sunsetocean.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,8 +729,8 @@
 			files = (
 				55DFFC2F29906DDB00729B3D /* WatchView.swift in Sources */,
 				55DFFC5B2990719500729B3D /* Persistence.swift in Sources */,
-				55C0CA7629A84241006111F3 /* NotificationHandler.swift in Sources */,
 				55DFFC582990712100729B3D /* DataModels.xcdatamodeld in Sources */,
+				55491C7F29AD74A800084B7F /* NotificationWatchHandler.swift in Sources */,
 				55C0CA7929A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */,
 				55DFFC2D29906DDB00729B3D /* TranquilWatchApp.swift in Sources */,
 			);

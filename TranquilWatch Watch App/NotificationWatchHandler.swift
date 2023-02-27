@@ -25,9 +25,10 @@ class NotificationHandler{
         let content = UNMutableNotificationContent()
         content.title = "anxiety warning"
         content.body = "are you okay?"
-        content.sound = UNNotificationSound.ringtoneSoundNamed(UNNotificationSoundName.)
+        content.sound = UNNotificationSound.default
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
         
     }
 }
+
