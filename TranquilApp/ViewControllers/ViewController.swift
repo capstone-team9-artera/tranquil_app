@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
        
        // comment this out so it doesn't keep crashing !!!
-        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
+//        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
         notify.askPermission()
 
        
@@ -69,7 +69,12 @@ class ViewController: UIViewController {
         name.frame = CGRect(x: 25, y: 350, width: 350, height: 52)
         name.font = .systemFont(ofSize: 65, weight: UIFont.Weight(rawValue: 10))
         view.addSubview(name)
-
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .purple
+        navigationController?.navigationBar.standardAppearance = appearance;
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
     }
     
     @objc private func getHeartRate(){
