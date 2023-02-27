@@ -10,6 +10,7 @@
 		552619D82992BCF70080AAB9 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552619D72992BCF70080AAB9 /* OpenAIService.swift */; };
 		552619DA2992BD0A0080AAB9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552619D92992BD0A0080AAB9 /* Constants.swift */; };
 		552619DD2992BD2A0080AAB9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 552619DC2992BD2A0080AAB9 /* Alamofire */; };
+		55491C6D29AD523400084B7F /* BackgroundWavesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55491C6C29AD523400084B7F /* BackgroundWavesView.swift */; };
 		55C0CA7529A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
 		55C0CA7629A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
 		55C0CA7829A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */; };
@@ -133,6 +134,7 @@
 /* Begin PBXFileReference section */
 		552619D72992BCF70080AAB9 /* OpenAIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		552619D92992BD0A0080AAB9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		55491C6C29AD523400084B7F /* BackgroundWavesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundWavesView.swift; sourceTree = "<group>"; };
 		55C0CA7429A84241006111F3 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TranquilWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -405,6 +407,7 @@
 				9F6DA4CC29A9D86400DE2320 /* Animation2View.swift */,
 				9F0728F429AA9BB1006DABC7 /* Animation3View.swift */,
 				9F6DA4CE29A9F2C100DE2320 /* Animation4View.swift */,
+				55491C6C29AD523400084B7F /* BackgroundWavesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				9F4423D5297BB3B200E87DF2 /* BreathingViewController.swift in Sources */,
 				B3CF270C2980C677002EF9F9 /* CalendarView.swift in Sources */,
 				9F4423EA297BC67900E87DF2 /* BotResponse.swift in Sources */,
+				55491C6D29AD523400084B7F /* BackgroundWavesView.swift in Sources */,
 				B3CF27222980C7C6002EF9F9 /* Entry.swift in Sources */,
 				9FD70A5029820E510078AA30 /* PageViewController.swift in Sources */,
 				9F4423DE297BB87D00E87DF2 /* HistoryViewController.swift in Sources */,
