@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     private var timer: Timer?
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var items:[HeartRate]?
-    @State var lastHeartRate = 0
+    private var lastHeartRate = 0
     private var variability = 0
     private let notify = NotificationHandler()
     @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
@@ -78,6 +78,9 @@ class ViewController: UIViewController {
     }
     
     @objc private func getHeartRate(){
+        //update heart rate label
+        heartRateLabel.text = String("\(lastHeartRate)")
+        view.addSubview(heartRateLabel)
         
         let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
         let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
@@ -115,12 +118,14 @@ class ViewController: UIViewController {
             
         }
         else{
+            print("length ", length)
             lastHeartRate = Int(items![(length - 1)].value)
+            print("lastHeartRate value ", lastHeartRate)
         }
    }
     
     @objc private func addHeartRateView() {
-        heartRateLabel.text = String(lastHeartRate)
+        heartRateLabel.text = String("\(lastHeartRate)")
         heartRateLabel.textColor = UIColor(PRIMARY_TEXT_COLOR)
         heartRateLabel.frame = CGRect(x: 350, y: 75, width: 25, height: 25)
         heartRateLabel.layer.opacity = 0
