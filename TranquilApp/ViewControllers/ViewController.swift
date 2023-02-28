@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
        
        // comment this out so it doesn't keep crashing !!!
-//        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
         notify.askPermission()
 
        
