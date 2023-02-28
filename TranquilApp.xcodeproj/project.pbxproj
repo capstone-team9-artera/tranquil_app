@@ -13,8 +13,6 @@
 		55491C6D29AD523400084B7F /* BackgroundWavesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55491C6C29AD523400084B7F /* BackgroundWavesView.swift */; };
 		55491C6F29AD5D7400084B7F /* river.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C6E29AD5D7400084B7F /* river.mp3 */; };
 		55491C7029AD5D7400084B7F /* river.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C6E29AD5D7400084B7F /* river.mp3 */; };
-		55491C7329AD5EB100084B7F /* ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C7229AD5EB000084B7F /* ocean.mp3 */; };
-		55491C7429AD5EB100084B7F /* ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C7229AD5EB000084B7F /* ocean.mp3 */; };
 		55491C7C29AD73F400084B7F /* Softchime.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 55491C7B29AD73F400084B7F /* Softchime.m4r */; };
 		55491C7D29AD73F400084B7F /* Softchime.m4r in Resources */ = {isa = PBXBuildFile; fileRef = 55491C7B29AD73F400084B7F /* Softchime.m4r */; };
 		55491C7F29AD74A800084B7F /* NotificationWatchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55491C7E29AD74A800084B7F /* NotificationWatchHandler.swift */; };
@@ -23,6 +21,8 @@
 		55491C8629AD752F00084B7F /* sunsetocean.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8229AD752E00084B7F /* sunsetocean.gif */; };
 		55491C8729AD752F00084B7F /* waterfall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8329AD752E00084B7F /* waterfall.gif */; };
 		55491C8929AD75F900084B7F /* waterfall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8829AD75F800084B7F /* waterfall.gif */; };
+		55491C8B29AE93D400084B7F /* ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8A29AE93D400084B7F /* ocean.mp3 */; };
+		55491C8C29AE93D400084B7F /* ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8A29AE93D400084B7F /* ocean.mp3 */; };
 		55C0CA7529A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
 		55C0CA7829A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */; };
 		55C0CA7929A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */; };
@@ -146,7 +146,6 @@
 		552619D92992BD0A0080AAB9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		55491C6C29AD523400084B7F /* BackgroundWavesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundWavesView.swift; sourceTree = "<group>"; };
 		55491C6E29AD5D7400084B7F /* river.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = river.mp3; sourceTree = "<group>"; };
-		55491C7229AD5EB000084B7F /* ocean.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ocean.mp3; sourceTree = "<group>"; };
 		55491C7B29AD73F400084B7F /* Softchime.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = Softchime.m4r; sourceTree = "<group>"; };
 		55491C7E29AD74A800084B7F /* NotificationWatchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationWatchHandler.swift; sourceTree = "<group>"; };
 		55491C8029AD752E00084B7F /* sand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sand.gif; sourceTree = "<group>"; };
@@ -154,6 +153,7 @@
 		55491C8229AD752E00084B7F /* sunsetocean.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sunsetocean.gif; sourceTree = "<group>"; };
 		55491C8329AD752E00084B7F /* waterfall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = waterfall.gif; sourceTree = "<group>"; };
 		55491C8829AD75F800084B7F /* waterfall.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = waterfall.gif; sourceTree = "<group>"; };
+		55491C8A29AE93D400084B7F /* ocean.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ocean.mp3; sourceTree = "<group>"; };
 		55C0CA7429A84241006111F3 /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityManager.swift; sourceTree = "<group>"; };
 		55DFFC2A29906DDB00729B3D /* TranquilWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TranquilWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,7 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				55491C7B29AD73F400084B7F /* Softchime.m4r */,
-				55491C7229AD5EB000084B7F /* ocean.mp3 */,
+				55491C8A29AE93D400084B7F /* ocean.mp3 */,
 				55491C6E29AD5D7400084B7F /* river.mp3 */,
 			);
 			path = music;
@@ -663,10 +663,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55491C7429AD5EB100084B7F /* ocean.mp3 in Resources */,
 				55491C7D29AD73F400084B7F /* Softchime.m4r in Resources */,
 				55DFFC3429906DDE00729B3D /* Preview Assets.xcassets in Resources */,
 				55DFFC3129906DDE00729B3D /* Assets.xcassets in Resources */,
+				55491C8C29AE93D400084B7F /* ocean.mp3 in Resources */,
 				55491C7029AD5D7400084B7F /* river.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -691,12 +691,12 @@
 			files = (
 				55491C6F29AD5D7400084B7F /* river.mp3 in Resources */,
 				55491C8529AD752F00084B7F /* nightsky.gif in Resources */,
+				55491C8B29AE93D400084B7F /* ocean.mp3 in Resources */,
 				55491C8629AD752F00084B7F /* sunsetocean.gif in Resources */,
 				9F5C985E2991D2470075E227 /* sand.gif in Resources */,
 				9F4423B0297BB28300E87DF2 /* LaunchScreen.storyboard in Resources */,
 				9F5C985C2991D0B60075E227 /* nightsky.gif in Resources */,
 				9F4423AD297BB28300E87DF2 /* Assets.xcassets in Resources */,
-				55491C7329AD5EB100084B7F /* ocean.mp3 in Resources */,
 				55491C8429AD752F00084B7F /* sand.gif in Resources */,
 				55491C7C29AD73F400084B7F /* Softchime.m4r in Resources */,
 				9F4423AB297BB28200E87DF2 /* Main.storyboard in Resources */,
