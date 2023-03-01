@@ -75,7 +75,6 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         self.title = "Home Page"
         
-//        addBackgroundWaves()
         addBreathingButton()
         addJournalButton()
         addHistoryButton()
@@ -167,7 +166,6 @@ class ViewController: UIViewController {
     
     @objc private func addBackgroundWaves() {
         background.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-
         background.didMove(toParent: self)
         background.modalPresentationStyle = .fullScreen
         view.insertSubview(background.view, at: 0)
