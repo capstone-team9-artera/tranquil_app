@@ -25,6 +25,13 @@ class AIChatbotViewController: UIViewController {
         controller.modalPresentationStyle = .fullScreen
         view.addSubview(controller.view)
         
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        appearance.shadowColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance;
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        
         let newCount = AICount(context: context)
         newCount.timestamp = Date()
         do {

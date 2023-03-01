@@ -75,12 +75,15 @@ class ViewController: UIViewController {
         name.frame = CGRect(x: 25, y: 350, width: 350, height: 52)
         name.font = .systemFont(ofSize: 65, weight: UIFont.Weight(rawValue: 10))
         view.addSubview(name)
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .purple
+        navigationController?.navigationBar.standardAppearance = appearance;
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
     }
     
     @objc private func getHeartRate(){
-        //update heart rate label
-        heartRateLabel.text = String("\(lastHeartRate)")
-        view.addSubview(heartRateLabel)
         
         let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
         let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
