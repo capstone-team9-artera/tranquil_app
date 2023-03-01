@@ -35,6 +35,7 @@ class NotificationViewController: UIViewController {
         name.textColor = UIColor(SECONDARY_TEXT_COLOR)
         name.frame = CGRect(x: 25, y: 100, width: 350, height: 70)
         name.font = .systemFont(ofSize: 25, weight: UIFont.Weight(rawValue: 10))
+        name.backgroundColor = UIColor(BACKGROUND_COLOR)
         name.isUserInteractionEnabled = false
         view.addSubview(name)
         
@@ -54,39 +55,39 @@ class NotificationViewController: UIViewController {
     }
     
     @objc private func addBreathingButton() {
-        breathingButton.setTitle("Press to go from notification to Breathing Exercises", for: .normal)
+        breathingButton.setTitle("Press to go to Breathing Exercises", for: .normal)
         breathingButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
         breathingButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         breathingButton.titleLabel?.textAlignment = .center
         view.addSubview(breathingButton)
         breathingButton.backgroundColor = UIColor(SECONDARY_TEXT_COLOR)
-        breathingButton.setTitleColor(.black, for: .normal)
+        breathingButton.setTitleColor(.white, for: .normal)
         breathingButton.frame = CGRect(x: 35, y:200, width: 330, height: 150)
         breathingButton.layer.cornerRadius = 10
         breathingButton.addTarget(self, action: #selector(didTapBreathingButton), for: .touchUpInside)
     }
 
     @objc private func addJournalButton() {
-        journalButton.setTitle("Press to go from notification to Journal", for: .normal)
+        journalButton.setTitle("Press to go to Journal", for: .normal)
         journalButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
         journalButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         journalButton.titleLabel?.textAlignment = .center
         view.addSubview(journalButton)
         journalButton.backgroundColor = .lightGray
-        journalButton.setTitleColor(.black, for: .normal)
+        journalButton.setTitleColor(.white, for: .normal)
         journalButton.frame = CGRect(x: 35, y:375, width: 330, height: 150)
         journalButton.layer.cornerRadius = 10
         journalButton.addTarget(self, action: #selector(didTapJournalButton), for: .touchUpInside)
     }
     
     @objc private func addAiChatbotButton() {
-        aiChatbotButton.setTitle("Press to go from notification to ChatBot", for: .normal)
+        aiChatbotButton.setTitle("Press to go to ChatBot", for: .normal)
         aiChatbotButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
         aiChatbotButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         aiChatbotButton.titleLabel?.textAlignment = .center
         view.addSubview(aiChatbotButton)
         aiChatbotButton.backgroundColor = UIColor(SECONDARY_TEXT_COLOR)
-        aiChatbotButton.setTitleColor(.black, for: .normal)
+        aiChatbotButton.setTitleColor(.white, for: .normal)
         aiChatbotButton.frame = CGRect(x: 35, y:550, width: 330, height: 150)
         aiChatbotButton.layer.cornerRadius = 10
         aiChatbotButton.addTarget(self, action: #selector(didTapAIChatbotButton), for: .touchUpInside)
