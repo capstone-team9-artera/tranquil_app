@@ -83,6 +83,7 @@ struct HistoryView: View {
                 }
                 .padding()
             }
+            .background(BACKGROUND_COLOR)
         //}
         //.padding()
     }
