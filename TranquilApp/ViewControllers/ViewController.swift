@@ -27,7 +27,7 @@ class ViewController: UIViewController {
 
     private let breathingButton = UIButton()
     private let journalButton = UIButton()
-    private let historyButton = UIButton()
+    private let statisticsButton = UIButton()
     private let aiChatbotButton = UIButton()
     private let notifButton = UIButton()
     private let name = UILabel()
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         
         addBreathingButton()
         addJournalButton()
-        addHistoryButton()
+        addStatisticsButton()
         addAiChatbotButton()
         addHeartRateView()
         
@@ -210,23 +210,23 @@ class ViewController: UIViewController {
         journalButton.addTarget(self, action: #selector(didTapJournalButton), for: .touchUpInside)
     }
     
-    @objc private func addHistoryButton() {
-        historyButton.setTitle("History", for: .normal)
-        view.addSubview(historyButton)
-        historyButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
-        historyButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        historyButton.titleLabel?.textAlignment = .center
-        historyButton.backgroundColor = .systemGray2
-        historyButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
-        historyButton.titleLabel?.textColor = .white
-        historyButton.layer.opacity = 0.0
-        historyButton.layer.cornerRadius = 8
-        historyButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
-        historyButton.layer.shadowOpacity = 0.8
-        historyButton.layer.shadowRadius = 4
-        historyButton.layer.shadowOffset = CGSizeMake(1, 1)
-        historyButton.frame = CGRect(x: 20, y: 500, width: 170, height: 170)
-        historyButton.addTarget(self, action: #selector(didTapHistoryButton), for: .touchUpInside)
+    @objc private func addStatisticsButton() {
+        statisticsButton.setTitle("Statistics", for: .normal)
+        view.addSubview(statisticsButton)
+        statisticsButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
+        statisticsButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        statisticsButton.titleLabel?.textAlignment = .center
+        statisticsButton.backgroundColor = .systemGray2
+        statisticsButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
+        statisticsButton.titleLabel?.textColor = .white
+        statisticsButton.layer.opacity = 0.0
+        statisticsButton.layer.cornerRadius = 8
+        statisticsButton.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
+        statisticsButton.layer.shadowOpacity = 0.8
+        statisticsButton.layer.shadowRadius = 4
+        statisticsButton.layer.shadowOffset = CGSizeMake(1, 1)
+        statisticsButton.frame = CGRect(x: 20, y: 500, width: 170, height: 170)
+        statisticsButton.addTarget(self, action: #selector(didTapStatisticsButton), for: .touchUpInside)
     }
     
     @objc private func addAiChatbotButton() {
@@ -272,7 +272,7 @@ class ViewController: UIViewController {
         present(navVC, animated: false)
     }
 
-    @objc private func didTapHistoryButton() {
+    @objc private func didTapStatisticsButton() {
         let rootVC = HistoryViewController()
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.modalPresentationStyle = .fullScreen

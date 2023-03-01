@@ -36,10 +36,10 @@ struct HistoryView: View {
                     let avg: String = String(format: "Current Week: %0.0f", weeklyStressAverage(currentDay))
                     let lastAvg: String = String(format: "Previous Week: %0.0f", weeklyStressAverage(lastDay))
                     
-                    Text("Weekly Stress Level Averages: ")
+                    Text("Weekly Stress Level Averages")
                         .font(.system(size: 24, weight: .heavy))
                         .bold()
-                        .foregroundColor(Color.teal)
+                        .foregroundColor(SECONDARY_TEXT_COLOR)
                     
                     BarChart()
                         .frame(height: 250)
@@ -48,7 +48,7 @@ struct HistoryView: View {
                         HStack
                         {
                             RoundedRectangle(cornerRadius: 5.0)
-                                .fill(Color.teal)
+                                .fill(PRIMARY_TEXT_COLOR)
                                 .frame(width: 20, height: 20)
                             Text(avg)
                                 .font(.system(size: 16, weight: .heavy))
@@ -57,7 +57,7 @@ struct HistoryView: View {
                         HStack
                         {
                             RoundedRectangle(cornerRadius: 5.0)
-                                .fill(Color.accentColor)
+                                .fill(TERTARY_TEXT_COLOR)
                                 .frame(width: 20, height: 20)
                             Text(lastAvg)
                                 .font(.system(size: 16, weight: .heavy))
@@ -66,11 +66,12 @@ struct HistoryView: View {
                     }
                     
                     Spacer()
+                    Spacer()
                     
-                    Text("Application Usage:")
+                    Text("Application Usage")
                         .font(.system(size: 24, weight: .heavy))
                         .bold()
-                        .foregroundColor(Color.teal)
+                        .foregroundColor(SECONDARY_TEXT_COLOR)
                     
                     PieChartView(
                         values: [getTotalJournalCountTimestampsLastTwoWeeks(),
@@ -78,11 +79,12 @@ struct HistoryView: View {
                                  getTotalBreathingCountTimestampsLastTwoWeeks()],
                         names: ["Journals", "Chats", "Breathing"],
                         formatter: {value in String(format: "%.0f", value)},
-                        colors: [Color.blue, Color.teal, Color.indigo],
-                        backgroundColor: Color.white)
+                        colors: [TERTARY_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUATERNEY_TEXT_COLOR],
+                        backgroundColor: BACKGROUND_COLOR)
                 }
                 .padding()
             }
+            .background(BACKGROUND_COLOR)
         //}
         //.padding()
     }
@@ -161,7 +163,7 @@ struct BarChart: View
                     x: .value("Day of Week", stressLevel.day),
                     y: .value("Average HRV", stressLevel.dailyAvg)
                 )
-                .foregroundStyle(Color.teal)
+                .foregroundStyle(SECONDARY_TEXT_COLOR)
                 .annotation(position: .overlay, alignment: .center, spacing: 3) {
                     Text("\(stressLevel.dailyAvg, specifier: "%0.0f")")
                         .font(.footnote)
@@ -173,7 +175,7 @@ struct BarChart: View
                     x: .value("Day of Week", stressLevel.day),
                     y: .value("Average HRV", stressLevel.dailyAvg)
                 )
-                .foregroundStyle(Color.accentColor)
+                .foregroundStyle(SECONDARY_TEXT_COLOR)
                 .annotation(position: .overlay, alignment: .center, spacing: 3) {
                     Text("\(stressLevel.dailyAvg, specifier: "%0.0f")")
                         .font(.footnote)
@@ -190,7 +192,7 @@ public struct PieChartView: View {
     public let formatter: (Double) -> String
     
     public var colors: [Color]
-    public var backgroundColor: Color
+    public var backgroundColor: Color = BACKGROUND_COLOR
     
     public var widthFraction: CGFloat
     public var innerRadiusFraction: CGFloat
@@ -264,16 +266,17 @@ public struct PieChartView: View {
                     VStack {
                         Text(self.activeIndex == -1 ? "Total:" : names[self.activeIndex])
                             .font(.title)
-                            .foregroundColor(Color.teal)
+                            .foregroundColor(SECONDARY_TEXT_COLOR)
                         Text(self.formatter(self.activeIndex == -1 ? values.reduce(0, +) : values[self.activeIndex]))
                             .font(.title)
+                            .foregroundColor(SECONDARY_TEXT_COLOR)
                     }
                     
                 }
                 PieChartRows(colors: self.colors, names: self.names, values: self.values.map { self.formatter($0) }, percents: self.values.map { String(format: "%.0f%%", $0 * 100 / self.values.reduce(0, +)) })
             }
             .background(self.backgroundColor)
-            .foregroundColor(Color.accentColor)
+            .foregroundColor(SECONDARY_TEXT_COLOR)
         }
     }
 }
@@ -307,7 +310,7 @@ struct PieChartRows: View {
 
 struct PieChartView_Previews: PreviewProvider {
     static var previews: some View {
-        PieChartView(values: [13, 5, 3], names: ["Journals", "Breathing", "Chats"], formatter: {value in String(format: "%.0f", value)})
+        PieChartView(values: [13, 5, 3], names: ["Journals", "Breathing", "Chats"], formatter: {value in String(format: "%.0f", value)}, colors: [TERTARY_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUATERNEY_TEXT_COLOR])
     }
 }
 
