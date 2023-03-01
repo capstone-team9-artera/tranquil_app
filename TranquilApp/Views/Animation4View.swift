@@ -239,7 +239,7 @@ struct Animation4View: View {
                     }.offset(y: -60)
                 }
             }
-        }
+        }.background(BACKGROUND_COLOR)
     }
 }
 

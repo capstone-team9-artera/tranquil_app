@@ -235,7 +235,7 @@ struct Animation2View: View {
                     }.offset(y: -60)
                 }
             }
-        }
+        }.background(BACKGROUND_COLOR)
     }
 }
 

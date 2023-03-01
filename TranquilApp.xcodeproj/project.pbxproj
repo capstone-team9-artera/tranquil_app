@@ -68,7 +68,6 @@
 		9FD70A4E29820E3D0078AA30 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4D29820E3D0078AA30 /* PageView.swift */; };
 		9FD70A5029820E510078AA30 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4F29820E510078AA30 /* PageViewController.swift */; };
 		9FD70A5229820E6B0078AA30 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5129820E6B0078AA30 /* PageControl.swift */; };
-		9FD70A5F2988948D0078AA30 /* ExerciseModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5E2988948D0078AA30 /* ExerciseModelData.swift */; };
 		B38186C52980C4300083A4ED /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38186C42980C4300083A4ED /* Helper.swift */; };
 		B38186CB2980C4FC0083A4ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38186CA2980C4FC0083A4ED /* SceneDelegate.swift */; };
 		B38186CD2980C5200083A4ED /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38186CC2980C5200083A4ED /* MultiLineTextField.swift */; };
@@ -205,8 +204,6 @@
 		9FD70A4D29820E3D0078AA30 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		9FD70A4F29820E510078AA30 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9FD70A5129820E6B0078AA30 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
-		9FD70A5D298894360078AA30 /* exercisesData.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = exercisesData.geojson; sourceTree = "<group>"; };
-		9FD70A5E2988948D0078AA30 /* ExerciseModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseModelData.swift; sourceTree = "<group>"; };
 		B38186C42980C4300083A4ED /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		B38186CA2980C4FC0083A4ED /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B38186CC2980C5200083A4ED /* MultiLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextField.swift; sourceTree = "<group>"; };
@@ -464,9 +461,7 @@
 				9FD70A4F29820E510078AA30 /* PageViewController.swift */,
 				9FD70A4D29820E3D0078AA30 /* PageView.swift */,
 				9FD70A5129820E6B0078AA30 /* PageControl.swift */,
-				9FD70A5D298894360078AA30 /* exercisesData.geojson */,
 				9F508FEF298C53700068E0C5 /* SessionViewController.swift */,
-				9FD70A5E2988948D0078AA30 /* ExerciseModelData.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -791,7 +786,6 @@
 				552619D82992BCF70080AAB9 /* OpenAIService.swift in Sources */,
 				9FD70A5229820E6B0078AA30 /* PageControl.swift in Sources */,
 				55DFFC5A2990719500729B3D /* Persistence.swift in Sources */,
-				9FD70A5F2988948D0078AA30 /* ExerciseModelData.swift in Sources */,
 				55DFFC572990712100729B3D /* DataModels.xcdatamodeld in Sources */,
 				9F4423D5297BB3B200E87DF2 /* BreathingViewController.swift in Sources */,
 				B3CF270C2980C677002EF9F9 /* CalendarView.swift in Sources */,
