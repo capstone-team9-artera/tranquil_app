@@ -27,11 +27,11 @@ struct Emotion: Codable {
     var moodColor: Color {
         switch color {
         case .mehColor:
-            return .gray
+            return Color.black
         case .sadColor:
-            return .red
+            return Color(red: 237/255, green: 75/255, blue: 66/255)
         case .happyColor:
-            return .green
+            return Color(red: 43/255, green: 179/255, blue: 79/255)
         }
     }
 }

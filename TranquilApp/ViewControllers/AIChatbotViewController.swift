@@ -15,7 +15,7 @@ class AIChatbotViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        myView.backgroundColor = .white
+        myView.backgroundColor = BACKGROUND_UICOLOR
         view = myView
         title = "AI Chatbot"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
@@ -25,13 +25,18 @@ class AIChatbotViewController: UIViewController {
         controller.modalPresentationStyle = .fullScreen
         view.addSubview(controller.view)
         
+        // configuring nav bar
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .white
-        appearance.shadowColor = .white
+        appearance.backgroundColor = BACKGROUND_UICOLOR
+        appearance.shadowColor = BACKGROUND_UICOLOR
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: SECONDARY_TEXT_UICOLOR]
+        let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
+        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: SECONDARY_TEXT_UICOLOR]
+        appearance.buttonAppearance = buttonAppearance
         navigationController?.navigationBar.standardAppearance = appearance;
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
-        
+
         let newCount = AICount(context: context)
         newCount.timestamp = Date()
         do {
