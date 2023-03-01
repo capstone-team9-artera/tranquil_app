@@ -12,7 +12,7 @@ import HealthKit
 struct WatchView: View {
     @State var value = 0
     @State var count = 0
-    @State var isAnimated = true
+    @State var isAnimated = false
 
     @ObservedObject private var connectivityManager = WatchConnectivityManager.shared
     private let notify = NotificationHandler()
@@ -25,19 +25,22 @@ struct WatchView: View {
     var body: some View {
         GeometryReader{ geometry in
             ZStack{
-                Image(systemName: "heart")
-                    .imageScale(.large)
-                    .foregroundColor(.accentColor)
-                Text("\(value)")
+                    VStack {
+                            Image(systemName: "heart.fill")
+                                .imageScale(.large)
+                                .foregroundColor(Color.teal)
+                            Text("\(value)")
+                            .foregroundColor(Color.teal)
+                        }
                 Path{path in
                     path.move(to: CGPoint(x: 0, y: 70 + geometry.size.height/2))
                     path.addCurve(
-                        to: CGPoint(x: 1*geometry.size.width,y: 70 + geometry.size.height/2),
+                        to: CGPoint(x: geometry.size.width,y: 70 + geometry.size.height/2),
                         control1: CGPoint(x: geometry.size.width * (0.35),y: 200 + 70 + geometry.size.height/2),
                         control2: CGPoint(x: geometry.size.width * (0.65),y: -200 + 70 + geometry.size.height/2)
                         )
                     path.addCurve(
-                        to: CGPoint(x: 2*geometry.size.width,y: 70 + geometry.size.height/2),
+                        to: CGPoint(x: 2*geometry.size.width, y: 70 + geometry.size.height/2),
                         control1: CGPoint(x: geometry.size.width * (1.35),y: 200 + 70 + geometry.size.height/2),
                         control2: CGPoint(x: geometry.size.width * (1.65),y: -200 + 70 + geometry.size.height/2)
                         )
@@ -48,27 +51,27 @@ struct WatchView: View {
                 .offset(x: isAnimated ? -1*(geometry.size.width ) : 0)
                 .animation(
                     Animation.linear(duration: 11)
-                    .repeatForever(autoreverses: false))
+                        .repeatForever(autoreverses: false))
                 
                 Path{path in
-                    path.move(to: CGPoint(x: 0, y: 95 + geometry.size.height))
+                    path.move(to: CGPoint(x: 0, y: 50 + geometry.size.height))
                     path.addCurve(
-                        to: CGPoint(x: 1*geometry.size.width * 3,y: 95 + geometry.size.height),
+                        to: CGPoint(x: 1*geometry.size.width * 3,y: 50 + geometry.size.height),
                         control1: CGPoint(x: geometry.size.width * 3 * (0.35),y: 200 + 95 + geometry.size.height),
                         control2: CGPoint(x: geometry.size.width * 3 * (0.65),y: -200 + 95 + geometry.size.height)
                         )
                     path.addCurve(
-                        to: CGPoint(x: 2*geometry.size.width * 3,y: 95 + geometry.size.height),
-                        control1: CGPoint(x: geometry.size.width * 3 * (1.35),y: 200 + 95 + geometry.size.height),
+                        to: CGPoint(x: 6*geometry.size.width,y: 50 + geometry.size.height),
+                        control1: CGPoint(x: geometry.size.width * 3 * (1.35),y: 295 + geometry.size.height),
                         control2: CGPoint(x: geometry.size.width * 3 * (1.65),y: -200 + 95 + geometry.size.height)
                         )
-                    path.addLine(to: CGPoint(x: 2*geometry.size.width * 3, y: 95 + geometry.size.height))
-                    path.addLine(to: CGPoint(x: 0, y: 95 + geometry.size.height))
+                    path.addLine(to: CGPoint(x: 6*geometry.size.width, y: 50 + geometry.size.height))
+                    path.addLine(to: CGPoint(x: 0, y: 50 + geometry.size.height))
                 }
                 .foregroundColor(Color.black.opacity(0.2))
                 .offset(x: isAnimated ? -1*(geometry.size.width  * 3) : 0)
                 .animation(
-                    Animation.linear(duration: 4)
+                    Animation.linear(duration: 7)
                     .repeatForever(autoreverses: false))
                 
                 Path{path in
@@ -90,22 +93,16 @@ struct WatchView: View {
                 .offset(x: isAnimated ? -1*(geometry.size.width  * 1.2) : 0)
                 .animation(
                     Animation.linear(duration: 5)
-                    .repeatForever(autoreverses: false))
+                        .repeatForever(autoreverses: false))
             }
         }
-//        VStack {
-//            Image(systemName: "heart")
-//                .imageScale(.large)
-//                .foregroundColor(.accentColor)
-//            Text("\(value)")
-//
-//        }
         .padding()
         .background(Color.white)
         .onAppear(perform: start)
     }
      func start() {
         if HKHealthStore.isHealthDataAvailable() {
+            self.isAnimated = true
             authorizeKit()
             notify.askPermission()
             startHeartRateQuery(quantityTypeIdentifier: .heartRate)
