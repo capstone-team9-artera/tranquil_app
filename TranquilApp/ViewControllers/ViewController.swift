@@ -41,7 +41,7 @@ class ViewController: UIViewController {
             self.name.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
             self.breathingButton.layer.opacity = 0.75
             self.journalButton.layer.opacity = 0.75
-            self.historyButton.layer.opacity = 0.75
+            self.statisticsButton.layer.opacity = 0.75
             self.aiChatbotButton.layer.opacity = 0.75
             self.heartRateView.layer.opacity = 1
             self.heartRateLabel.layer.opacity = 1
