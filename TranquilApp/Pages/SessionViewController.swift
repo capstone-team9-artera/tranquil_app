@@ -9,7 +9,7 @@ import CoreData
 
 class SessionViewController: UIViewController {
     var name: String = "Default"
-    var prompt: String = "Default description"
+    var prompt: String = ""
     var gifName: String = "sunsetocean"
     
     private let label = UILabel()
@@ -25,12 +25,11 @@ class SessionViewController: UIViewController {
         
         view = myView
         view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//        view.addSubview(animation)
         
         label.textAlignment = .center
         label.text = name
         label.textColor = .white
-        label.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
+        label.frame = CGRect(x: 25, y: 225, width: 350, height: 52)
         label.font = .systemFont(ofSize: 30, weight: UIFont.Weight(rawValue: 5))
         
         promptLabel.textAlignment = .center
