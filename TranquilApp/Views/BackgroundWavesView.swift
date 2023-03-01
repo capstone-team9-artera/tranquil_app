@@ -13,6 +13,7 @@ struct BackgroundWavesView: View {
     
     let universalSize = UIScreen.main.bounds
     @State var isAnimated = false
+    var shouldAnimate : Bool = true
     var body: some View {
         ZStack {
             
@@ -54,7 +55,7 @@ struct BackgroundWavesView: View {
 
 
         }.onAppear(){
-            self.isAnimated = true
+            self.isAnimated = shouldAnimate
         }.background(BACKGROUND_COLOR)
     }
 }
