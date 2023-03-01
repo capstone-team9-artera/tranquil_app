@@ -28,21 +28,26 @@ class ViewController: UIViewController {
     private let aiChatbotButton = UIButton()
     private let notifButton = UIButton()
     private let name = UILabel()
+    private let heartRateLabel = UILabel()
+    private let heartRateImage = UIImage(systemName: "heart.fill")
+    private let heartRateView = UIImageView()
     private let background = UIHostingController(rootView: BackgroundWavesView())
     
-    private func animate() {
+    private func welcomeAnimation() {
         UIView.animate(withDuration: 1, delay: 0.8, animations: {
             self.name.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
             self.breathingButton.layer.opacity = 0.8
             self.journalButton.layer.opacity = 0.8
             self.historyButton.layer.opacity = 0.8
             self.aiChatbotButton.layer.opacity = 0.8
+            self.heartRateView.layer.opacity = 1
+            self.heartRateLabel.layer.opacity = 1
         })
     }
     
     // animation when opening the app
     override func viewDidLayoutSubviews() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {self.animate()})
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {self.welcomeAnimation()})
 
     }
     
@@ -62,6 +67,7 @@ class ViewController: UIViewController {
         addJournalButton()
         addHistoryButton()
         addAiChatbotButton()
+        addHeartRateView()
         
         name.textAlignment = .center
         name.text = "TRANQUIL"
@@ -69,10 +75,12 @@ class ViewController: UIViewController {
         name.frame = CGRect(x: 25, y: 350, width: 350, height: 52)
         name.font = .systemFont(ofSize: 65, weight: UIFont.Weight(rawValue: 10))
         view.addSubview(name)
-
     }
     
     @objc private func getHeartRate(){
+        //update heart rate label
+        heartRateLabel.text = String("\(lastHeartRate)")
+        view.addSubview(heartRateLabel)
         
         let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
         let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
@@ -110,9 +118,25 @@ class ViewController: UIViewController {
             
         }
         else{
+            print("length ", length)
             lastHeartRate = Int(items![(length - 1)].value)
+            print("lastHeartRate value ", lastHeartRate)
         }
    }
+    
+    @objc private func addHeartRateView() {
+        heartRateLabel.text = String("\(lastHeartRate)")
+        heartRateLabel.textColor = UIColor(PRIMARY_TEXT_COLOR)
+        heartRateLabel.frame = CGRect(x: 350, y: 75, width: 25, height: 25)
+        heartRateLabel.layer.opacity = 0
+        heartRateView.image = heartRateImage
+        heartRateView.frame = CGRect(x: 320, y: 79, width: 25, height: 20)
+        heartRateView.layer.opacity = 0
+        heartRateView.tintColor = PRIMARY_TEXT_UICOLOR
+        
+        view.addSubview(heartRateLabel)
+        view.addSubview(heartRateView)
+    }
     
     @objc private func addBackgroundWaves() {
         background.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
