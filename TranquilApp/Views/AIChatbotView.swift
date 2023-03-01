@@ -16,41 +16,47 @@ struct AIChatbotView: View {
     @State var cancellables = Set<AnyCancellable>()
     
     var body: some View {
-        VStack{
-            ScrollView {
-                LazyVStack {
-                    ForEach(chatMessages, id: \.id) { message in
-                        messageView(message: message)
+        ZStack {
+            BackgroundWavesView(shouldAnimate: false)
+                .offset(x: -25, y: 90)
+            
+            VStack{
+                ScrollView {
+                    LazyVStack {
+                        ForEach(chatMessages, id: \.id) { message in
+                            messageView(message: message)
+                        }
                     }
                 }
-            }
-            HStack{
-                TextField("Enter a message", text: $messageText)
-                    .padding()
-                    .background(.gray.opacity(0.1))
-                    .cornerRadius(12)
-                Button {
-                    sendMessage()
-                } label: {
-                     Text ("Send")
-                        .foregroundColor(.white)
+                HStack{
+                    TextField("Enter a message", text: $messageText)
                         .padding()
-                        .background(.black)
+                        .background(.white.opacity(0.7))
                         .cornerRadius(12)
+                    Button {
+                        sendMessage()
+                    } label: {
+                        Text ("Send")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(.black)
+                            .cornerRadius(12)
+                    }
                 }
             }
         }
             
         .padding()
+        .background(BACKGROUND_COLOR)
     }
     
     func messageView(message: ChatMessage) -> some View {
         HStack {
             if message.sender == .me {Spacer() }
             Text(message.content)
-                .foregroundColor(message.sender == .me ? .white : .black)
+                .foregroundColor(message.sender == .me ? BACKGROUND_COLOR : .black)
                 .padding()
-                .background(message.sender == .me ? .teal : .gray.opacity(0.1))
+                .background(message.sender == .me ? SECONDARY_TEXT_COLOR : .gray.opacity(0.1))
                 .cornerRadius(16)
             if message.sender == .gpt {Spacer() }
         }
