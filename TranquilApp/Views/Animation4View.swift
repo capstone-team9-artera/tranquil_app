@@ -42,6 +42,7 @@ struct Animation4View: View {
                     .font(.system(size: 30, weight: .medium))
                     .bold()
                     .foregroundColor(SECONDARY_TEXT_COLOR)
+                    .offset(y: -90)
                 
                 ZStack {
                     ZStack {
@@ -235,7 +236,7 @@ struct Animation4View: View {
                                     }
                                 }
                         }
-                    }
+                    }.offset(y: -60)
                 }
             }
         }

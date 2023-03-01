@@ -23,6 +23,7 @@ class BreathingViewController: UIViewController {
         title = "Breathing Exercises"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
         
+        // configuring nav bar
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
@@ -34,6 +35,7 @@ class BreathingViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance;
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
         
+        // configuring session biew controllers
         quickSession.name = "Balance"
         quickSession.gifName = "sunsetocean"
         quickSession.loadViewIfNeeded()
