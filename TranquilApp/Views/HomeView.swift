@@ -17,35 +17,11 @@ struct HomeView: View {
     @State var docID = ""
     @State var remove = false
     
-    init() {
-
-        UINavigationBar.appearance().backgroundColor = .systemRed
-
-         UINavigationBar.appearance().largeTitleTextAttributes = [
-            .foregroundColor: UIColor.white]
-
-    }
-
     var body: some View {
 //        NavigationView {
         ZStack(alignment: .bottomTrailing) {
             
             VStack(spacing: 0){
-                
-                HStack(alignment: .center) {
-
-
-                    Text("My Entries").font(.title).foregroundColor(.red)
-
-                    Spacer()
-//                    NavigationLink(destination: CalendarView(start: Date(), monthsToShow: 1, daysSelectable: true, entryController: entryModelController)) {
-//                        Text("Calendar").foregroundColor(.red)
-//                    }
-
-
-                }.padding()
-                    .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
-                
                 List {
                     ForEach(self.entryModelController.entries, id: \.id) { entry in
                         
@@ -69,10 +45,10 @@ struct HomeView: View {
                     
                     
                 }
-                Spacer()
+                Spacer().background(BACKGROUND_COLOR)
                 
-            }//
-            Spacer()
+            }
+//            Spacer()
             Button(action: {
                 
                 self.txt = ""
@@ -81,10 +57,10 @@ struct HomeView: View {
                 
             }) {
                 
-                Image(systemName: "plus").resizable().frame(width: 18, height: 18).foregroundColor(.white)
+                Image(systemName: "plus").resizable().frame(width: 18, height: 18).foregroundColor(BACKGROUND_COLOR)
                 
             }.padding()
-                .background(Color.red)
+                .background(SECONDARY_TEXT_COLOR)
                 .clipShape(Circle())
                 .padding()
             
@@ -93,21 +69,9 @@ struct HomeView: View {
         
             AddEntryView(entryModelController: self.entryModelController)
             
-        }.animation(.default).navigationBarTitle("Diary").navigationBarItems(trailing: NavigationLink(destination: CalendarView(start: Date(), monthsToShow: 1, daysSelectable: true, entryController: entryModelController), label: {
-            Image(systemName: "calendar")
-        })).accentColor(.black)
-            
-//        }.accentColor(.black)
+        }.background(BACKGROUND_COLOR)
     }
     
-}
-
-class Host : UIHostingController<ContentView>{
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        
-        return .lightContent
-    }
 }
 
 struct HomeView_Previews: PreviewProvider {
