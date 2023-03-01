@@ -26,11 +26,15 @@ struct WatchView: View {
         GeometryReader{ geometry in
             ZStack{
                     VStack {
+                            Text("TRANQUIL")
+                            .fontWeight(.bold)
+                            .font(.title2)
+                            .foregroundColor(SECONDARY_TEXT_COLOR)
                             Image(systemName: "heart.fill")
-                                .imageScale(.large)
-                                .foregroundColor(Color.teal)
+                            .imageScale(.large)
+                                .foregroundColor(SECONDARY_TEXT_COLOR)
                             Text("\(value)")
-                            .foregroundColor(Color.teal)
+                            .foregroundColor(SECONDARY_TEXT_COLOR)
                         }
                 Path{path in
                     path.move(to: CGPoint(x: 0, y: 70 + geometry.size.height/2))

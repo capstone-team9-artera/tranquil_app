@@ -23,6 +23,7 @@
 		55491C8929AD75F900084B7F /* waterfall.gif in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8829AD75F800084B7F /* waterfall.gif */; };
 		55491C8B29AE93D400084B7F /* ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8A29AE93D400084B7F /* ocean.mp3 */; };
 		55491C8C29AE93D400084B7F /* ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55491C8A29AE93D400084B7F /* ocean.mp3 */; };
+		55491C8D29AFE24F00084B7F /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5894D629A7F2E900084F58 /* ColorConstants.swift */; };
 		55C0CA7529A84241006111F3 /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7429A84241006111F3 /* NotificationHandler.swift */; };
 		55C0CA7829A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */; };
 		55C0CA7929A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C0CA7729A9DA6F006111F3 /* WatchConnectivityManager.swift */; };
@@ -724,6 +725,7 @@
 			files = (
 				55DFFC2F29906DDB00729B3D /* WatchView.swift in Sources */,
 				55DFFC5B2990719500729B3D /* Persistence.swift in Sources */,
+				55491C8D29AFE24F00084B7F /* ColorConstants.swift in Sources */,
 				55DFFC582990712100729B3D /* DataModels.xcdatamodeld in Sources */,
 				55491C7F29AD74A800084B7F /* NotificationWatchHandler.swift in Sources */,
 				55C0CA7929A9DA6F006111F3 /* WatchConnectivityManager.swift in Sources */,
