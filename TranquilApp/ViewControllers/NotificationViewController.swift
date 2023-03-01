@@ -15,6 +15,14 @@ class NotificationViewController: UIViewController {
         view.self = myView
         title = "Notification from HRV Spike"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        appearance.shadowColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance;
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+
         button.setTitle("Press to go from notification to Breathing View", for: .normal)
         button.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
         button.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping

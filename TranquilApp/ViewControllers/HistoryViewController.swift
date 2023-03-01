@@ -16,6 +16,14 @@ class HistoryViewController: UIViewController {
         view = myView
         title = "Statistics"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        appearance.shadowColor = .white
+        navigationController?.navigationBar.standardAppearance = appearance;
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        
         let controller = UIHostingController(rootView: HistoryView())
         controller.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 40)
         controller.didMove(toParent: self)
