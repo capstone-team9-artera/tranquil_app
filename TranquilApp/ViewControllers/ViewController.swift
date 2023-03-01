@@ -39,10 +39,10 @@ class ViewController: UIViewController {
     private func welcomeAnimation() {
         UIView.animate(withDuration: 1, delay: 0.8, animations: {
             self.name.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
-            self.breathingButton.layer.opacity = 0.8
-            self.journalButton.layer.opacity = 0.8
-            self.historyButton.layer.opacity = 0.8
-            self.aiChatbotButton.layer.opacity = 0.8
+            self.breathingButton.layer.opacity = 0.75
+            self.journalButton.layer.opacity = 0.75
+            self.historyButton.layer.opacity = 0.75
+            self.aiChatbotButton.layer.opacity = 0.75
             self.heartRateView.layer.opacity = 1
             self.heartRateLabel.layer.opacity = 1
         })
@@ -75,7 +75,6 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         self.title = "Home Page"
         
-        addBackgroundWaves()
         addBreathingButton()
         addJournalButton()
         addHistoryButton()
@@ -84,7 +83,7 @@ class ViewController: UIViewController {
         
         name.textAlignment = .center
         name.text = "TRANQUIL"
-        name.textColor = UIColor(PRIMARY_TEXT_COLOR)
+        name.textColor = UIColor(SECONDARY_TEXT_COLOR)
         name.frame = CGRect(x: 25, y: 350, width: 350, height: 52)
         name.font = .systemFont(ofSize: 65, weight: UIFont.Weight(rawValue: 10))
         view.addSubview(name)
@@ -97,6 +96,10 @@ class ViewController: UIViewController {
         timer1 = Timer.scheduledTimer(timeInterval: 117, target:self, selector: #selector(playMusic), userInfo: nil, repeats: true)
 
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        addBackgroundWaves()
     }
     
     @objc private func playMusic(){
@@ -149,13 +152,13 @@ class ViewController: UIViewController {
     
     @objc private func addHeartRateView() {
         heartRateLabel.text = String("\(lastHeartRate)")
-        heartRateLabel.textColor = UIColor(PRIMARY_TEXT_COLOR)
+        heartRateLabel.textColor = SECONDARY_TEXT_UICOLOR
         heartRateLabel.frame = CGRect(x: 350, y: 75, width: 25, height: 25)
         heartRateLabel.layer.opacity = 0
         heartRateView.image = heartRateImage
         heartRateView.frame = CGRect(x: 320, y: 79, width: 25, height: 20)
         heartRateView.layer.opacity = 0
-        heartRateView.tintColor = PRIMARY_TEXT_UICOLOR
+        heartRateView.tintColor = SECONDARY_TEXT_UICOLOR
         
         view.addSubview(heartRateLabel)
         view.addSubview(heartRateView)
@@ -163,10 +166,9 @@ class ViewController: UIViewController {
     
     @objc private func addBackgroundWaves() {
         background.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-
         background.didMove(toParent: self)
         background.modalPresentationStyle = .fullScreen
-        view.addSubview(background.view)
+        view.insertSubview(background.view, at: 0)
     }
     
     @objc private func addBreathingButton() {
@@ -175,7 +177,7 @@ class ViewController: UIViewController {
         breathingButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
         breathingButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         breathingButton.titleLabel?.textAlignment = .center
-        breathingButton.backgroundColor = .systemTeal
+        breathingButton.backgroundColor = SECONDARY_TEXT_UICOLOR
         breathingButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         breathingButton.titleLabel?.textColor = .white
         breathingButton.layer.opacity = 0.0
@@ -233,7 +235,7 @@ class ViewController: UIViewController {
         aiChatbotButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
         aiChatbotButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         aiChatbotButton.titleLabel?.textAlignment = .center
-        aiChatbotButton.backgroundColor = .systemTeal
+        aiChatbotButton.backgroundColor = SECONDARY_TEXT_UICOLOR
         aiChatbotButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         aiChatbotButton.titleLabel?.textColor = .white
         aiChatbotButton.layer.opacity = 0.0
