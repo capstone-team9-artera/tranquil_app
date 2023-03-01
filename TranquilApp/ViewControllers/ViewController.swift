@@ -119,12 +119,10 @@ class ViewController: UIViewController {
         let length = items!.count
         if lastHeartRate != 0{
             //algorithm
-            //let currentHeartRate = Int(items![(length - 1)].value)
-            //print("length ", length)
-            //print("Heart ", currentHeartRate)
-            //variability = Int(items![(length - 1)].value) - lastHeartRate
-            variability = 8
-            let currentHeartRate = 90
+            let currentHeartRate = Int(items![(length - 1)].value)
+            print("length ", length)
+            print("Heart ", currentHeartRate)
+            variability = Int(items![(length - 1)].value) - lastHeartRate
             if(variability > 7 && currentHeartRate > 85){
                 print(true)
                 notify.sendNotification()
