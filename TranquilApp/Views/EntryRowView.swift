@@ -48,15 +48,17 @@ struct EntryRowView: View {
                 entryImage()
                 
                 Image(systemName: "square.and.arrow.down")
-                    .foregroundColor(.blue)
+                    .foregroundColor(SECONDARY_TEXT_COLOR)
                     .onTapGesture {
                         entryModelController.updateEntryComment(entry: entry, comment: updatedComment)
                         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
                     }
             }
             .foregroundColor(entry.emotion.moodColor)
+            .background(.white)
             .padding()
         }
+        .background(BACKGROUND_COLOR)
     }
     
     func entryImage() -> some View {

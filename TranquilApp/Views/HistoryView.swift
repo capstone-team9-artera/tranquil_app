@@ -73,7 +73,9 @@ struct HistoryView: View {
                         .foregroundColor(Color.teal)
                     
                     PieChartView(
-                        values: [10, 20, 30],
+                        values: [getTotalJournalCountTimestampsLastTwoWeeks(),
+                                 getTotalAICountTimestampsLastTwoWeeks(),
+                                 getTotalBreathingCountTimestampsLastTwoWeeks()],
                         names: ["Journals", "Chats", "Breathing"],
                         formatter: {value in String(format: "%.0f", value)},
                         colors: [Color.blue, Color.teal, Color.indigo],
@@ -102,6 +104,7 @@ struct stressLevel: Identifiable
 
 //Previous weeks data.
 //Previous day, Daily HRV average.
+//Hard coded for testing.
 /*
 var lastDay: [stressLevel] = [
     .init(day: "Sun.", dailyAvg: 99),
@@ -112,10 +115,11 @@ var lastDay: [stressLevel] = [
     .init(day: "Fri.", dailyAvg: 74),
     .init(day: "Sat.", dailyAvg: 79)]
  */
-var lastDay: [stressLevel] = fill(forCurrentWeek: false)
+var lastDay: [stressLevel] = fill(forCurrentWeek: false) // pulled from core data.
 
 //Current weeks data.
 //Current day, Daily HRV average.
+//Hard coded for testing.
 /*
 var currentDay: [stressLevel] = [
     .init(day: "Sun.", dailyAvg: 83),
@@ -126,7 +130,7 @@ var currentDay: [stressLevel] = [
     .init(day: "Fri.", dailyAvg: 60),
     .init(day: "Sat.", dailyAvg: 65)]
 */
-var currentDay: [stressLevel] = fill(forCurrentWeek: true)
+var currentDay: [stressLevel] = fill(forCurrentWeek: true) //pulled from core data.
 
 let weekData = [
     (period: "Previous Week", data: lastDay),
@@ -361,90 +365,6 @@ struct PieSlice_Previews: PreviewProvider {
 //Organizing apple watch captures from CoreData:
 
 /*
-func fill() -> [stressLevel]
-{
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var items:[HeartRate]?
-
-    let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
-    
-    let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
-    fetchRequest.sortDescriptors = [sort]
-    do {
-        items = try context.fetch(HeartRate.fetchRequest())
-    } catch {
-        print("Cannot fetch Expenses")
-    }
-    
-    var sunCount = 0
-    var sunTotal = 0
-    
-    var monCount = 0
-    var monTotal = 0
-    
-    var tueCount = 0
-    var tueTotal = 0
-    
-    var wedCount = 0
-    var wedTotal = 0
-    
-    var thuCount = 0
-    var thuTotal = 0
-    
-    var friCount = 0
-    var friTotal = 0
-    
-    var satCount = 0
-    var satTotal = 0
-    
-    ForEach<[HeartRate], ObjectIdentifier, Any>(items!)
-    { HeartRate in
-        let calendar = Calendar.current
-        let date = HeartRate.timestamp
-        let weekday = calendar.component(.weekday, from: date!)
-        
-        
-        switch weekday {
-            case 1:
-                sunTotal += Int(HeartRate.value)
-                sunCount += 1
-            case 2:
-                monTotal += Int(HeartRate.value)
-                monCount += 1
-            case 3:
-                tueTotal += Int(HeartRate.value)
-                tueCount += 1
-            case 4:
-                wedTotal += Int(HeartRate.value)
-                wedCount += 1
-            case 5:
-                thuTotal += Int(HeartRate.value)
-                thuCount += 1
-            case 6:
-                friTotal += Int(HeartRate.value)
-                friCount += 1
-            case 7:
-                satTotal += Int(HeartRate.value)
-                satCount += 1
-            default:
-                print("Other")
-        }
-    }
-    
-    var week: [stressLevel] = [
-        .init(day: "Sun.", dailyAvg: Double(sunTotal/sunCount)),
-        .init(day: "Mon.", dailyAvg: Double(monTotal/monCount)),
-        .init(day: "Tue.", dailyAvg: Double(tueTotal/tueCount)),
-        .init(day: "Wed.", dailyAvg: Double(wedTotal/wedCount)),
-        .init(day: "Thu.", dailyAvg: Double(thuTotal/thuCount)),
-        .init(day: "Fri.", dailyAvg: Double(friTotal/friCount)),
-        .init(day: "Sat.", dailyAvg: Double(satTotal/satCount))]
-    
-    return week
-}
-*/
-
-/*
 //I believe this may be working, but it does not diferentiate between the current week
 // and the previous week.
 func fill() -> [stressLevel] {
@@ -538,4 +458,89 @@ func fill(forCurrentWeek: Bool) -> [stressLevel] {
     
     return week
 }
+
+/**
+ Calculates the total number of AIcount timestamps in the last 2 weeks and returns it as a double value.
+ - Returns: Double value representing the total number of AIcount timestamps in the last 2 weeks.
+ */
+func getTotalAICountTimestampsLastTwoWeeks() -> Double {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    // Get the current date and the date 2 weeks ago
+    let currentDate = Date()
+    guard let twoWeeksAgo = Calendar.current.date(byAdding: .day, value: -14, to: currentDate) else {
+        return 0
+    }
+    
+    // Create a fetch request for AIcount objects with a timestamp in the last 2 weeks
+    let fetchRequest = NSFetchRequest<AICount>(entityName: "AICount")
+    fetchRequest.predicate = NSPredicate(format: "timestamp > %@", twoWeeksAgo as NSDate)
+    
+    do {
+        // Get the AIcount objects with timestamps in the last 2 weeks
+        let aiCounts = try context.fetch(fetchRequest)
+        // Return the count of AIcount objects as a Double value
+        return Double(aiCounts.count)
+    } catch {
+        print("Cannot fetch AIcounts")
+        return 0
+    }
+}
+
+/**
+ Calculates the total number of BreathingCount timestamps in the last 2 weeks and returns it as a double value.
+ - Returns: Double value representing the total number of BreathingCount timestamps in the last 2 weeks.
+ */
+func getTotalBreathingCountTimestampsLastTwoWeeks() -> Double {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    // Get the current date and the date 2 weeks ago
+    let currentDate = Date()
+    guard let twoWeeksAgo = Calendar.current.date(byAdding: .day, value: -14, to: currentDate) else {
+        return 0
+    }
+    
+    // Create a fetch request for BreathingCount objects with a timestamp in the last 2 weeks
+    let fetchRequest = NSFetchRequest<BreathingCount>(entityName: "BreathingCount")
+    fetchRequest.predicate = NSPredicate(format: "timestamp > %@", twoWeeksAgo as NSDate)
+    
+    do {
+        // Get the BreathingCount objects with timestamps in the last 2 weeks
+        let breathingCounts = try context.fetch(fetchRequest)
+        // Return the count of BreathingCount objects as a Double value
+        return Double(breathingCounts.count)
+    } catch {
+        print("Cannot fetch BreathingCounts")
+        return 0
+    }
+}
+
+/**
+ Calculates the total number of JournalCount timestamps in the last 2 weeks and returns it as a double value.
+ - Returns: Double value representing the total number of JournalCount timestamps in the last 2 weeks.
+ */
+func getTotalJournalCountTimestampsLastTwoWeeks() -> Double {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    // Get the current date and the date 2 weeks ago
+    let currentDate = Date()
+    guard let twoWeeksAgo = Calendar.current.date(byAdding: .day, value: -14, to: currentDate) else {
+        return 0
+    }
+    
+    // Create a fetch request for JournalCount objects with a timestamp in the last 2 weeks
+    let fetchRequest = NSFetchRequest<JournalCount>(entityName: "JournalCount")
+    fetchRequest.predicate = NSPredicate(format: "timestamp > %@", twoWeeksAgo as NSDate)
+    
+    do {
+        let results = try context.fetch(fetchRequest)
+        let count = Double(results.count)
+        return count
+    } catch let error as NSError {
+        print("Could not fetch. \(error), \(error.userInfo)")
+        return 0.0
+    }
+}
+
+
 

@@ -9,7 +9,7 @@ import CoreData
 
 class SessionViewController: UIViewController {
     var name: String = "Default"
-    var prompt: String = "Default description"
+    var prompt: String = ""
     var gifName: String = "sunsetocean"
     
     private let label = UILabel()
@@ -21,27 +21,26 @@ class SessionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myView.backgroundColor = .white
+        myView.backgroundColor = BACKGROUND_UICOLOR
         
         view = myView
         view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-//        view.addSubview(animation)
         
         label.textAlignment = .center
         label.text = name
         label.textColor = .white
-        label.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
+        label.frame = CGRect(x: 23, y: 225, width: 350, height: 52)
         label.font = .systemFont(ofSize: 30, weight: UIFont.Weight(rawValue: 5))
         
         promptLabel.textAlignment = .center
         promptLabel.text = prompt
         promptLabel.textColor = .white
-        promptLabel.frame = CGRect(x: 25, y: 300, width: 350, height: 52)
+        promptLabel.frame = CGRect(x: 23, y: 300, width: 350, height: 52)
         promptLabel.font = .systemFont(ofSize: 18, weight: UIFont.Weight(rawValue: 3))
 
         let myGif = UIImage.gifImageWithName(gifName)
         let imageView = UIImageView(image: myGif)
-        imageView.frame = CGRect(x: 25, y: 20, width: 350, height: 700)
+        imageView.frame = CGRect(x: 23, y: 20, width: 350, height: 700)
         imageView.layer.masksToBounds = true
         imageView.layer.shadowColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8).cgColor
         imageView.layer.shadowOpacity = 0.8
