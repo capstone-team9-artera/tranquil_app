@@ -20,10 +20,10 @@ struct EntryRowView: View {
 
     var body: some View {
         ZStack {
-//            Rectangle()
-//                .fill(Color(UIColor.systemBackground))
-//                .cornerRadius(10)
-//                .shadow(color: .gray, radius: 5, x: 1, y: 1)
+            Rectangle()
+                .fill(Color(UIColor.systemBackground))
+                .cornerRadius(10)
+                .shadow(color: .gray, radius: 5, x: 1, y: 1)
 
             HStack {
                 VStack {
@@ -55,7 +55,7 @@ struct EntryRowView: View {
                     }
             }
             .foregroundColor(entry.emotion.moodColor)
-            .background(BACKGROUND_COLOR)
+            .background(.white)
             .padding()
         }
         .background(BACKGROUND_COLOR)

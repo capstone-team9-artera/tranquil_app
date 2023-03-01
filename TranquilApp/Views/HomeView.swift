@@ -44,7 +44,8 @@ struct HomeView: View {
                      UITableView.appearance().showsVerticalScrollIndicator = false
                     
                     
-                }
+                }.scrollContentBackground(.hidden)
+                    .background(BackgroundWavesView())
                 Spacer().background(BACKGROUND_COLOR)
                 
             }
