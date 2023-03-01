@@ -30,7 +30,7 @@ struct AddEntryView: View {
                     self.mehIsSelected = false
                     self.sadIsSelected = false
                 }) {
-                    Image("happy").resizable().frame(width: 50, height: 50).foregroundColor(.green).background(happyIsSelected ? Color.yellow : Color.clear).clipShape(Circle())
+                    Image("happy").resizable().frame(width: 50, height: 50).foregroundColor(Color(red: 43/255, green: 179/255, blue: 79/255)).background(happyIsSelected ? Color.yellow : Color.clear).clipShape(Circle())
                 }
                 
                 Button(action: {
@@ -50,9 +50,10 @@ struct AddEntryView: View {
                     self.happyIsSelected = false
                     self.mehIsSelected = false
                 }) {
-                    Image("sad").resizable().frame(width: 50, height: 50).foregroundColor(.red).background(sadIsSelected ? Color.yellow : Color.clear).clipShape(Circle())
+                    Image("sad").resizable().frame(width: 50, height: 50).foregroundColor(Color(red: 237/255, green: 75/255, blue: 66/255)).background(sadIsSelected ? Color.yellow : Color.clear).clipShape(Circle())
                 }
             }
+
             ZStack(alignment: .bottomTrailing) {
             MultiLineTextField(txt: $text, counterLabel: $counterLabel).frame(height: 450).cornerRadius(20)
 //                Text("Remaining: \(counterLabel)").font(.footnote).foregroundColor(.gray).padding([.bottom, .trailing], 8)
@@ -62,10 +63,11 @@ struct AddEntryView: View {
                     
                 self.presentationMode.wrappedValue.dismiss()
             }) {
-                Text("Add Entry").bold().frame(width: UIScreen.main.bounds.width - 30, height: 50).background(Color.blue).foregroundColor(.white).cornerRadius(10)
+                Text("Add Entry").bold().frame(width: UIScreen.main.bounds.width - 30, height: 50).background(SECONDARY_TEXT_COLOR).foregroundColor(BACKGROUND_COLOR).cornerRadius(10)
             }
             Spacer()
         }.padding()
+            .background(BACKGROUND_COLOR)
     }
 
 }
