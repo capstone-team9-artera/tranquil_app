@@ -108,6 +108,9 @@ class ViewController: UIViewController {
     
     @objc private func getHeartRate(){
         
+        heartRateLabel.text = String("\(lastHeartRate)")
+        view.addSubview(heartRateView)
+        
         let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
         let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
         fetchRequest.sortDescriptors = [sort]
