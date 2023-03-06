@@ -34,6 +34,7 @@ class BreathingViewController: UIViewController {
         appearance.buttonAppearance = buttonAppearance
         navigationController?.navigationBar.standardAppearance = appearance;
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        self.edgesForExtendedLayout = UIRectEdge()
         
         // configuring session biew controllers
         quickSession.name = "Balance"

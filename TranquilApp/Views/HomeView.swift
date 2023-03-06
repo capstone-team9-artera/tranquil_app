@@ -45,7 +45,7 @@ struct HomeView: View {
                     
                     
                 }.scrollContentBackground(.hidden)
-                    .background(BackgroundWavesView())
+                    .background(BackgroundWavesView(color2: Color(red: 119/255, green: 87/255, blue: 247/255, opacity: 0.5)))
                 Spacer().background(BACKGROUND_COLOR)
                 
             }

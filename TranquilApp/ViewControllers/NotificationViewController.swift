@@ -20,18 +20,23 @@ class NotificationViewController: UIViewController {
         super.viewDidLoad()
         myView.backgroundColor = UIColor(SECONDARY_TEXT_COLOR)
         view.self = myView
-        title = "Notification from HRV Spike"
+        title = ""
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Home", style: .plain, target: self, action: #selector(dismissSelf))
         
+        // configuring nav bar
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .white
-        appearance.shadowColor = .white
+        appearance.backgroundColor = BACKGROUND_UICOLOR
+        appearance.shadowColor = BACKGROUND_UICOLOR
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: SECONDARY_TEXT_UICOLOR]
+        let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
+        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: SECONDARY_TEXT_UICOLOR]
+        appearance.buttonAppearance = buttonAppearance
         navigationController?.navigationBar.standardAppearance = appearance;
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
-        
+
         name.textAlignment = .center
-        name.text = "What exercise will help your anxiety right now?"
+        name.text = "What Exercise Will Soothe Your Anxiety Right Now?"
         name.textColor = UIColor(SECONDARY_TEXT_COLOR)
         name.frame = CGRect(x: 25, y: 100, width: 350, height: 70)
         name.font = .systemFont(ofSize: 25, weight: UIFont.Weight(rawValue: 10))
@@ -59,6 +64,7 @@ class NotificationViewController: UIViewController {
         breathingButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
         breathingButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         breathingButton.titleLabel?.textAlignment = .center
+        breathingButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         view.addSubview(breathingButton)
         breathingButton.backgroundColor = UIColor(SECONDARY_TEXT_COLOR)
         breathingButton.setTitleColor(.white, for: .normal)
@@ -72,6 +78,7 @@ class NotificationViewController: UIViewController {
         journalButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
         journalButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         journalButton.titleLabel?.textAlignment = .center
+        journalButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         view.addSubview(journalButton)
         journalButton.backgroundColor = .lightGray
         journalButton.setTitleColor(.white, for: .normal)
@@ -85,6 +92,7 @@ class NotificationViewController: UIViewController {
         aiChatbotButton.titleLabel?.numberOfLines = 0 // 0 indicates dynamic
         aiChatbotButton.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
         aiChatbotButton.titleLabel?.textAlignment = .center
+        aiChatbotButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         view.addSubview(aiChatbotButton)
         aiChatbotButton.backgroundColor = UIColor(SECONDARY_TEXT_COLOR)
         aiChatbotButton.setTitleColor(.white, for: .normal)

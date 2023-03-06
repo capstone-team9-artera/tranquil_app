@@ -28,9 +28,10 @@ class HistoryViewController: UIViewController {
         appearance.buttonAppearance = buttonAppearance
         navigationController?.navigationBar.standardAppearance = appearance;
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        self.edgesForExtendedLayout = UIRectEdge()
         
         let controller = UIHostingController(rootView: HistoryView())
-        controller.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 40)
+        controller.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         controller.didMove(toParent: self)
         controller.modalPresentationStyle = .fullScreen
         view.addSubview(controller.view)
