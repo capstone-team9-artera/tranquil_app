@@ -28,9 +28,10 @@ class JournalViewController: UIViewController {
         appearance.buttonAppearance = buttonAppearance
         navigationController?.navigationBar.standardAppearance = appearance;
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        self.edgesForExtendedLayout = UIRectEdge()
         
         let controller = UIHostingController(rootView: ContentView())
-        controller.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 20)
+        controller.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 100)
         controller.didMove(toParent: self)
         controller.modalPresentationStyle = .fullScreen
         view.addSubview(controller.view)

@@ -58,6 +58,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.edgesForExtendedLayout = UIRectEdge()
        
        // comment this out so it doesn't keep crashing !!!
         timer = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector: #selector(getHeartRate), userInfo: nil, repeats: true)
@@ -74,7 +75,7 @@ class ViewController: UIViewController {
         audioPlayer.play()
 
        
-        view.backgroundColor = .white
+        view.backgroundColor = BACKGROUND_UICOLOR
         self.title = "Home Page"
         
         addBreathingButton()

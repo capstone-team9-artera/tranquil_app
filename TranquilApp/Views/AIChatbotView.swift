@@ -17,7 +17,7 @@ struct AIChatbotView: View {
     
     var body: some View {
         ZStack {
-            BackgroundWavesView(shouldAnimate: false)
+            BackgroundWavesView(color2: Color.cyan, shouldAnimate: false)
                 .offset(x: -25, y: 90)
             
             VStack{
