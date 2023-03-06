@@ -35,10 +35,12 @@ class ViewController: UIViewController {
     private let heartRateImage = UIImage(systemName: "heart.fill")
     private let heartRateView = UIImageView()
     private let background = UIHostingController(rootView: BackgroundWavesView())
+    let customFont = UIFont(name: "Amsterdam-One", size: 60)
+
     
     private func welcomeAnimation() {
         UIView.animate(withDuration: 1, delay: 0.8, animations: {
-            self.name.frame = CGRect(x: 25, y: 200, width: 350, height: 52)
+            self.name.frame = CGRect(x: 10, y: 130, width: 350, height: 160)
             self.breathingButton.layer.opacity = 0.75
             self.journalButton.layer.opacity = 0.75
             self.statisticsButton.layer.opacity = 0.75
@@ -82,10 +84,12 @@ class ViewController: UIViewController {
         addHeartRateView()
         
         name.textAlignment = .center
-        name.text = "TRANQUIL"
+        name.text = "Tranquil"
         name.textColor = UIColor(SECONDARY_TEXT_COLOR)
-        name.frame = CGRect(x: 25, y: 350, width: 350, height: 52)
-        name.font = .systemFont(ofSize: 65, weight: UIFont.Weight(rawValue: 10))
+        name.frame = CGRect(x: 10, y: 250, width: 350, height: 160)
+        name.font = UIFontMetrics.default.scaledFont(for: customFont!)
+        name.adjustsFontForContentSizeCategory = true
+        //name.font = .systemFont(ofSize: 65, weight: UIFont.Weight(rawValue: 10))
         view.addSubview(name)
         
         let appearance = UINavigationBarAppearance()
@@ -107,6 +111,11 @@ class ViewController: UIViewController {
     }
     
     @objc private func getHeartRate(){
+        
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
         
         heartRateLabel.text = String("\(lastHeartRate)")
         view.addSubview(heartRateView)

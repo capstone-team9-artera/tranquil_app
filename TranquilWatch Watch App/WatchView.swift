@@ -26,10 +26,12 @@ struct WatchView: View {
         GeometryReader{ geometry in
             ZStack{
                     VStack {
-                            Text("TRANQUIL")
+                            Text("Tranquil")
                             .fontWeight(.bold)
-                            .font(.title2)
+                            .font(.custom("Amsterdam-One", size: 24))
                             .foregroundColor(SECONDARY_TEXT_COLOR)
+                            .offset(x: -4,
+                                    y: -4)
                             Image(systemName: "heart.fill")
                             .imageScale(.large)
                                 .foregroundColor(SECONDARY_TEXT_COLOR)
@@ -101,7 +103,7 @@ struct WatchView: View {
             }
         }
         .padding()
-        .background(Color.white)
+        .background(BACKGROUND_COLOR)
         .onAppear(perform: start)
     }
      func start() {
