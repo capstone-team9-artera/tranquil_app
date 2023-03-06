@@ -103,7 +103,7 @@ struct WatchView: View {
             }
         }
         .padding()
-        .background(Color.white)
+        .background(BACKGROUND_COLOR)
         .onAppear(perform: start)
     }
      func start() {
