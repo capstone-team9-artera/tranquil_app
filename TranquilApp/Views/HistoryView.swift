@@ -100,7 +100,7 @@ struct HistoryView_Previews: PreviewProvider {
 struct stressLevel: Identifiable
 {
     var day : String
-    var dailyAvg : Double
+    var dailyAvg : Int
     var id = UUID()
 }
 
@@ -139,13 +139,13 @@ let weekData = [
     (period: "Current Week", data: currentDay)]
 
 //Function to determine the overall average stress level for the last week.
-func weeklyStressAverage(_ week: [stressLevel]) -> Double {
-    var total = 0.0
-    var counter = 0.0
+func weeklyStressAverage(_ week: [stressLevel]) -> Int {
+    var total = 0
+    var counter = 0
     for stressLevel in week
     {
         total += stressLevel.dailyAvg
-        counter += 1.0
+        counter += 1
     }
     
     return total/counter
@@ -365,51 +365,8 @@ struct PieSlice_Previews: PreviewProvider {
     }
 }
 
-//Organizing apple watch captures from CoreData:
-
+//Organizing apple watch captures from CoreData and converting HR to HRV:
 /*
-//I believe this may be working, but it does not diferentiate between the current week
-// and the previous week.
-func fill() -> [stressLevel] {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var items: [HeartRate]?
-    let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
-    let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
-    fetchRequest.sortDescriptors = [sort]
-    do {
-        items = try context.fetch(fetchRequest)
-    } catch {
-        print("Cannot fetch HeartRate")
-    }
-    
-    var totals: [Int] = Array(repeating: 0, count: 7)
-    var counts: [Int] = Array(repeating: 0, count: 7)
-
-    let calendar = Calendar.current
-    
-    items?.forEach { heartRate in
-        if let date = heartRate.timestamp {
-            let weekday = calendar.component(.weekday, from: date)
-            if weekday >= 1 && weekday <= 7 {
-                counts[weekday - 1] += 1
-                totals[weekday - 1] += Int(heartRate.value)
-            }
-        }
-    }
-    
-    var week: [stressLevel] = []
-    let days = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
-    for i in 0..<7 {
-        if counts[i] > 0 {
-            let avg = totals[i] / counts[i]
-            week.append(.init(day: days[i], dailyAvg: Double(avg)))
-        }
-    }
-    
-    return week
-}
-*/
-
 func fill(forCurrentWeek: Bool) -> [stressLevel] {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var items: [HeartRate]?
@@ -461,6 +418,7 @@ func fill(forCurrentWeek: Bool) -> [stressLevel] {
     
     return week
 }
+ */
 
 /**
  Calculates the total number of AIcount timestamps in the last 2 weeks and returns it as a double value.
@@ -545,5 +503,88 @@ func getTotalJournalCountTimestampsLastTwoWeeks() -> Double {
     }
 }
 
+/*
+ Heart Rate Variability (HRV) is a measure of the variation in time between successive heartbeats. It can be used as an indicator of the autonomic nervous system function and overall health.
 
+ To calculate HRV from heart rate values, you can use a mathematical formula based on the standard deviation of the intervals between successive heartbeats, also known as R-R intervals.
+ 
+ This would output the calculated HRV value for the given heart rate values. Note that this is a simplified example and there are other factors to consider when calculating HRV, such as the length of the recording period and the frequency domain analysis of the R-R intervals.
+ */
+
+func calculateHRV(from heartRates: [Int]) -> Int? {
+    guard !heartRates.isEmpty else { return nil }
+    
+    let rrIntervals = heartRates.map { 60 / $0 }
+    let rrIntervalsSDNN = standardDeviation(rrIntervals)
+    
+    return rrIntervalsSDNN
+}
+
+// Function to calculate the standard deviation of an array of integers
+func standardDeviation(_ values: [Int]) -> Int {
+    let mean = values.reduce(0, +) / values.count
+    let variance = values.map { pow(Double($0 - mean), 2) }.reduce(0, +) / Double(values.count)
+    return Int(sqrt(variance))
+}
+
+// Function to calculate the variance of an array of integers
+func variance(_ values: [Int]) -> Int {
+    let mean = values.reduce(0, +) / values.count
+    let variance = values.map { pow(Double($0 - mean), 2) }.reduce(0, +) / Double(values.count)
+    return Int(variance)
+}
+
+// Function to calculate the average of an array of integers
+func average(_ values: [Int]) -> Int {
+    let sum = values.reduce(0, +)
+    return Int(sum / values.count)
+}
+
+func fill(forCurrentWeek: Bool) -> [stressLevel] {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var items: [HeartRate]?
+    let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
+    let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
+    fetchRequest.sortDescriptors = [sort]
+    do {
+        items = try context.fetch(fetchRequest)
+    } catch {
+        print("Cannot fetch HeartRate")
+    }
+    
+    var dayHeartRates: [[Int]] = Array(repeating: [], count: 7)
+    let calendar = Calendar.current
+    
+    let today = Date()
+    let weekStart = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!
+    let prevWeekStart = calendar.date(byAdding: .weekOfYear, value: -1, to: weekStart)!
+    
+    items?.forEach { heartRate in
+        if let date = heartRate.timestamp {
+            let weekday = calendar.component(.weekday, from: date)
+            if weekday >= 1 && weekday <= 7 {
+                if forCurrentWeek {
+                    if date >= weekStart {
+                        dayHeartRates[weekday - 1].append(Int(heartRate.value))
+                    }
+                } else {
+                    if date >= prevWeekStart && date < weekStart {
+                        dayHeartRates[weekday - 1].append(Int(heartRate.value))
+                    }
+                }
+            }
+        }
+    }
+    
+    var week: [stressLevel] = []
+    let days = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
+    
+    for i in 0..<7 {
+        let heartRates = dayHeartRates[i]
+        let hrv = calculateHRV(from: heartRates)
+        week.append(.init(day: days[i], dailyAvg: hrv!))
+    }
+    
+    return week
+}
 
