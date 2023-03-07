@@ -29,8 +29,10 @@ struct HistoryView: View {
                 .foregroundColor(Color.teal)
              */
             
-        ScrollView(.vertical)
-            {
+//        ScrollView(.vertical)
+        GeometryReader {
+            geometry in
+            ScrollView {
                 VStack(spacing: 15)
                 {
                     let avg: String = String(format: "Current Week: %0.0f", weeklyStressAverage(currentDay))
@@ -80,12 +82,13 @@ struct HistoryView: View {
                         names: ["Journals", "Chats", "Breathing"],
                         formatter: {value in String(format: "%.0f", value)},
                         colors: [TERTARY_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUATERNEY_TEXT_COLOR],
-                        backgroundColor: BACKGROUND_COLOR)
+                        backgroundColor: BACKGROUND_COLOR,
+                    geometry: geometry)
                 }
                 .padding()
             }
             .background(BACKGROUND_COLOR)
-        //}
+        }
         //.padding()
     }
 }
@@ -197,6 +200,8 @@ public struct PieChartView: View {
     public var widthFraction: CGFloat
     public var innerRadiusFraction: CGFloat
     
+    public var geometry : GeometryProxy
+    
     @State private var activeIndex: Int = -1
     
     var slices: [PieSliceData] {
@@ -212,7 +217,7 @@ public struct PieChartView: View {
         return tempSlices
     }
     
-    public init(values:[Double], names: [String], formatter: @escaping (Double) -> String, colors: [Color] = [Color.blue, Color.green, Color.orange], backgroundColor: Color = Color(red: 21 / 255, green: 24 / 255, blue: 30 / 255, opacity: 1.0), widthFraction: CGFloat = 0.75, innerRadiusFraction: CGFloat = 0.60){
+    public init(values:[Double], names: [String], formatter: @escaping (Double) -> String, colors: [Color] = [Color.blue, Color.green, Color.orange], backgroundColor: Color = Color(red: 21 / 255, green: 24 / 255, blue: 30 / 255, opacity: 1.0), widthFraction: CGFloat = 0.75, innerRadiusFraction: CGFloat = 0.60, geometry: GeometryProxy){
         self.values = values
         self.names = names
         self.formatter = formatter
@@ -221,14 +226,15 @@ public struct PieChartView: View {
         self.backgroundColor = backgroundColor
         self.widthFraction = widthFraction
         self.innerRadiusFraction = innerRadiusFraction
+        self.geometry = geometry
     }
     
     public var body: some View {
-        GeometryReader { geometry in
+//        GeometryReader { geometry in
             VStack{
                 ZStack{
                     ForEach(0..<self.values.count){ i in
-                        PieSlice(pieSliceData: self.slices[i])
+                        PieSlice(pieSliceData: self.slices[i], geometry: geometry)
                             .scaleEffect(self.activeIndex == i ? 1.03 : 1)
                             .animation(Animation.spring())
                     }
@@ -278,7 +284,7 @@ public struct PieChartView: View {
             .background(self.backgroundColor)
             .foregroundColor(SECONDARY_TEXT_COLOR)
         }
-    }
+//    }
 }
 
 struct PieChartRows: View {
@@ -310,19 +316,24 @@ struct PieChartRows: View {
 
 struct PieChartView_Previews: PreviewProvider {
     static var previews: some View {
-        PieChartView(values: [13, 5, 3], names: ["Journals", "Breathing", "Chats"], formatter: {value in String(format: "%.0f", value)}, colors: [TERTARY_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUATERNEY_TEXT_COLOR])
+        GeometryReader {
+            geometry in
+            
+            PieChartView(values: [13, 5, 3], names: ["Journals", "Breathing", "Chats"], formatter: {value in String(format: "%.0f", value)}, colors: [TERTARY_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUATERNEY_TEXT_COLOR], geometry: geometry)
+        }
     }
 }
 
 struct PieSlice: View {
     var pieSliceData: PieSliceData
+    var geometry : GeometryProxy
     
     var midRadians: Double {
         return Double.pi / 2.0 - (pieSliceData.startAngle + pieSliceData.endAngle).radians / 2.0
     }
     
     var body: some View {
-        GeometryReader { geometry in
+//        GeometryReader { geometry in
             ZStack {
                 Path { path in
                     let width: CGFloat = min(geometry.size.width, geometry.size.height)
@@ -348,8 +359,8 @@ struct PieSlice: View {
                     .foregroundColor(Color.white)
             }
         }
-        .aspectRatio(1, contentMode: .fit)
-    }
+//        .aspectRatio(1, contentMode: .fit)
+//    }
 }
 
 struct PieSliceData {
@@ -361,7 +372,12 @@ struct PieSliceData {
 
 struct PieSlice_Previews: PreviewProvider {
     static var previews: some View {
-        PieSlice(pieSliceData: PieSliceData(startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 120.0), text: "30%", color: Color.black))
+        GeometryReader {
+            geometry in
+            
+            PieSlice(pieSliceData: PieSliceData(startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 120.0), text: "30%", color: Color.black), geometry: geometry)
+
+        }
     }
 }
 
