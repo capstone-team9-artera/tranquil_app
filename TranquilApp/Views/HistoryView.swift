@@ -100,7 +100,7 @@ struct HistoryView_Previews: PreviewProvider {
 struct stressLevel: Identifiable
 {
     var day : String
-    var dailyAvg : Int
+    var dailyAvg : Double
     var id = UUID()
 }
 
@@ -139,13 +139,13 @@ let weekData = [
     (period: "Current Week", data: currentDay)]
 
 //Function to determine the overall average stress level for the last week.
-func weeklyStressAverage(_ week: [stressLevel]) -> Int {
-    var total = 0
-    var counter = 0
+func weeklyStressAverage(_ week: [stressLevel]) -> Double {
+    var total = 0.0
+    var counter = 0.0
     for stressLevel in week
     {
         total += stressLevel.dailyAvg
-        counter += 1
+        counter += 1.0
     }
     
     return total/counter
@@ -510,36 +510,6 @@ func getTotalJournalCountTimestampsLastTwoWeeks() -> Double {
  
  This would output the calculated HRV value for the given heart rate values. Note that this is a simplified example and there are other factors to consider when calculating HRV, such as the length of the recording period and the frequency domain analysis of the R-R intervals.
  */
-
-func calculateHRV(from heartRates: [Int]) -> Int? {
-    guard !heartRates.isEmpty else { return nil }
-    
-    let rrIntervals = heartRates.map { 60 / $0 }
-    let rrIntervalsSDNN = standardDeviation(rrIntervals)
-    
-    return rrIntervalsSDNN
-}
-
-// Function to calculate the standard deviation of an array of integers
-func standardDeviation(_ values: [Int]) -> Int {
-    let mean = values.reduce(0, +) / values.count
-    let variance = values.map { pow(Double($0 - mean), 2) }.reduce(0, +) / Double(values.count)
-    return Int(sqrt(variance))
-}
-
-// Function to calculate the variance of an array of integers
-func variance(_ values: [Int]) -> Int {
-    let mean = values.reduce(0, +) / values.count
-    let variance = values.map { pow(Double($0 - mean), 2) }.reduce(0, +) / Double(values.count)
-    return Int(variance)
-}
-
-// Function to calculate the average of an array of integers
-func average(_ values: [Int]) -> Int {
-    let sum = values.reduce(0, +)
-    return Int(sum / values.count)
-}
-
 func fill(forCurrentWeek: Bool) -> [stressLevel] {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var items: [HeartRate]?
@@ -579,12 +549,29 @@ func fill(forCurrentWeek: Bool) -> [stressLevel] {
     var week: [stressLevel] = []
     let days = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
     
+    func calculateHRV(from heartRates: [Int]) -> Double? {
+        guard !heartRates.isEmpty else { return nil }
+        let sdnn = heartRates.standardDeviation
+        let hrv = 20.0 * log10(1000.0 / sdnn!)
+        return hrv
+    }
+    
     for i in 0..<7 {
         let heartRates = dayHeartRates[i]
         let hrv = calculateHRV(from: heartRates)
-        week.append(.init(day: days[i], dailyAvg: hrv!))
+        week.append(.init(day: days[i], dailyAvg: hrv ?? 0))
     }
     
     return week
 }
+
+extension Array where Element == Int {
+    var standardDeviation: Double? {
+        guard count > 1 else { return nil }
+        let mean = Double(reduce(0, +)) / Double(count)
+        let variance = reduce(0.0) { $0 + pow(Double($1) - mean, 2) } / Double(count - 1)
+        return sqrt(variance)
+    }
+}
+
 
