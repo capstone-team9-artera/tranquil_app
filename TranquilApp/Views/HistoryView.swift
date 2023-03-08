@@ -81,6 +81,7 @@ struct HistoryView: View {
                         HStack (spacing: 0) {
                             ZStack {
                                 BarChartView(data: ChartData(points: [8,23,54,32,12,37,7,23,43]), title: "Stress Levels", style: Styles.barChartStyleNeonBlueLight)
+                                
                                     .offset(x: 0, y: 0)
                                     .scaleEffect(0.85)
                                 
@@ -92,7 +93,7 @@ struct HistoryView: View {
                                 .offset(x: 0, y: 0)
                                 .scaleEffect(0.85)
                         }
-                        SwiftUICharts.PieChartView(data: [8,23,54,32,12,37,7,23,43], title: "Application Usage", style: Styles.barChartStyleNeonBlueLight)
+                        SwiftUICharts.PieChartView(data: [getTotalJournalCountTimestampsLastTwoWeeks(), getTotalAICountTimestampsLastTwoWeeks(), getTotalBreathingCountTimestampsLastTwoWeeks()], title: "Application Usage", style: Styles.barChartStyleNeonBlueLight)
                             .offset(x: -105, y: 0)
                             .scaleEffect(0.85)
                     }

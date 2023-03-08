@@ -76,6 +76,7 @@
 		9F5C989E299B12940075E227 /* sunsetocean.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9F5C989D299B12940075E227 /* sunsetocean.gif */; };
 		9F6DA4CD29A9D86400DE2320 /* Animation2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6DA4CC29A9D86400DE2320 /* Animation2View.swift */; };
 		9F6DA4CF29A9F2C100DE2320 /* Animation4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6DA4CE29A9F2C100DE2320 /* Animation4View.swift */; };
+		9F85AB8829B834930021BA6A /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 9F85AB8729B834930021BA6A /* SwiftUICharts */; };
 		9FD70A4E29820E3D0078AA30 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4D29820E3D0078AA30 /* PageView.swift */; };
 		9FD70A5029820E510078AA30 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4F29820E510078AA30 /* PageViewController.swift */; };
 		9FD70A5229820E6B0078AA30 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5129820E6B0078AA30 /* PageControl.swift */; };
@@ -265,6 +266,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F85AB8829B834930021BA6A /* SwiftUICharts in Frameworks */,
 				F30BC473297F6D0200E340C1 /* SwiftPieChart in Frameworks */,
 				552619DD2992BD2A0080AAB9 /* Alamofire in Frameworks */,
 			);
@@ -572,6 +574,7 @@
 			packageProductDependencies = (
 				F30BC472297F6D0200E340C1 /* SwiftPieChart */,
 				552619DC2992BD2A0080AAB9 /* Alamofire */,
+				9F85AB8729B834930021BA6A /* SwiftUICharts */,
 			);
 			productName = TranquilApp;
 			productReference = 9F4423A0297BB28200E87DF2 /* TranquilApp.app */;
@@ -659,6 +662,7 @@
 			packageReferences = (
 				F30BC471297F6D0200E340C1 /* XCRemoteSwiftPackageReference "SwiftPieChart" */,
 				552619DB2992BD2A0080AAB9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				9F85AB8629B834930021BA6A /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 9F4423A1297BB28200E87DF2 /* Products */;
 			projectDirPath = "";
@@ -1376,6 +1380,14 @@
 				kind = branch;
 			};
 		};
+		9F85AB8629B834930021BA6A /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = exactVersion;
+				version = 1.5.3;
+			};
+		};
 		F30BC471297F6D0200E340C1 /* XCRemoteSwiftPackageReference "SwiftPieChart" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ilamanov/SwiftPieChart.git";
@@ -1391,6 +1403,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 552619DB2992BD2A0080AAB9 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		9F85AB8729B834930021BA6A /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F85AB8629B834930021BA6A /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
 		};
 		F30BC472297F6D0200E340C1 /* SwiftPieChart */ = {
 			isa = XCSwiftPackageProductDependency;
