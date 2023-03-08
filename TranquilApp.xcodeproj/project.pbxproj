@@ -77,6 +77,7 @@
 		9F6DA4CD29A9D86400DE2320 /* Animation2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6DA4CC29A9D86400DE2320 /* Animation2View.swift */; };
 		9F6DA4CF29A9F2C100DE2320 /* Animation4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6DA4CE29A9F2C100DE2320 /* Animation4View.swift */; };
 		9F85AB8829B834930021BA6A /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 9F85AB8729B834930021BA6A /* SwiftUICharts */; };
+		9F85AB8A29B92BF30021BA6A /* AppUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F85AB8929B92BF30021BA6A /* AppUsageView.swift */; };
 		9FD70A4E29820E3D0078AA30 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4D29820E3D0078AA30 /* PageView.swift */; };
 		9FD70A5029820E510078AA30 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A4F29820E510078AA30 /* PageViewController.swift */; };
 		9FD70A5229820E6B0078AA30 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD70A5129820E6B0078AA30 /* PageControl.swift */; };
@@ -218,6 +219,7 @@
 		9F5C989D299B12940075E227 /* sunsetocean.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sunsetocean.gif; sourceTree = "<group>"; };
 		9F6DA4CC29A9D86400DE2320 /* Animation2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation2View.swift; sourceTree = "<group>"; };
 		9F6DA4CE29A9F2C100DE2320 /* Animation4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation4View.swift; sourceTree = "<group>"; };
+		9F85AB8929B92BF30021BA6A /* AppUsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUsageView.swift; sourceTree = "<group>"; };
 		9FD70A4D29820E3D0078AA30 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		9FD70A4F29820E510078AA30 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9FD70A5129820E6B0078AA30 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 				B3CF27172980C710002EF9F9 /* EntryRowView.swift */,
 				B3CF27192980C737002EF9F9 /* WeekdaysView.swift */,
 				9F4423E5297BC41B00E87DF2 /* HistoryView.swift */,
+				9F85AB8929B92BF30021BA6A /* AppUsageView.swift */,
 				9F4423E7297BC63400E87DF2 /* AIChatbotView.swift */,
 				9F5C98922995D6F50075E227 /* AnimationView.swift */,
 				9F6DA4CC29A9D86400DE2320 /* Animation2View.swift */,
@@ -824,6 +827,7 @@
 				55DFFC5A2990719500729B3D /* Persistence.swift in Sources */,
 				55DFFC572990712100729B3D /* DataModels.xcdatamodeld in Sources */,
 				9F4423D5297BB3B200E87DF2 /* BreathingViewController.swift in Sources */,
+				9F85AB8A29B92BF30021BA6A /* AppUsageView.swift in Sources */,
 				B3CF270C2980C677002EF9F9 /* CalendarView.swift in Sources */,
 				9F4423EA297BC67900E87DF2 /* BotResponse.swift in Sources */,
 				55491C6D29AD523400084B7F /* BackgroundWavesView.swift in Sources */,

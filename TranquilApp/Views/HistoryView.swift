@@ -27,6 +27,7 @@ struct HistoryView: View {
     {
         ScrollView(.vertical)
             {
+                Spacer(minLength: 30)
                 VStack(spacing: 30)
                 {
                     SwiftUICharts.MultiLineChartView(data: [([12, 24, 23, 74, 35, 14, 39], GradientColor(start: Color.purple, end: Color.blue)), ([42, 12, 36, 22, 13, 34, 12], GradientColor(start: Color.blue, end: Color.purple))], title: "Notifications vs. HRV", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.green, gradientColor: GradientColor(start: Color.green, end: Color.blue), textColor: Color.black, legendTextColor: Color.white, dropShadowColor: Color.white), form: CGSize(width: 350, height: 200), rateValue: 20)
@@ -40,38 +41,38 @@ struct HistoryView: View {
                     
                     SwiftUICharts.LineChartView(data: [8,23,54,37,7,23,43], title: "NLP Stress Levels", legend: "M         T         W         R         F         S         U", form: CGSize(width: 350, height: 200), rateValue: 10)
                     
-                    
-                    ZStack {
+                    NavigationView {
+                        ZStack {
+                            BACKGROUND_COLOR.edgesIgnoringSafeArea(.all)
+                            SwiftUICharts.PieChartView(data: [getTotalJournalCountTimestampsLastTwoWeeks(), getTotalAICountTimestampsLastTwoWeeks(), getTotalBreathingCountTimestampsLastTwoWeeks()], title: "Application Usage", style: Styles.barChartStyleNeonBlueLight, form: CGSize(width: 350, height: 450))
+                                .offset(y: -100)
+                            
+                            NavigationLink(destination: {AppUsageView()}, label: {
+                                Text("Further Insights")
+                                    .frame(width: 340, height: 380)
+                                    .offset(y: 100)
+                                    .foregroundColor(Color.black)
+                            })
+                        }
                         
-                        SwiftUICharts.PieChartView(data: [getTotalJournalCountTimestampsLastTwoWeeks(), getTotalAICountTimestampsLastTwoWeeks(), getTotalBreathingCountTimestampsLastTwoWeeks()], title: "Application Usage", legend: "Further Insights", style: Styles.barChartStyleNeonBlueLight, form: CGSize(width: 350, height: 350))
-                        
-                        Button("", action: printThis)
-                            .foregroundColor(Color.black)
-                            .frame(width: 350, height: 350)
+                    }.frame(width: 400, height: 700)
+                        .toolbarBackground(BACKGROUND_COLOR, for: .navigationBar)
+                        .onAppear {
+                            let appearance = UINavigationBarAppearance()
+                            appearance.configureWithOpaqueBackground()
+                            appearance.backgroundColor = BACKGROUND_UICOLOR
+                            appearance.shadowColor = BACKGROUND_UICOLOR
+                            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: SECONDARY_TEXT_UICOLOR]
+                            let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
+                            buttonAppearance.normal.titleTextAttributes = [.foregroundColor: SECONDARY_TEXT_UICOLOR]
+                            appearance.buttonAppearance = buttonAppearance
 
-                    }
+                            UINavigationBar.appearance().scrollEdgeAppearance = appearance
 
-
-
-                    Text("Application Usage")
-                        .font(.system(size: 24, weight: .heavy))
-                        .bold()
-                        .foregroundColor(SECONDARY_TEXT_COLOR)
-                    
-                    PieChartView(
-                        values: [getTotalJournalCountTimestampsLastTwoWeeks(),
-                                 getTotalAICountTimestampsLastTwoWeeks(),
-                                 getTotalBreathingCountTimestampsLastTwoWeeks()],
-                        names: ["Journals", "Chats", "Breathing"],
-                        formatter: {value in String(format: "%.0f", value)},
-                        colors: [TERTARY_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUATERNEY_TEXT_COLOR],
-                        backgroundColor: BACKGROUND_COLOR)
+                        }
                 }
-                .padding()
             }
             .background(BACKGROUND_COLOR)
-        //}
-        //.padding()
     }
 }
 
