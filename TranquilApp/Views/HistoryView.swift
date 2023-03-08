@@ -19,86 +19,40 @@ import SwiftUICharts
 struct HistoryView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    func myFunc (x : Double) -> String {
-        return "whattttt"
-    }
-    
     func printThis() {
-        print("wattt")
+        print("help")
     }
 
     var body: some View
     {
-        //VStack
-        //{
-            /*
-            Text("TRANQUIL")
-                .font(.system(size: 60, weight: .heavy))
-                .bold()
-                .foregroundColor(Color.teal)
-             */
-            
         ScrollView(.vertical)
             {
-                VStack(spacing: 15)
+                VStack(spacing: 30)
                 {
-                    let avg: String = String(format: "Current Week: %0.0f", weeklyStressAverage(currentDay))
-                    let lastAvg: String = String(format: "Previous Week: %0.0f", weeklyStressAverage(lastDay))
+                    SwiftUICharts.MultiLineChartView(data: [([12, 24, 23, 74, 35, 14, 39], GradientColor(start: Color.purple, end: Color.blue)), ([42, 12, 36, 22, 13, 34, 12], GradientColor(start: Color.blue, end: Color.purple))], title: "Notifications vs. HRV", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.green, gradientColor: GradientColor(start: Color.green, end: Color.blue), textColor: Color.black, legendTextColor: Color.white, dropShadowColor: Color.white), form: CGSize(width: 350, height: 200), rateValue: 20)
                     
-                    Text("Weekly Stress Level Averages")
-                        .font(.system(size: 24, weight: .heavy))
-                        .bold()
-                        .foregroundColor(SECONDARY_TEXT_COLOR)
-                    
-                    BarChart()
-                        .frame(height: 250)
-                    
-                    HStack
-                    {
-                        HStack
-                        {
-                            RoundedRectangle(cornerRadius: 5.0)
-                                .fill(PRIMARY_TEXT_COLOR)
-                                .frame(width: 20, height: 20)
-                            Text(avg)
-                                .font(.system(size: 16, weight: .heavy))
-                                .foregroundColor(Color.gray)
-                        }
-                        HStack
-                        {
-                            RoundedRectangle(cornerRadius: 5.0)
-                                .fill(TERTARY_TEXT_COLOR)
-                                .frame(width: 20, height: 20)
-                            Text(lastAvg)
-                                .font(.system(size: 16, weight: .heavy))
-                                .foregroundColor(Color.gray)
-                        }
+                    HStack (spacing: 10) {
+                        BarChartView(data: ChartData(points: [8,23,54,32,12,3, 8]), title: "Current Week HRV", legend: "M T  W  R   F   S   U", style: Styles.barChartStyleNeonBlueLight)
+                            .scaleEffect(0.90)
+                        BarChartView(data: ChartData(points: [5, 32,12,37,7,23,43]), title: "Past Week HRV", legend: "M T  W  R   F   S   U", style: Styles.barChartStyleNeonBlueLight)
+                            .scaleEffect(0.9)
                     }
                     
-                    Spacer()
+                    SwiftUICharts.LineChartView(data: [8,23,54,37,7,23,43], title: "NLP Stress Levels", legend: "M         T         W         R         F         S         U", form: CGSize(width: 350, height: 200), rateValue: 10)
                     
-                    VStack (spacing : 0) {
-                        HStack (spacing: 0) {
-                            ZStack {
-                                BarChartView(data: ChartData(points: [8,23,54,32,12,37,7,23,43]), title: "Stress Levels", style: Styles.barChartStyleNeonBlueLight)
-                                
-                                    .offset(x: 0, y: 0)
-                                    .scaleEffect(0.85)
-                                
-//                                Button("what", action: present(AnimationView())
-//                                NavigationLink("there", destination: AnimationView())
-                                
-                            }
-                            SwiftUICharts.LineChartView(data: [8,23,54,32,12,37,7,23,43], title: "Heart Rate")
-                                .offset(x: 0, y: 0)
-                                .scaleEffect(0.85)
-                        }
-                        SwiftUICharts.PieChartView(data: [getTotalJournalCountTimestampsLastTwoWeeks(), getTotalAICountTimestampsLastTwoWeeks(), getTotalBreathingCountTimestampsLastTwoWeeks()], title: "Application Usage", style: Styles.barChartStyleNeonBlueLight)
-                            .offset(x: -105, y: 0)
-                            .scaleEffect(0.85)
+                    
+                    ZStack {
+                        
+                        SwiftUICharts.PieChartView(data: [getTotalJournalCountTimestampsLastTwoWeeks(), getTotalAICountTimestampsLastTwoWeeks(), getTotalBreathingCountTimestampsLastTwoWeeks()], title: "Application Usage", legend: "Further Insights", style: Styles.barChartStyleNeonBlueLight, form: CGSize(width: 350, height: 350))
+                        
+                        Button("", action: printThis)
+                            .foregroundColor(Color.black)
+                            .frame(width: 350, height: 350)
+
                     }
 
-                    
+
+
                     Text("Application Usage")
                         .font(.system(size: 24, weight: .heavy))
                         .bold()
