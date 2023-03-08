@@ -11,12 +11,21 @@ import UIKit
 import HealthKit
 import HealthKitUI
 import CoreData
+import SwiftUICharts
 
 //Variables from the health kit:
 
 
 struct HistoryView: View {
     @Environment(\.presentationMode) var presentationMode
+    
+    func myFunc (x : Double) -> String {
+        return "whattttt"
+    }
+    
+    func printThis() {
+        print("wattt")
+    }
 
     var body: some View
     {
@@ -43,6 +52,7 @@ struct HistoryView: View {
                     
                     BarChart()
                         .frame(height: 250)
+                    
                     HStack
                     {
                         HStack
@@ -66,7 +76,27 @@ struct HistoryView: View {
                     }
                     
                     Spacer()
-                    Spacer()
+                    
+                    VStack (spacing : 0) {
+                        HStack (spacing: 0) {
+                            ZStack {
+                                BarChartView(data: ChartData(points: [8,23,54,32,12,37,7,23,43]), title: "Stress Levels", style: Styles.barChartStyleNeonBlueLight)
+                                    .offset(x: 0, y: 0)
+                                    .scaleEffect(0.85)
+                                
+//                                Button("what", action: present(AnimationView())
+//                                NavigationLink("there", destination: AnimationView())
+                                
+                            }
+                            SwiftUICharts.LineChartView(data: [8,23,54,32,12,37,7,23,43], title: "Heart Rate")
+                                .offset(x: 0, y: 0)
+                                .scaleEffect(0.85)
+                        }
+                        SwiftUICharts.PieChartView(data: [8,23,54,32,12,37,7,23,43], title: "Application Usage", style: Styles.barChartStyleNeonBlueLight)
+                            .offset(x: -105, y: 0)
+                            .scaleEffect(0.85)
+                    }
+
                     
                     Text("Application Usage")
                         .font(.system(size: 24, weight: .heavy))
