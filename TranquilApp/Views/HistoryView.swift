@@ -18,10 +18,6 @@ import SwiftUICharts
 
 struct HistoryView: View {
     @Environment(\.presentationMode) var presentationMode
-    
-    func printThis() {
-        print("help")
-    }
 
     var body: some View
     {
@@ -68,7 +64,6 @@ struct HistoryView: View {
                             appearance.buttonAppearance = buttonAppearance
 
                             UINavigationBar.appearance().scrollEdgeAppearance = appearance
-
                         }
                 }
             }
