@@ -166,7 +166,7 @@ class ViewController: UIViewController {
     @objc private func addHeartRateView() {
         heartRateLabel.text = String("\(lastHeartRate)")
         heartRateLabel.textColor = SECONDARY_TEXT_UICOLOR
-        heartRateLabel.frame = CGRect(x: 350, y: 75, width: 25, height: 25)
+        heartRateLabel.frame = CGRect(x: 350, y: 75, width: 30, height: 25)
         heartRateLabel.layer.opacity = 0
         heartRateView.image = heartRateImage
         heartRateView.frame = CGRect(x: 320, y: 79, width: 25, height: 20)
