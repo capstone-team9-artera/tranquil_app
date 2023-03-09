@@ -11,6 +11,7 @@ import UIKit
 import HealthKit
 import HealthKitUI
 import CoreData
+import SwiftUICharts
 
 //Variables from the health kit:
 
@@ -20,73 +21,53 @@ struct HistoryView: View {
 
     var body: some View
     {
-        //VStack
-        //{
-            /*
-            Text("TRANQUIL")
-                .font(.system(size: 60, weight: .heavy))
-                .bold()
-                .foregroundColor(Color.teal)
-             */
-            
         ScrollView(.vertical)
             {
-                VStack(spacing: 15)
+                Spacer(minLength: 30)
+                VStack(spacing: 30)
                 {
-                    let avg: String = String(format: "Current Week: %0.0f", weeklyStressAverage(currentDay))
-                    let lastAvg: String = String(format: "Previous Week: %0.0f", weeklyStressAverage(lastDay))
+                    SwiftUICharts.MultiLineChartView(data: [([12, 24, 23, 74, 35, 14, 39], GradientColor(start: Color.purple, end: Color.blue)), ([42, 12, 36, 22, 13, 34, 12], GradientColor(start: Color.blue, end: Color.purple))], title: "Notifications vs. HRV", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.green, gradientColor: GradientColor(start: Color.green, end: Color.blue), textColor: Color.black, legendTextColor: Color.white, dropShadowColor: Color.white), form: CGSize(width: 350, height: 200), rateValue: 20)
                     
-                    Text("Weekly Stress Level Averages")
-                        .font(.system(size: 24, weight: .heavy))
-                        .bold()
-                        .foregroundColor(SECONDARY_TEXT_COLOR)
-                    
-                    BarChart()
-                        .frame(height: 250)
-                    HStack
-                    {
-                        HStack
-                        {
-                            RoundedRectangle(cornerRadius: 5.0)
-                                .fill(PRIMARY_TEXT_COLOR)
-                                .frame(width: 20, height: 20)
-                            Text(avg)
-                                .font(.system(size: 16, weight: .heavy))
-                                .foregroundColor(Color.gray)
-                        }
-                        HStack
-                        {
-                            RoundedRectangle(cornerRadius: 5.0)
-                                .fill(TERTARY_TEXT_COLOR)
-                                .frame(width: 20, height: 20)
-                            Text(lastAvg)
-                                .font(.system(size: 16, weight: .heavy))
-                                .foregroundColor(Color.gray)
-                        }
+                    HStack (spacing: 10) {
+                        BarChartView(data: ChartData(points: [8,23,54,32,12,3, 8]), title: "Current Week HRV", legend: "M T  W  R   F   S   U", style: Styles.barChartStyleNeonBlueLight)
+                            .scaleEffect(0.90)
+                        BarChartView(data: ChartData(points: [5, 32,12,37,7,23,43]), title: "Past Week HRV", legend: "M T  W  R   F   S   U", style: Styles.barChartStyleNeonBlueLight)
+                            .scaleEffect(0.9)
                     }
                     
-                    Spacer()
-                    Spacer()
+                    SwiftUICharts.LineChartView(data: [8,23,54,37,7,23,43], title: "NLP Stress Levels", legend: "M         T         W         R         F         S         U", form: CGSize(width: 350, height: 200), rateValue: 10)
                     
-                    Text("Application Usage")
-                        .font(.system(size: 24, weight: .heavy))
-                        .bold()
-                        .foregroundColor(SECONDARY_TEXT_COLOR)
-                    
-                    PieChartView(
-                        values: [getTotalJournalCountTimestampsLastTwoWeeks(),
-                                 getTotalAICountTimestampsLastTwoWeeks(),
-                                 getTotalBreathingCountTimestampsLastTwoWeeks()],
-                        names: ["Journals", "Chats", "Breathing"],
-                        formatter: {value in String(format: "%.0f", value)},
-                        colors: [TERTARY_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUATERNEY_TEXT_COLOR],
-                        backgroundColor: BACKGROUND_COLOR)
+                    NavigationView {
+                        ZStack {
+                            BACKGROUND_COLOR.edgesIgnoringSafeArea(.all)
+                            SwiftUICharts.PieChartView(data: [getTotalJournalCountTimestampsLastTwoWeeks(), getTotalAICountTimestampsLastTwoWeeks(), getTotalBreathingCountTimestampsLastTwoWeeks()], title: "Application Usage", style: Styles.barChartStyleNeonBlueLight, form: CGSize(width: 350, height: 450))
+                                .offset(y: -100)
+                            
+                            NavigationLink(destination: {AppUsageView()}, label: {
+                                Text("Further Insights")
+                                    .frame(width: 340, height: 380)
+                                    .offset(y: 100)
+                                    .foregroundColor(Color.black)
+                            })
+                        }
+                        
+                    }.frame(width: 400, height: 700)
+                        .toolbarBackground(BACKGROUND_COLOR, for: .navigationBar)
+                        .onAppear {
+                            let appearance = UINavigationBarAppearance()
+                            appearance.configureWithOpaqueBackground()
+                            appearance.backgroundColor = BACKGROUND_UICOLOR
+                            appearance.shadowColor = BACKGROUND_UICOLOR
+                            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: SECONDARY_TEXT_UICOLOR]
+                            let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
+                            buttonAppearance.normal.titleTextAttributes = [.foregroundColor: SECONDARY_TEXT_UICOLOR]
+                            appearance.buttonAppearance = buttonAppearance
+
+                            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+                        }
                 }
-                .padding()
             }
             .background(BACKGROUND_COLOR)
-        //}
-        //.padding()
     }
 }
 
