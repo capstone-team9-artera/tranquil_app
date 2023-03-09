@@ -41,10 +41,10 @@ class ViewController: UIViewController {
     private func welcomeAnimation() {
         UIView.animate(withDuration: 1, delay: 0.8, animations: {
             self.name.frame = CGRect(x: 10, y: 130, width: 350, height: 160)
-            self.breathingButton.layer.opacity = 0.75
-            self.journalButton.layer.opacity = 0.75
-            self.statisticsButton.layer.opacity = 0.75
-            self.aiChatbotButton.layer.opacity = 0.75
+            self.breathingButton.layer.opacity = 0.9
+            self.journalButton.layer.opacity = 0.9
+            self.statisticsButton.layer.opacity = 0.9
+            self.aiChatbotButton.layer.opacity = 0.9
             self.heartRateView.layer.opacity = 1
             self.heartRateLabel.layer.opacity = 1
         })
