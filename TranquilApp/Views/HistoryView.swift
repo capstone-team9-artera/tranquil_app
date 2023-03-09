@@ -29,9 +29,28 @@ struct HistoryView: View {
                     SwiftUICharts.MultiLineChartView(data: [([12, 24, 23, 74, 35, 14, 39], GradientColor(start: Color.purple, end: Color.blue)), ([42, 12, 36, 22, 13, 34, 12], GradientColor(start: Color.blue, end: Color.purple))], title: "Notifications vs. HRV", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.green, gradientColor: GradientColor(start: Color.green, end: Color.blue), textColor: Color.black, legendTextColor: Color.white, dropShadowColor: Color.white), form: CGSize(width: 350, height: 200), rateValue: 20)
                     
                     HStack (spacing: 10) {
-                        BarChartView(data: ChartData(points: [8,23,54,32,12,3, 8]), title: "Current Week HRV", legend: "M T  W  R   F   S   U", style: Styles.barChartStyleNeonBlueLight)
-                            .scaleEffect(0.90)
-                        BarChartView(data: ChartData(points: [5, 32,12,37,7,23,43]), title: "Past Week HRV", legend: "M T  W  R   F   S   U", style: Styles.barChartStyleNeonBlueLight)
+                        
+                        BarChartView(data: ChartData(points: [currentWeek[0].dailyAvg,
+                                                              currentWeek[1].dailyAvg,
+                                                              currentWeek[2].dailyAvg,
+                                                              currentWeek[3].dailyAvg,
+                                                              currentWeek[4].dailyAvg,
+                                                              currentWeek[5].dailyAvg,
+                                                              currentWeek[6].dailyAvg]),
+                                     title: "Current Week HRV", legend: "M T  W  R   F   S   U",
+                                     style: Styles.barChartStyleNeonBlueLight)
+                            .scaleEffect(0.9)
+                        
+                        
+                        BarChartView(data: ChartData(points: [lastWeek[0].dailyAvg,
+                                                              lastWeek[1].dailyAvg,
+                                                              lastWeek[2].dailyAvg,
+                                                              lastWeek[3].dailyAvg,
+                                                              lastWeek[4].dailyAvg,
+                                                              lastWeek[5].dailyAvg,
+                                                              lastWeek[6].dailyAvg]),
+                                     title: "Last Week HRV", legend: "M T  W  R   F   S   U",
+                                     style: Styles.barChartStyleNeonBlueLight)
                             .scaleEffect(0.9)
                     }
                     
@@ -98,7 +117,7 @@ var lastDay: [stressLevel] = [
     .init(day: "Fri.", dailyAvg: 74),
     .init(day: "Sat.", dailyAvg: 79)]
  */
-var lastDay: [stressLevel] = fill(forCurrentWeek: false) // pulled from core data.
+var lastWeek: [stressLevel] = fill(forCurrentWeek: false) // pulled from core data.
 
 //Current weeks data.
 //Current day, Daily HRV average.
@@ -113,11 +132,11 @@ var currentDay: [stressLevel] = [
     .init(day: "Fri.", dailyAvg: 60),
     .init(day: "Sat.", dailyAvg: 65)]
 */
-var currentDay: [stressLevel] = fill(forCurrentWeek: true) //pulled from core data.
+var currentWeek: [stressLevel] = fill(forCurrentWeek: true) //pulled from core data.
 
 let weekData = [
-    (period: "Previous Week", data: lastDay),
-    (period: "Current Week", data: currentDay)]
+    (period: "Previous Week", data: lastWeek),
+    (period: "Current Week", data: currentWeek)]
 
 //Function to determine the overall average stress level for the last week.
 func weeklyStressAverage(_ week: [stressLevel]) -> Double {
@@ -139,7 +158,7 @@ struct BarChart: View
         Chart
         {
             //Defining data in the bar chart view:
-            ForEach(currentDay) { stressLevel in
+            ForEach(currentWeek) { stressLevel in
                 BarMark(
                     x: .value("Day of Week", stressLevel.day),
                     y: .value("Average HRV", stressLevel.dailyAvg)
@@ -151,7 +170,7 @@ struct BarChart: View
                         .foregroundColor(.white)
                 }
             }
-            ForEach(lastDay) { stressLevel in
+            ForEach(lastWeek) { stressLevel in
                 BarMark(
                     x: .value("Day of Week", stressLevel.day),
                     y: .value("Average HRV", stressLevel.dailyAvg)
