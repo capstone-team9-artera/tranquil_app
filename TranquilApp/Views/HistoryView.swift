@@ -26,6 +26,7 @@ struct HistoryView: View {
                 Spacer(minLength: 30)
                 VStack(spacing: 30)
                 {
+                    //Notifications count vs current week HRV averages by day.
                     SwiftUICharts.MultiLineChartView(data: [(groupAnxietyCountsByDay(),
                                                              GradientColor(start: Color.purple, end: Color.blue)),
                                                             ([currentWeek[0].dailyAvg,
@@ -41,6 +42,7 @@ struct HistoryView: View {
                     
                     HStack (spacing: 10) {
                         
+                        //Current week HRV daily averages.
                         BarChartView(data: ChartData(points: [currentWeek[0].dailyAvg,
                                                               currentWeek[1].dailyAvg,
                                                               currentWeek[2].dailyAvg,
@@ -52,7 +54,7 @@ struct HistoryView: View {
                                      style: Styles.barChartStyleNeonBlueLight)
                             .scaleEffect(0.9)
                         
-                        
+                        //Last week HRV daily averages.
                         BarChartView(data: ChartData(points: [lastWeek[0].dailyAvg,
                                                               lastWeek[1].dailyAvg,
                                                               lastWeek[2].dailyAvg,
@@ -65,11 +67,13 @@ struct HistoryView: View {
                             .scaleEffect(0.9)
                     }
                     
+                    //NLP daily averages for the current week.
                     SwiftUICharts.LineChartView(data: groupNLPValuesByDay(),
                                                 title: "NLP Stress Levels",
                                                 legend: "M         T         W         R         F         S         U",
                                                 form: CGSize(width: 350, height: 200), rateValue: 10)
                     
+                    //Pie chart stuff: application feature usage metrics.
                     NavigationView {
                         ZStack {
                             BACKGROUND_COLOR.edgesIgnoringSafeArea(.all)
