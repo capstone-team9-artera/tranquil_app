@@ -26,7 +26,18 @@ struct HistoryView: View {
                 Spacer(minLength: 30)
                 VStack(spacing: 30)
                 {
-                    SwiftUICharts.MultiLineChartView(data: [([12, 24, 23, 74, 35, 14, 39], GradientColor(start: Color.purple, end: Color.blue)), ([42, 12, 36, 22, 13, 34, 12], GradientColor(start: Color.blue, end: Color.purple))], title: "Notifications vs. HRV", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.green, gradientColor: GradientColor(start: Color.green, end: Color.blue), textColor: Color.black, legendTextColor: Color.white, dropShadowColor: Color.white), form: CGSize(width: 350, height: 200), rateValue: 20)
+                    SwiftUICharts.MultiLineChartView(data: [(groupAnxietyCountsByDay(),
+                                                             GradientColor(start: Color.purple, end: Color.blue)),
+                                                            ([currentWeek[0].dailyAvg,
+                                                              currentWeek[1].dailyAvg,
+                                                              currentWeek[2].dailyAvg,
+                                                              currentWeek[3].dailyAvg,
+                                                              currentWeek[4].dailyAvg,
+                                                              currentWeek[5].dailyAvg,
+                                                              currentWeek[6].dailyAvg],
+                                                             GradientColor(start: Color.blue, end: Color.purple))],
+                                                     title: "Notifications vs. HRV",
+                                                     style: ChartStyle(backgroundColor: Color.white, accentColor: Color.green, gradientColor: GradientColor(start: Color.green, end: Color.blue), textColor: Color.black, legendTextColor: Color.white, dropShadowColor: Color.white), form: CGSize(width: 350, height: 200), rateValue: 20)
                     
                     HStack (spacing: 10) {
                         
@@ -54,7 +65,10 @@ struct HistoryView: View {
                             .scaleEffect(0.9)
                     }
                     
-                    SwiftUICharts.LineChartView(data: [8,23,54,37,7,23,43], title: "NLP Stress Levels", legend: "M         T         W         R         F         S         U", form: CGSize(width: 350, height: 200), rateValue: 10)
+                    SwiftUICharts.LineChartView(data: groupNLPValuesByDay(),
+                                                title: "NLP Stress Levels",
+                                                legend: "M         T         W         R         F         S         U",
+                                                form: CGSize(width: 350, height: 200), rateValue: 10)
                     
                     NavigationView {
                         ZStack {
@@ -519,4 +533,60 @@ extension Array where Element == Int {
     }
 }
 
+// Function to group NLP values by day and calculate daily averages
+func groupNLPValuesByDay() -> [Double] {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    // Get the start and end dates for the current calendar week
+    let calendar = Calendar.current
+    let today = Date()
+    let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!
+    let endOfWeek = calendar.date(byAdding: .day, value: 7, to: startOfWeek)!
+    
+    var dailyAverages: [Double] = []
+    for day in 0..<7 {
+        let startOfDay = calendar.date(byAdding: .day, value: day, to: startOfWeek)!
+        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+        let fetchRequest: NSFetchRequest<NLPValue> = NLPValue.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "timestamp >= %@ AND timestamp < %@", startOfDay as NSDate, endOfDay as NSDate)
+        do {
+            let nlpValues = try context.fetch(fetchRequest)
+            let sum = nlpValues.reduce(0, { $0 + $1.stressValue })
+            let count = nlpValues.count > 0 ? Double(nlpValues.count) : 1.0
+            let dailyAverage = sum / count
+            dailyAverages.append(dailyAverage)
+        } catch {
+            print("Error fetching NLPValues: \(error)")
+        }
+    }
+    return dailyAverages
+}
 
+// Function to group AnxietyCount values by day and calculate daily totals
+func groupAnxietyCountsByDay() -> [Double] {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    // Get the start and end dates for the current calendar week
+    let calendar = Calendar.current
+    let today = Date()
+    let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!
+    let endOfWeek = calendar.date(byAdding: .day, value: 7, to: startOfWeek)!
+    
+    var dailyTotals: [Double] = []
+    for day in 0..<7 {
+        let startOfDay = calendar.date(byAdding: .day, value: day, to: startOfWeek)!
+        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+        let fetchRequest: NSFetchRequest<AnxietyCount> = AnxietyCount.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "timestamp >= %@ AND timestamp < %@", startOfDay as NSDate, endOfDay as NSDate)
+        do {
+            let anxietyCounts = try context.fetch(fetchRequest)
+            let dailyTotal = anxietyCounts.reduce(0, { $0 + $1.value })
+            dailyTotals.append(Double(dailyTotal))
+        } catch {
+            print("Error fetching AnxietyCounts: \(error)")
+        }
+    }
+    return dailyTotals
+}
