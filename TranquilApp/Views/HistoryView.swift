@@ -26,17 +26,54 @@ struct HistoryView: View {
                 Spacer(minLength: 30)
                 VStack(spacing: 30)
                 {
-                    SwiftUICharts.MultiLineChartView(data: [([12, 24, 23, 74, 35, 14, 39], GradientColor(start: Color.purple, end: Color.blue)), ([42, 12, 36, 22, 13, 34, 12], GradientColor(start: Color.blue, end: Color.purple))], title: "Notifications vs. HRV", style: ChartStyle(backgroundColor: Color.white, accentColor: Color.green, gradientColor: GradientColor(start: Color.green, end: Color.blue), textColor: Color.black, legendTextColor: Color.white, dropShadowColor: Color.white), form: CGSize(width: 350, height: 200), rateValue: 20)
+                    //Notifications count vs current week HRV averages by day.
+                    SwiftUICharts.MultiLineChartView(data: [(groupAnxietyCountsByDay(),
+                                                             GradientColor(start: Color.purple, end: Color.blue)),
+                                                            ([currentWeek[0].dailyAvg,
+                                                              currentWeek[1].dailyAvg,
+                                                              currentWeek[2].dailyAvg,
+                                                              currentWeek[3].dailyAvg,
+                                                              currentWeek[4].dailyAvg,
+                                                              currentWeek[5].dailyAvg,
+                                                              currentWeek[6].dailyAvg],
+                                                             GradientColor(start: Color.blue, end: Color.purple))],
+                                                     title: "Notifications vs. HRV",
+                                                     style: ChartStyle(backgroundColor: Color.white, accentColor: Color.green, gradientColor: GradientColor(start: Color.green, end: Color.blue), textColor: Color.black, legendTextColor: Color.white, dropShadowColor: Color.white), form: CGSize(width: 350, height: 200), rateValue: 20)
                     
                     HStack (spacing: 10) {
-                        BarChartView(data: ChartData(points: [8,23,54,32,12,3, 8]), title: "Current Week HRV", legend: "M T  W  R   F   S   U", style: Styles.barChartStyleNeonBlueLight)
-                            .scaleEffect(0.90)
-                        BarChartView(data: ChartData(points: [5, 32,12,37,7,23,43]), title: "Past Week HRV", legend: "M T  W  R   F   S   U", style: Styles.barChartStyleNeonBlueLight)
+                        
+                        //Current week HRV daily averages.
+                        BarChartView(data: ChartData(points: [currentWeek[0].dailyAvg,
+                                                              currentWeek[1].dailyAvg,
+                                                              currentWeek[2].dailyAvg,
+                                                              currentWeek[3].dailyAvg,
+                                                              currentWeek[4].dailyAvg,
+                                                              currentWeek[5].dailyAvg,
+                                                              currentWeek[6].dailyAvg]),
+                                     title: "Current Week HRV", legend: "S M  T  W   R   F   S",
+                                     style: Styles.barChartStyleNeonBlueLight)
+                            .scaleEffect(0.9)
+                        
+                        //Last week HRV daily averages.
+                        BarChartView(data: ChartData(points: [lastWeek[0].dailyAvg,
+                                                              lastWeek[1].dailyAvg,
+                                                              lastWeek[2].dailyAvg,
+                                                              lastWeek[3].dailyAvg,
+                                                              lastWeek[4].dailyAvg,
+                                                              lastWeek[5].dailyAvg,
+                                                              lastWeek[6].dailyAvg]),
+                                     title: "Last Week HRV", legend: "S M  T  W   R   F   S",
+                                     style: Styles.barChartStyleNeonBlueLight)
                             .scaleEffect(0.9)
                     }
                     
-                    SwiftUICharts.LineChartView(data: [8,23,54,37,7,23,43], title: "NLP Stress Levels", legend: "M         T         W         R         F         S         U", form: CGSize(width: 350, height: 200), rateValue: 10)
+                    //NLP daily averages for the current week.
+                    SwiftUICharts.LineChartView(data: groupNLPValuesByDay(),
+                                                title: "NLP Stress Levels",
+                                                legend: "S         M         T         W         R         F         S",
+                                                form: CGSize(width: 350, height: 200), rateValue: 10)
                     
+                    //Pie chart stuff: application feature usage metrics.
                     NavigationView {
                         ZStack {
                             BACKGROUND_COLOR.edgesIgnoringSafeArea(.all)
@@ -98,7 +135,7 @@ var lastDay: [stressLevel] = [
     .init(day: "Fri.", dailyAvg: 74),
     .init(day: "Sat.", dailyAvg: 79)]
  */
-var lastDay: [stressLevel] = fill(forCurrentWeek: false) // pulled from core data.
+var lastWeek: [stressLevel] = fill(forCurrentWeek: false) // pulled from core data.
 
 //Current weeks data.
 //Current day, Daily HRV average.
@@ -113,11 +150,11 @@ var currentDay: [stressLevel] = [
     .init(day: "Fri.", dailyAvg: 60),
     .init(day: "Sat.", dailyAvg: 65)]
 */
-var currentDay: [stressLevel] = fill(forCurrentWeek: true) //pulled from core data.
+var currentWeek: [stressLevel] = fill(forCurrentWeek: true) //pulled from core data.
 
 let weekData = [
-    (period: "Previous Week", data: lastDay),
-    (period: "Current Week", data: currentDay)]
+    (period: "Previous Week", data: lastWeek),
+    (period: "Current Week", data: currentWeek)]
 
 //Function to determine the overall average stress level for the last week.
 func weeklyStressAverage(_ week: [stressLevel]) -> Double {
@@ -139,7 +176,7 @@ struct BarChart: View
         Chart
         {
             //Defining data in the bar chart view:
-            ForEach(currentDay) { stressLevel in
+            ForEach(currentWeek) { stressLevel in
                 BarMark(
                     x: .value("Day of Week", stressLevel.day),
                     y: .value("Average HRV", stressLevel.dailyAvg)
@@ -151,7 +188,7 @@ struct BarChart: View
                         .foregroundColor(.white)
                 }
             }
-            ForEach(lastDay) { stressLevel in
+            ForEach(lastWeek) { stressLevel in
                 BarMark(
                     x: .value("Day of Week", stressLevel.day),
                     y: .value("Average HRV", stressLevel.dailyAvg)
@@ -346,103 +383,6 @@ struct PieSlice_Previews: PreviewProvider {
     }
 }
 
-//Organizing apple watch captures from CoreData:
-
-/*
-//I believe this may be working, but it does not diferentiate between the current week
-// and the previous week.
-func fill() -> [stressLevel] {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var items: [HeartRate]?
-    let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
-    let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
-    fetchRequest.sortDescriptors = [sort]
-    do {
-        items = try context.fetch(fetchRequest)
-    } catch {
-        print("Cannot fetch HeartRate")
-    }
-    
-    var totals: [Int] = Array(repeating: 0, count: 7)
-    var counts: [Int] = Array(repeating: 0, count: 7)
-
-    let calendar = Calendar.current
-    
-    items?.forEach { heartRate in
-        if let date = heartRate.timestamp {
-            let weekday = calendar.component(.weekday, from: date)
-            if weekday >= 1 && weekday <= 7 {
-                counts[weekday - 1] += 1
-                totals[weekday - 1] += Int(heartRate.value)
-            }
-        }
-    }
-    
-    var week: [stressLevel] = []
-    let days = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
-    for i in 0..<7 {
-        if counts[i] > 0 {
-            let avg = totals[i] / counts[i]
-            week.append(.init(day: days[i], dailyAvg: Double(avg)))
-        }
-    }
-    
-    return week
-}
-*/
-
-func fill(forCurrentWeek: Bool) -> [stressLevel] {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var items: [HeartRate]?
-    let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
-    let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
-    fetchRequest.sortDescriptors = [sort]
-    do {
-        items = try context.fetch(fetchRequest)
-    } catch {
-        print("Cannot fetch HeartRate")
-    }
-    
-    var totals: [Int] = Array(repeating: 0, count: 7)
-    var counts: [Int] = Array(repeating: 0, count: 7)
-    
-    let calendar = Calendar.current
-    
-    let today = Date()
-    let weekStart = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!
-    let prevWeekStart = calendar.date(byAdding: .weekOfYear, value: -1, to: weekStart)!
-    
-    items?.forEach { heartRate in
-        if let date = heartRate.timestamp {
-            let weekday = calendar.component(.weekday, from: date)
-            if weekday >= 1 && weekday <= 7 {
-                if forCurrentWeek {
-                    if date >= weekStart {
-                        counts[weekday - 1] += 1
-                        totals[weekday - 1] += Int(heartRate.value)
-                    }
-                } else {
-                    if date >= prevWeekStart && date < weekStart {
-                        counts[weekday - 1] += 1
-                        totals[weekday - 1] += Int(heartRate.value)
-                    }
-                }
-            }
-        }
-    }
-    
-    var week: [stressLevel] = []
-    let days = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
-    for i in 0..<7 {
-        if counts[i] > 0 {
-            let avg = totals[i] / counts[i]
-            week.append(.init(day: days[i], dailyAvg: Double(avg)))
-        }
-    }
-    
-    return week
-}
-
 /**
  Calculates the total number of AIcount timestamps in the last 2 weeks and returns it as a double value.
  - Returns: Double value representing the total number of AIcount timestamps in the last 2 weeks.
@@ -526,5 +466,131 @@ func getTotalJournalCountTimestampsLastTwoWeeks() -> Double {
     }
 }
 
+/*
+ Heart Rate Variability (HRV) is a measure of the variation in time between successive heartbeats. It can be used as an indicator of the autonomic nervous system function and overall health.
 
+ To calculate HRV from heart rate values, you can use a mathematical formula based on the standard deviation of the intervals between successive heartbeats, also known as R-R intervals.
+ 
+ This would output the calculated HRV value for the given heart rate values. Note that this is a simplified example and there are other factors to consider when calculating HRV, such as the length of the recording period and the frequency domain analysis of the R-R intervals.
+ */
+func fill(forCurrentWeek: Bool) -> [stressLevel] {
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var items: [HeartRate]?
+    let fetchRequest = NSFetchRequest<HeartRate>(entityName: "HeartRate")
+    let sort = NSSortDescriptor(key: #keyPath(HeartRate.timestamp), ascending: true)
+    fetchRequest.sortDescriptors = [sort]
+    do {
+        items = try context.fetch(fetchRequest)
+    } catch {
+        print("Cannot fetch HeartRate")
+    }
+    
+    var dayHeartRates: [[Int]] = Array(repeating: [], count: 7)
+    let calendar = Calendar.current
+    
+    let today = Date()
+    let weekStart = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!
+    let prevWeekStart = calendar.date(byAdding: .weekOfYear, value: -1, to: weekStart)!
+    
+    items?.forEach { heartRate in
+        if let date = heartRate.timestamp {
+            let weekday = calendar.component(.weekday, from: date)
+            if weekday >= 1 && weekday <= 7 {
+                if forCurrentWeek {
+                    if date >= weekStart {
+                        dayHeartRates[weekday - 1].append(Int(heartRate.value))
+                    }
+                } else {
+                    if date >= prevWeekStart && date < weekStart {
+                        dayHeartRates[weekday - 1].append(Int(heartRate.value))
+                    }
+                }
+            }
+        }
+    }
+    
+    var week: [stressLevel] = []
+    let days = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."]
+    
+    func calculateHRV(from heartRates: [Int]) -> Double? {
+        guard !heartRates.isEmpty else { return nil }
+        let sdnn = heartRates.standardDeviation
+        let hrv = 20.0 * log10(1000.0 / sdnn!)
+        return hrv
+    }
+    
+    for i in 0..<7 {
+        let heartRates = dayHeartRates[i]
+        let hrv = calculateHRV(from: heartRates)
+        week.append(.init(day: days[i], dailyAvg: hrv ?? 0))
+    }
+    
+    return week
+}
 
+extension Array where Element == Int {
+    var standardDeviation: Double? {
+        guard count > 1 else { return nil }
+        let mean = Double(reduce(0, +)) / Double(count)
+        let variance = reduce(0.0) { $0 + pow(Double($1) - mean, 2) } / Double(count - 1)
+        return sqrt(variance)
+    }
+}
+
+// Function to group NLP values by day and calculate daily averages
+func groupNLPValuesByDay() -> [Double] {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    // Get the start and end dates for the current calendar week
+    let calendar = Calendar.current
+    let today = Date()
+    let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!
+    let endOfWeek = calendar.date(byAdding: .day, value: 7, to: startOfWeek)!
+    
+    var dailyAverages: [Double] = []
+    for day in 0..<7 {
+        let startOfDay = calendar.date(byAdding: .day, value: day, to: startOfWeek)!
+        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+        let fetchRequest: NSFetchRequest<NLPValue> = NLPValue.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "timestamp >= %@ AND timestamp < %@", startOfDay as NSDate, endOfDay as NSDate)
+        do {
+            let nlpValues = try context.fetch(fetchRequest)
+            let sum = nlpValues.reduce(0, { $0 + $1.stressValue })
+            let count = nlpValues.count > 0 ? Double(nlpValues.count) : 1.0
+            let dailyAverage = sum / count
+            dailyAverages.append(dailyAverage)
+        } catch {
+            print("Error fetching NLPValues: \(error)")
+        }
+    }
+    return dailyAverages
+}
+
+// Function to group AnxietyCount values by day and calculate daily totals
+func groupAnxietyCountsByDay() -> [Double] {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    // Get the start and end dates for the current calendar week
+    let calendar = Calendar.current
+    let today = Date()
+    let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!
+    let endOfWeek = calendar.date(byAdding: .day, value: 7, to: startOfWeek)!
+    
+    var dailyTotals: [Double] = []
+    for day in 0..<7 {
+        let startOfDay = calendar.date(byAdding: .day, value: day, to: startOfWeek)!
+        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+        let fetchRequest: NSFetchRequest<AnxietyCount> = AnxietyCount.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "timestamp >= %@ AND timestamp < %@", startOfDay as NSDate, endOfDay as NSDate)
+        do {
+            let anxietyCounts = try context.fetch(fetchRequest)
+            let dailyTotal = anxietyCounts.reduce(0, { $0 + $1.value })
+            dailyTotals.append(Double(dailyTotal))
+        } catch {
+            print("Error fetching AnxietyCounts: \(error)")
+        }
+    }
+    return dailyTotals
+}
