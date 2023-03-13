@@ -50,7 +50,7 @@ struct HistoryView: View {
                                                               currentWeek[4].dailyAvg,
                                                               currentWeek[5].dailyAvg,
                                                               currentWeek[6].dailyAvg]),
-                                     title: "Current Week HRV", legend: "M T  W  R   F   S   U",
+                                     title: "Current Week HRV", legend: "S M  T  W   R   F   S",
                                      style: Styles.barChartStyleNeonBlueLight)
                             .scaleEffect(0.9)
                         
@@ -62,7 +62,7 @@ struct HistoryView: View {
                                                               lastWeek[4].dailyAvg,
                                                               lastWeek[5].dailyAvg,
                                                               lastWeek[6].dailyAvg]),
-                                     title: "Last Week HRV", legend: "M T  W  R   F   S   U",
+                                     title: "Last Week HRV", legend: "S M  T  W   R   F   S",
                                      style: Styles.barChartStyleNeonBlueLight)
                             .scaleEffect(0.9)
                     }
@@ -70,7 +70,7 @@ struct HistoryView: View {
                     //NLP daily averages for the current week.
                     SwiftUICharts.LineChartView(data: groupNLPValuesByDay(),
                                                 title: "NLP Stress Levels",
-                                                legend: "M         T         W         R         F         S         U",
+                                                legend: "S         M         T         W         R         F         S",
                                                 form: CGSize(width: 350, height: 200), rateValue: 10)
                     
                     //Pie chart stuff: application feature usage metrics.
