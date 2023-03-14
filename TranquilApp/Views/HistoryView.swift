@@ -246,6 +246,7 @@ public struct PieChartView: View {
                     .font(.headline)
                     .foregroundColor(Color.black)
                     .offset(y: 20)
+                Spacer(minLength: 40)
 
                 ZStack{
                     ForEach(0..<self.values.count){ i in
