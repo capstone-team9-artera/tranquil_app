@@ -23,6 +23,7 @@ struct HistoryView: View {
     {
         ScrollView(.vertical)
             {
+                BACKGROUND_COLOR.edgesIgnoringSafeArea(.all)
                 Spacer(minLength: 30)
                 VStack(spacing: 30)
                 {
@@ -73,35 +74,32 @@ struct HistoryView: View {
                                                 legend: "S         M         T         W         R         F         S",
                                                 form: CGSize(width: 350, height: 200), rateValue: 10)
                     
-                    //Pie chart stuff: application feature usage metrics.
                     NavigationView {
-                        ZStack {
-                            BACKGROUND_COLOR.edgesIgnoringSafeArea(.all)
-                            SwiftUICharts.PieChartView(data: [getTotalJournalCountTimestampsLastTwoWeeks(), getTotalAICountTimestampsLastTwoWeeks(), getTotalBreathingCountTimestampsLastTwoWeeks()], title: "Application Usage", style: Styles.barChartStyleNeonBlueLight, form: CGSize(width: 350, height: 450))
-                                .offset(y: -100)
-                            
-                            NavigationLink(destination: {AppUsageView()}, label: {
-                                Text("Further Insights")
-                                    .frame(width: 340, height: 380)
-                                    .offset(y: 100)
-                                    .foregroundColor(Color.black)
-                            })
-                        }
-                        
-                    }.frame(width: 400, height: 700)
-                        .toolbarBackground(BACKGROUND_COLOR, for: .navigationBar)
-                        .onAppear {
-                            let appearance = UINavigationBarAppearance()
-                            appearance.configureWithOpaqueBackground()
-                            appearance.backgroundColor = BACKGROUND_UICOLOR
-                            appearance.shadowColor = BACKGROUND_UICOLOR
-                            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: SECONDARY_TEXT_UICOLOR]
-                            let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
-                            buttonAppearance.normal.titleTextAttributes = [.foregroundColor: SECONDARY_TEXT_UICOLOR]
-                            appearance.buttonAppearance = buttonAppearance
+                        PieChartView(
+                            values: [getTotalJournalCountTimestampsLastTwoWeeks(),
+                                     getTotalAICountTimestampsLastTwoWeeks(),
+                                     getTotalBreathingCountTimestampsLastTwoWeeks()],
+                            names: ["Journals", "Chats", "Breathing"],
+                            formatter: {value in String(format: "%.0f", value)},
+                            colors: [TERTARY_TEXT_COLOR, PRIMARY_TEXT_COLOR, QUATERNEY_TEXT_COLOR],
+                            backgroundColor: .white)
+                        .padding()
+                        .background(BACKGROUND_COLOR)
+                    }
+                    .frame(width: 380, height: 550)
+                    .onAppear {
+                        let appearance = UINavigationBarAppearance()
+                        appearance.configureWithOpaqueBackground()
+                        appearance.backgroundColor = BACKGROUND_UICOLOR
+                        appearance.shadowColor = BACKGROUND_UICOLOR
+                        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: SECONDARY_TEXT_UICOLOR]
+                        let buttonAppearance = UIBarButtonItemAppearance(style: .plain)
+                        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: SECONDARY_TEXT_UICOLOR]
+                        appearance.buttonAppearance = buttonAppearance
 
-                            UINavigationBar.appearance().scrollEdgeAppearance = appearance
-                        }
+                        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+                    }
+                    Spacer()
                 }
             }
             .background(BACKGROUND_COLOR)
@@ -244,6 +242,12 @@ public struct PieChartView: View {
     public var body: some View {
         GeometryReader { geometry in
             VStack{
+                Text("Application Usage")
+                    .font(.headline)
+                    .foregroundColor(Color.black)
+                    .offset(y: 20)
+                Spacer(minLength: 40)
+
                 ZStack{
                     ForEach(0..<self.values.count){ i in
                         PieSlice(pieSliceData: self.slices[i])
@@ -289,13 +293,14 @@ public struct PieChartView: View {
                             .font(.title)
                             .foregroundColor(SECONDARY_TEXT_COLOR)
                     }
-                    
                 }
                 PieChartRows(colors: self.colors, names: self.names, values: self.values.map { self.formatter($0) }, percents: self.values.map { String(format: "%.0f%%", $0 * 100 / self.values.reduce(0, +)) })
             }
             .background(self.backgroundColor)
             .foregroundColor(SECONDARY_TEXT_COLOR)
         }
+        .cornerRadius(20.0)
+        .shadow(color: Color(red: 130/255, green: 130/255, blue: 130/255), radius: 8.0)
     }
 }
 
@@ -322,7 +327,7 @@ struct PieChartRows: View {
                     }
                 }
             }
-        }
+        }.padding()
     }
 }
 
